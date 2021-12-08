@@ -8,6 +8,7 @@ import { RegisterUserComponent } from './components/register-user/register-user.
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
+import { PageTitleComponent } from './components/page-title/page-title.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     RegisterUserComponent,
-    HomeComponent
+    HomeComponent,
+    PageTitleComponent
   ],
   imports: [
     BrowserModule,

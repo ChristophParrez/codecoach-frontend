@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import * as M from 'materialize-css';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    M.Sidenav.init(document.querySelectorAll('.sidenav'), {});
   }
 
 }

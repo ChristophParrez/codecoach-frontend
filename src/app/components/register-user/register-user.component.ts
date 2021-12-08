@@ -13,18 +13,17 @@ export class RegisterUserComponent implements OnInit {
   formGroup: FormGroup = this.formBuilder.group({
     firstName: ['Mert', Validators.required],
     lastName: ['Demirok', Validators.required],
-    companyName: ['Switchfully'],
+    companyName: ['Switchfully', Validators.required],
     password: ['Switchfully0', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[A-Z])(?=\\S+$).{8,}')]],
     email: ['mert1@gmail.com', [Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")]],
-    roles: [[{
-
-    }]],
+    roles: [[{}]],
   });
 
   constructor(private userService: UserService,
               private formBuilder: FormBuilder,
               private router: Router,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
   }
@@ -33,18 +32,19 @@ export class RegisterUserComponent implements OnInit {
     if (this.formGroup.invalid) {
       this.triggerValidationOnFields();
     } else {
-      console.log('calling user service');
-      console.log(this.formGroup.value);
       this.formGroup.disable();
       this.userService.registerUser(this.formGroup.value).subscribe({
-        next: () => this.router.navigate(['/'], {relativeTo: this.route }),
-        error: () => this.formGroup.enable()
+        next: () => this.router.navigate(['/'], {relativeTo: this.route}),
+        error: (response) => {
+          console.log(response);
+          console.log(response.error.message);
+          this.formGroup.enable();
+        }
       });
     }
   }
 
   private triggerValidationOnFields(formGroup?: FormGroup | FormArray): void {
-    console.log('validation...');
     if (formGroup == null) formGroup = this.formGroup;
     Object.keys(formGroup.controls).forEach(field => {
       // @ts-ignore
