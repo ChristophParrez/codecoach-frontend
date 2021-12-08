@@ -1,10 +1,18 @@
+@import 'sass/variables';
+
 @import '~materialize-css';
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Round');
 
-input.ng-invalid.ng-touched {
-  background: rgba(255, 0, 0, 0.1) !important;
-  color: red;
-  border-bottom: 2px solid red !important;
-  box-shadow: none !important;
+input {
+  &.ng-invalid.ng-touched {
+    background: rgba($input-error-color, 0.1) !important;
+    color: $input-error-color;
+    border-bottom: 2px solid $input-error-color !important;
+    box-shadow: none !important;
+    & + label {
+      color: $input-error-color;
+    }
+  }
 }
+
