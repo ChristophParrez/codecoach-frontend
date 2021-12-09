@@ -1,7 +1,21 @@
-<app-header></app-header>
+<mat-sidenav-container
+  class="example-container" (backdropClick)="sidenav.close()">
+  <mat-sidenav #sidenav (keydown.escape)="sidenav.close()" disableClose>
+    <p>
+      <button mat-button (click)="sidenav.close()">Toggle</button>
+    </p>
+  </mat-sidenav>
 
-<div class="container">
-    <router-outlet></router-outlet>
-</div>
+  <mat-sidenav-content>
 
-<app-footer></app-footer>
+    <app-header></app-header>
+
+    <div class="container">
+      <p><button mat-button (click)="sidenav.open()">Open</button></p>
+      <router-outlet></router-outlet>
+    </div>
+
+    <app-footer></app-footer>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,18 +1,14 @@
-<nav class="white" role="navigation">
-  <div class="nav-wrapper container">
-    <a id="logo-container" routerLink="/" class="brand-logo">
-      <img src="assets/images/codecoach-logo.svg">
-      CodeCoach
-    </a>
-    <ul class="right hide-on-med-and-down">
-      <li><a routerLink="/">Home</a></li>
-      <li><a routerLink="register">Register</a></li>
+<div class="nav-wrapper container">
+  <a routerLink="/" class="brand-logo">
+    <img src="assets/images/codecoach-logo.svg">
+    CodeCoach
+  </a>
+  <nav role="navigation">
+    <ul>
+      <li><a routerLinkActive="active" routerLink="/">Home</a></li>
+      <li><a routerLinkActive="active" routerLink="register">Register</a></li>
+      <li><a routerLinkActive="active" routerLink="about">About</a></li>
+      <li><a routerLinkActive="active" routerLink="contact">Contact</a></li>
     </ul>
-
-    <ul id="nav-mobile" class="sidenav">
-      <li><a routerLink="/">Home</a></li>
-      <li><a routerLink="register">Register</a></li>
-    </ul>
-    <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-  </div>
-</nav>
+  </nav>
+</div>

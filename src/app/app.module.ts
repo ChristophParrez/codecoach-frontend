@@ -11,7 +11,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { PageTitleComponent } from './components/page-title/page-title.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatInputModule} from "@angular/material/input";
+import { MatInputModule } from "@angular/material/input";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatListModule } from "@angular/material/list";
+import { MatButtonModule } from '@angular/material/button';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -23,16 +27,21 @@ import {MatInputModule} from "@angular/material/input";
     PageTitleComponent,
     ErrorMessageComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatInputModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonModule,
+    MatRippleModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -9,10 +9,31 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
+$my-custom-palette: (
+  50: #ffebee,
+  100: #ffcdd2,
+  200: #ef9a9a,
+  300: #e57373,
+  400: #ef5350,
+  500: #f44336,
+  600: #e53935,
+  700: #d32f2f,
+  800: #c62828,
+  900: #b71c1c,
+  A100: #ff8a80,
+  A200: #ff5252,
+  A400: #ff1744,
+  A700: #d50000,
+  contrast: (
+    50: #ff1744,
+  )
+);
+
+
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$codecoach-primary: mat.define-palette(mat.$indigo-palette);
+$codecoach-primary: mat.define-palette($my-custom-palette);
 $codecoach-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
@@ -28,15 +49,33 @@ $codecoach-theme: mat.define-light-theme((
   )
 ));
 
+//$dark-primary: mat-palette($mat-blue);
+//$dark-accent:  mat-palette($mat-amber, A200, A100, A400);
+//$dark-warn:    mat-palette($mat-deep-orange);
+//$dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+//
+//.unicorn-dark-theme {
+//  @include angular-material-theme($dark-theme);
+//  .mat-toolbar.mat-primary {
+//    color: yellow;
+//  }
+//}
+
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($codecoach-theme);
 
+// CodeCoach
 @import 'sass/variables';
-@import '~materialize-css';
+//@import '~materialize-css';
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Round');
+
+* {
+  box-sizing: border-box;
+}
 
 ::-moz-selection { /* Code for Firefox */
   color: #fff;
@@ -61,23 +100,31 @@ input {
   }
 }
 
-.btn, .btn-small, .btn-large {
-  background: $accent-color;
-
-  &:focus {
-    background: $accent-color;
-  }
-
-  &:hover {
-    background: $accent-color-darker;
-  }
+.mat-form-field.full-width {
+  display: block;
 }
 
-// Materialize Fix
-.row {
-  margin-left: -0.75rem;
-  margin-right: -0.75rem;
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+body {
+  margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.container {
+  width: 1000px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  //border: 1px solid red;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
