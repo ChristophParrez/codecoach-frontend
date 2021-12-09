@@ -4,8 +4,7 @@ import { HomeComponent } from "./components/home/home.component";
 import { RegisterUserComponent } from "./components/register-user/register-user.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'register', component: RegisterUserComponent },
   { path: 'about', component: RegisterUserComponent },
   { path: 'contact', component: RegisterUserComponent },
