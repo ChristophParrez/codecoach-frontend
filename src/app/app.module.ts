@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { PageTitleComponent } from './components/page-title/page-title.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -21,13 +23,15 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     PageTitleComponent,
     ErrorMessageComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatInputModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
