@@ -1,16 +1,12 @@
 nav .brand-logo {
-  padding-top: 7px;
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 600;
   img {
     height: 50px;
+    margin-right: 15px;
   }
-}
-
-nav ul a {
-  //color: #000;
-}
-
-.nav-wrapper {
-  padding: 0 0.75rem;
 }
 
 nav .sidenav-trigger {

@@ -37,7 +37,7 @@ export class RegisterUserComponent implements OnInit {
         next: () => this.router.navigate(['/'], {relativeTo: this.route}),
         error: (response) => {
           console.log(response);
-          console.log(response.error.message);
+          console.log(response.message);
           this.formGroup.enable();
         }
       });

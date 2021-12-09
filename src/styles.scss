@@ -1,8 +1,17 @@
 @import 'sass/variables';
-
 @import '~materialize-css';
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Round');
+
+::-moz-selection { /* Code for Firefox */
+  color: #fff;
+  background: $accent-color;
+}
+
+::selection {
+  color: #fff;
+  background: $accent-color;
+}
 
 input {
   &.ng-invalid.ng-touched {
@@ -10,9 +19,23 @@ input {
     color: $input-error-color;
     border-bottom: 2px solid $input-error-color !important;
     box-shadow: none !important;
+
     & + label {
       color: $input-error-color;
     }
   }
 }
 
+.btn, .btn-small, .btn-large {
+  background: $accent-color;
+
+  &:hover {
+    background: $accent-color-darker;
+  }
+}
+
+// Materialize Fix
+.row {
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+}
