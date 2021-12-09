@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { PageTitleComponent } from './components/page-title/page-title.component';
+import { ErrorMessageComponent } from './components/error-message/error-message.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PageTitleComponent } from './components/page-title/page-title.component
     FooterComponent,
     RegisterUserComponent,
     HomeComponent,
-    PageTitleComponent
+    PageTitleComponent,
+    ErrorMessageComponent
   ],
   imports: [
     BrowserModule,

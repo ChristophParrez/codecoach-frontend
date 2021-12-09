@@ -29,6 +29,10 @@ input {
 .btn, .btn-small, .btn-large {
   background: $accent-color;
 
+  &:focus {
+    background: $accent-color;
+  }
+
   &:hover {
     background: $accent-color-darker;
   }

@@ -19,6 +19,8 @@ export class RegisterUserComponent implements OnInit {
     roles: [[{}]],
   });
 
+  errorMessages: string[] = [];
+
   constructor(private userService: UserService,
               private formBuilder: FormBuilder,
               private router: Router,
@@ -29,6 +31,7 @@ export class RegisterUserComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.errorMessages = [];
     if (this.formGroup.invalid) {
       this.triggerValidationOnFields();
     } else {
@@ -37,7 +40,7 @@ export class RegisterUserComponent implements OnInit {
         next: () => this.router.navigate(['/'], {relativeTo: this.route}),
         error: (response) => {
           console.log(response);
-          console.log(response.message);
+          this.errorMessages.push(response.error);
           this.formGroup.enable();
         }
       });

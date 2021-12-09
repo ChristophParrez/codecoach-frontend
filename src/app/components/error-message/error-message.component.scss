@@ -1,0 +1,14 @@
+@import '../../../sass/variables';
+
+:host {
+  display: inline-block;
+  margin-left: 20px;
+  vertical-align: top;
+  background: rgba($red, 0.1);
+  border: 1px solid rgba($red, 0.1);
+  color: $red;
+  //padding: 20px;
+  div > div {
+    margin: 10px;
+  }
+}
