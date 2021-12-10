@@ -18,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MatToolbarModule } from "@angular/material/toolbar";
     RegisterUserComponent,
     HomeComponent,
     PageTitleComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

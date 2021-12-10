@@ -9,12 +9,18 @@ import { environment } from "../../environments/environment";
 })
 export class UserService {
 
-  private url = `${environment.backendUrl}/users`
+  private urlRegister = `${environment.backendUrl}/users`
+  private urlLogin = `${environment.backendUrl}/users/security/login`
 
   constructor(private http: HttpClient) {
   }
 
   registerUser(user: User): Observable<User> {
-    return this.http.post<User>(this.url, user);
+    return this.http.post<User>(this.urlRegister, user);
+  }
+
+  loginUser(user: User):Observable<User>{
+    return this.http.post<User>(this.urlLogin, user)
+
   }
 }
