@@ -6,15 +6,11 @@ import * as M from 'materialize-css';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, AfterViewInit {
+export class HeaderComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  ngAfterViewInit(): void {
-    M.Sidenav.init(document.querySelectorAll('.sidenav'), {});
   }
 
 }

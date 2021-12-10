@@ -1,5 +1,5 @@
-<div *ngIf="messages">
-  <div *ngFor="let message of messages">
+<div>
+  <div *ngFor="let message of messages" @slideDownUp>
     {{ message }}
   </div>
 </div>

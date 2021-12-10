@@ -1,5 +1,9 @@
 @import '../../../sass/variables';
 
 .page-footer {
-  background: #024e72;
+  color: #fff;
+  background: $footer-background;
+  padding: 15px 0 10px 0;
+  line-height: 1;
+  text-align: center;
 }

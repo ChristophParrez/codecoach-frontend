@@ -1,7 +1,29 @@
-<app-header></app-header>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav opened="false" mode="push">
+    <mat-toolbar color="primary">
+      <span>Menu</span>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a (click)="sidenav.close()" mat-list-item routerLink="">Home</a>
+      <a (click)="sidenav.close()" mat-list-item routerLink="register">About</a>
+      <a (click)="sidenav.close()" mat-list-item routerLink="register">Register</a>
+      <a (click)="sidenav.close()" mat-list-item routerLink="register/test">Contact</a>
+    </mat-nav-list>
+  </mat-sidenav>
 
-<div class="container">
-    <router-outlet></router-outlet>
-</div>
+  <mat-sidenav-content>
 
-<app-footer></app-footer>
+    <app-header></app-header>
+
+    <div class="container">
+      <router-outlet></router-outlet>
+      <p>&nbsp;</p>
+      <p>
+        <button mat-raised-button color="primary" (click)="sidenav.open()">Open Menu Test</button>
+      </p>
+    </div>
+
+    <app-footer></app-footer>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
