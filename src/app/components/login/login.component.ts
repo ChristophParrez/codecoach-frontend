@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -13,14 +13,15 @@ export class LoginComponent implements OnInit {
   errorMessages: string[] = [];
 
   formGroup: FormGroup = this.formBuilder.group({
-    username: ['mert20@gmail.com', Validators.required],
-    password: ['Password123', Validators.required]
+    username: ['freeh23@gmail.com', Validators.required],
+    password: ['String12!', Validators.required]
   });
 
   constructor(private userService: UserService,
               private formBuilder: FormBuilder,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
   }
@@ -32,9 +33,17 @@ export class LoginComponent implements OnInit {
     } else {
       this.formGroup.disable();
       this.userService.loginUser(this.formGroup.value).subscribe({
-        next: (data) => {
-          console.log(data)
-          //this.router.navigate(['/'], {relativeTo: this.route})
+        next: (response) => {
+
+          const keys = response.headers.keys();
+          const headers = keys.map((key: any) =>
+            `${key}: ${response.headers.get(key)}`);
+          let token = headers[0].split(' ')[2]
+          console.log(headers)
+          console.log(token)
+          sessionStorage.setItem("codecoach_token", token)
+          const userId = this.userService.getUserId();
+          this.router.navigate([`/users/${userId}`], {relativeTo: this.route})
         },
         error: (response) => {
           console.log(response);
