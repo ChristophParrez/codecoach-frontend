@@ -6,6 +6,7 @@ import { RegisterUserComponent } from "./components/register-user/register-user.
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'register', component: RegisterUserComponent },
+  { path: 'register/test', component: RegisterUserComponent },
   { path: 'about', component: RegisterUserComponent },
   { path: 'contact', component: RegisterUserComponent },
 ];

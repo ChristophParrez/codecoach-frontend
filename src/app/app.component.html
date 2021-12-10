@@ -1,9 +1,14 @@
-<mat-sidenav-container
-  class="example-container" (backdropClick)="sidenav.close()">
-  <mat-sidenav #sidenav (keydown.escape)="sidenav.close()" disableClose>
-    <p>
-      <button mat-button (click)="sidenav.close()">Toggle</button>
-    </p>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav opened="true" mode="push">
+    <mat-toolbar color="primary">
+      <span>Menu</span>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a (click)="sidenav.close()" mat-list-item routerLink="">Home</a>
+      <a (click)="sidenav.close()" mat-list-item routerLink="register">About</a>
+      <a (click)="sidenav.close()" mat-list-item routerLink="register">Register</a>
+      <a (click)="sidenav.close()" mat-list-item routerLink="register/test">Contact</a>
+    </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
