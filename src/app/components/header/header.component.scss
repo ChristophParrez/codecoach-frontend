@@ -5,8 +5,13 @@
   padding: 10px 0;
 }
 
+.menu-hamburger{
+   cursor: pointer;
+}
+
 .nav-wrapper {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
