@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import * as M from 'materialize-css';
 
 @Component({
@@ -7,6 +7,8 @@ import * as M from 'materialize-css';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  @Output() openSidenav = new EventEmitter<any>();
 
   constructor() { }
 

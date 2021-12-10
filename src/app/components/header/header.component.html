@@ -1,8 +1,12 @@
 <div class="nav-wrapper container">
+  <p>
+    <button mat-raised-button color="primary" (click)="openSidenav.emit()">Open Menu Test</button>
+  </p>
   <a routerLink="/" class="brand-logo">
     <img src="assets/images/codecoach-logo.svg">
     CodeCoach
   </a>
+
   <nav role="navigation">
     <ul>
       <li><a routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/">Home</a></li>

@@ -13,14 +13,10 @@
 
   <mat-sidenav-content>
 
-    <app-header></app-header>
+    <app-header (openSidenav)="sidenav.open()"></app-header>
 
     <div class="container">
       <router-outlet></router-outlet>
-      <p>&nbsp;</p>
-      <p>
-        <button mat-raised-button color="primary" (click)="sidenav.open()">Open Menu Test</button>
-      </p>
     </div>
 
     <app-footer></app-footer>
