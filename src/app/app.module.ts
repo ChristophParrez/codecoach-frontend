@@ -20,7 +20,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { LoginComponent } from './components/login/login.component';
 import { CoacheeProfileComponent } from './components/coachee-profile/coachee-profile.component';
-import {MatIconModule} from "@angular/material/icon";
+import { MatIconModule, MatIconRegistry } from "@angular/material/icon";
 
 
 @NgModule({
@@ -56,4 +56,7 @@ import {MatIconModule} from "@angular/material/icon";
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  constructor(iconRegistry: MatIconRegistry) {
+    iconRegistry.setDefaultFontSetClass('material-icons-round');
+  }
 }
