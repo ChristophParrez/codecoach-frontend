@@ -25,6 +25,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AboutComponent } from './components/about/about.component';
 import { ProfileInformationComponent } from './components/profile-information/profile-information.component';
 import { MatCardModule } from "@angular/material/card";
+import { UserRolesPipe } from './pipes/user-roles.pipe';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MatCardModule } from "@angular/material/card";
     LoginComponent,
     CoacheeProfileComponent,
     AboutComponent,
-    ProfileInformationComponent
+    ProfileInformationComponent,
+    UserRolesPipe
   ],
   imports: [
     BrowserModule,

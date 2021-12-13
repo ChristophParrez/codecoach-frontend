@@ -19,7 +19,7 @@
     </div>
     <div class="row">
       <div class="title">CodeCoach role</div>
-      <div>{{ user.roles }}</div>
+      {{ user.roles | userRoles }}
     </div>
   </div>
 </mat-card>

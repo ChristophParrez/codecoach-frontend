@@ -1,3 +1,5 @@
+import { UserRole } from "./UserRole";
+
 export interface User {
   coachInformation: any;
   companyName: string;
@@ -5,5 +7,5 @@ export interface User {
   firstName: string;
   lastName: string;
   picture: string;
-  roles: string[]
+  roles: UserRole[]
 }
