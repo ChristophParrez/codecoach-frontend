@@ -1,7 +1,9 @@
 @import '../../../sass/variables';
 
 :host {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 30px;
   //padding: 0 0.60rem;
   h1 {
@@ -29,3 +31,4 @@
     }
   }
 }
+
