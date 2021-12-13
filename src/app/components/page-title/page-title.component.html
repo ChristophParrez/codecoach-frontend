@@ -1,4 +1,4 @@
 <h1>
   <ng-content></ng-content>
 </h1>
-<div class="icon-button" *ngIf="editButton"><mat-icon (click)="editButtonClicked.emit()">edit</mat-icon></div>
+<div class="icon-button" *ngIf="editButton" (click)="editButtonClicked.emit()"><mat-icon>edit</mat-icon></div>

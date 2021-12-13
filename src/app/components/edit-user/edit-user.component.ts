@@ -12,13 +12,13 @@ import { User } from "../../model/User";
 export class EditUserComponent implements OnInit {
 
   @Input() user: any;
-  @Output() toggleEditMode = new EventEmitter<any>();
+  @Output() userIsUpdated = new EventEmitter<any>();
 
   formGroup: FormGroup = this.formBuilder.group({
-    firstName: ['Mert', Validators.required],
-    lastName: ['Demirok', Validators.required],
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
     picture: '',
-    email: ['mert1@gmail.com', [Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")]]
+    email: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")]]
   });
 
   errorMessages: string[] = [];
@@ -30,6 +30,12 @@ export class EditUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.user) this.formGroup.patchValue({
+      firstName: this.user.firstName,
+      lastName: this.user.lastName,
+      picture: this.user.picture,
+      email: this.user.email
+    });
   }
 
   onSubmit(): void {
@@ -40,7 +46,7 @@ export class EditUserComponent implements OnInit {
       this.formGroup.disable();
       const userId = this.route.snapshot.paramMap.get('id');
       this.userService.updateUser(this.formGroup.value, userId!).subscribe({
-        next: () => this.toggleEditMode.emit(),
+        next: () => this.userIsUpdated.emit(),
         error: (response) => {
           console.log(response);
           if (response.status === 401 || response.status === 403) {

@@ -1,8 +1,8 @@
 <mat-card *ngIf="user">
-  <app-page-title [editButton]="true" (editButtonClicked)="toggleEditMode()">Profile Information</app-page-title>
-  <app-edit-user *ngIf="editMode" [user]="user" (toggleEditMode)="toggleEditMode()"></app-edit-user>
+  <app-page-title [editButton]="true" (editButtonClicked)="userChanged()">Profile Information</app-page-title>
+  <app-edit-user *ngIf="editMode" [user]="user" (userIsUpdated)="userChanged()"></app-edit-user>
   <div class="user-profile" *ngIf="!editMode">
-    <img class="profile-image" src="https://randomuser.me/api/portraits/women/65.jpg">
+    <img class="profile-image" [src]="user.picture" (error)="showDefaultImage($event)">
     <div class="responsive-table profile-information">
       <div class="row">
         <div class="title">First name</div>
@@ -15,10 +15,6 @@
       <div class="row">
         <div class="title">Email name</div>
         <div><a href="mailto:{{ user.email }}">{{ user.email }}</a></div>
-      </div>
-      <div class="row">
-        <div class="title">Class name</div>
-        <div>{{ user.coachInformation }}</div>
       </div>
       <div class="row">
         <div class="title">CodeCoach role</div>

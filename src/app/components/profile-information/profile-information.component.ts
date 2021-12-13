@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from "../../model/User";
 
 @Component({
@@ -9,6 +9,8 @@ import { User } from "../../model/User";
 export class ProfileInformationComponent implements OnInit {
 
   @Input() user: User | undefined;
+  @Output() userIsUpdated = new EventEmitter<any>();
+
   editMode: boolean = false;
 
   constructor() {
@@ -17,8 +19,13 @@ export class ProfileInformationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  toggleEditMode(): void {
+  userChanged(): void {
     this.editMode = !this.editMode;
+    this.userIsUpdated.emit();
+  }
+
+  showDefaultImage(event: any): void {
+    event.target.src = './assets/images/image-not-found.png';
   }
 
 }
