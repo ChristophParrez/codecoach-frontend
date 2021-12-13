@@ -16,13 +16,24 @@
       <li><a routerLinkActive="active" routerLink="contact">Contact</a></li>
       <li><a routerLinkActive="active" routerLink="register" *ngIf="!userService.isLoggedIn()">Register</a></li>
       <li><a routerLinkActive="active" routerLink="login" *ngIf="!userService.isLoggedIn()">Login</a></li>
-      <li><a routerLinkActive="active" routerLink="login" *ngIf="userService.isLoggedIn()" (click)="userService.logoutUser()">Logout</a></li>
+      <li><a routerLinkActive="active" routerLink="login" *ngIf="userService.isLoggedIn()"
+             (click)="userService.logoutUser()">Logout</a></li>
     </ul>
   </nav>
 
   <div class="social">
-    <a href="https://github.com/ChristophParrez/codecoach-frontend" target="_blank">
-      <fa-icon [icon]="gitHubIcon"></fa-icon>
-    </a>
+    <ul>
+      <li>
+        <a>
+          <fa-icon [icon]="gitHubIcon"></fa-icon>
+          <div class="submenu">
+            <ul>
+              <li><a href="https://github.com/ChristophParrez/codecoach-frontend" target="_blank">Frontend</a></li>
+              <li><a href="https://github.com/ChristophParrez/codecoach-backend" target="_blank">Backend</a></li>
+            </ul>
+          </div>
+        </a>
+      </li>
+    </ul>
   </div>
 </div>

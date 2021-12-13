@@ -1,6 +1,9 @@
 mat-sidenav {
   width: 300px;
   max-width: 70%;
+  .mat-toolbar-row, .mat-toolbar-single-row {
+    height: 64px;
+  }
 }
 
 mat-sidenav-content {
