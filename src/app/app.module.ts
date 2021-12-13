@@ -21,7 +21,8 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { LoginComponent } from './components/login/login.component';
 import { CoacheeProfileComponent } from './components/coachee-profile/coachee-profile.component';
 import { MatIconModule, MatIconRegistry } from "@angular/material/icon";
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatIconModule, MatIconRegistry } from "@angular/material/icon";
     PageTitleComponent,
     ErrorMessageComponent,
     LoginComponent,
-    CoacheeProfileComponent
+    CoacheeProfileComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ import { MatIconModule, MatIconRegistry } from "@angular/material/icon";
     MatDatepickerModule,
     MatNativeDateModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

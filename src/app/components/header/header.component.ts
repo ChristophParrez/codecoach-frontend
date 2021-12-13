@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, EventEmitter, OnInit, Output} from '@angular/core';
-import * as M from 'materialize-css';
+import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +9,10 @@ import * as M from 'materialize-css';
 export class HeaderComponent implements OnInit {
 
   @Output() openSidenav = new EventEmitter<any>();
+  gitHubIcon = faGithub;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {User} from "../model/User";
-import {environment} from "../../environments/environment";
+import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { User } from "../model/User";
+import { environment } from "../../environments/environment";
 import jwt_decode from "jwt-decode";
 
 @Injectable({
@@ -24,25 +24,20 @@ export class UserService {
     return this.http.post(this.urlLogin, user, {observe: "response"});
   }
 
-  getToken():string | null{
-    return sessionStorage.getItem("codecoach_token");
+  getToken(): string | null {
+    return sessionStorage.getItem("code_coach_token");
   }
 
-  getRole(): string {
-    const token = this.getToken();
-    if(token == null){
-      return "";
-    }
-    const tokenDecoded: any = jwt_decode(token);
-    return tokenDecoded.rol;
+  getDecodedToken(): any {
+    const token: any = this.getToken();
+    return typeof token !== 'string' ? null : jwt_decode(token);
   }
 
-  getUserId():string{
-    const token = this.getToken();
-    if(token == null){
-      return "";
-    }
-    const tokenDecoded: any = jwt_decode(token);
-    return tokenDecoded.id;
+  getUserRoles(): string[] {
+    return this.getDecodedToken().role || [];
+  }
+
+  getUserId(): string {
+    return this.getDecodedToken().id || '';
   }
 }

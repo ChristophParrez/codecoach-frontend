@@ -1,11 +1,15 @@
-<div class="nav-wrapper container">
-  <mat-icon class="menu-hamburger" (click)="openSidenav.emit()">menu</mat-icon>
-  <a routerLink="/" class="brand-logo">
-    <img src="assets/images/codecoach-logo.svg">
-    CodeCoach
+<div class="header-wrapper container">
+  <mat-icon class="sidenav-trigger" (click)="openSidenav.emit()">menu</mat-icon>
+
+  <a routerLink="/" class="branding">
+    <img class="logo" src="assets/images/codecoach-logo.svg">
+    <span class="app-name">
+      CodeCoach
+      <span class="by-rt">by Runtime Terror</span>
+    </span>
   </a>
 
-  <nav role="navigation">
+  <nav class="main-nav" role="navigation">
     <ul>
       <li><a routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/">Home</a></li>
       <li><a routerLinkActive="active" routerLink="about">About</a></li>
@@ -14,4 +18,8 @@
       <li><a routerLinkActive="active" routerLink="contact">Contact</a></li>
     </ul>
   </nav>
+
+  <div class="social">
+    <a href="https://github.com/ChristophParrez/codecoach-frontend" target="_blank"><fa-icon [icon]="gitHubIcon"></fa-icon></a>
+  </div>
 </div>

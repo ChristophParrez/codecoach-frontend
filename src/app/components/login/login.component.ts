@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "../../services/user.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { UserService } from "../../services/user.service";
+import { ActivatedRoute, Router } from "@angular/router";
 import { HttpResponse } from "@angular/common/http";
 
 @Component({
@@ -14,8 +14,8 @@ export class LoginComponent implements OnInit {
   errorMessages: string[] = [];
 
   formGroup: FormGroup = this.formBuilder.group({
-    username: ['freeh23@gmail.com', Validators.required],
-    password: ['String12!', Validators.required]
+    username: ['mert1@gmail.com', Validators.required],
+    password: ['Switchfully0', Validators.required]
   });
 
   constructor(private userService: UserService,
@@ -38,8 +38,7 @@ export class LoginComponent implements OnInit {
           const auth = response.headers.get('Authorization');
           if (auth !== null) {
             const token = auth.split(' ')[1];
-            console.log(token);
-            sessionStorage.setItem("codecoach_token", token)
+            sessionStorage.setItem("code_coach_token", token)
             const userId = this.userService.getUserId();
             this.router.navigate([`/users/${userId}`], {relativeTo: this.route})
           }

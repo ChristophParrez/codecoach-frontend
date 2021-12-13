@@ -1,21 +1,24 @@
 @import '../../../sass/variables';
 
+$breakpoint: 750px;
+
 :host {
   box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
   padding: 10px 0;
 }
 
-.menu-hamburger{
-   cursor: pointer;
-}
-
-.nav-wrapper {
+.header-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.brand-logo {
+.sidenav-trigger {
+  display: none;
+  cursor: pointer;
+}
+
+.branding {
   display: flex;
   align-items: center;
   color: $main-text-color;
@@ -23,15 +26,25 @@
   font-weight: 400;
   text-decoration: none;
 
-  img {
-    height: 50px;
+  .logo {
+    height: 44px;
     margin-right: 15px;
+  }
+
+  .app-name {
+    position: relative;
+    .by-rt {
+      color: $accent-color;
+      position: absolute;
+      font-size: 0.5em;
+      left: 0.2em;
+      top: 1.7em;
+    }
   }
 }
 
-nav {
+.main-nav {
   ul {
-    //border: 1px solid green;
     display: flex;
     list-style: none;
     padding: 0;
@@ -41,13 +54,36 @@ nav {
       text-decoration: none;
       color: $main-text-color;
       transition: color 300ms;
-      font-size: 16px;
+      font-size: 15px;
+
       &:hover {
         color: $accent-color;
       }
+
       &.active {
         color: $accent-color;
       }
     }
+  }
+}
+
+.social {
+  a {
+    color: $main-text-color;
+    font-size: 20px;
+    transition: all 300ms;
+    &:hover {
+      color: $accent-color;
+    }
+  }
+}
+
+// Responsiveness
+@media (max-width: $breakpoint) {
+  .sidenav-trigger {
+    display: initial;
+  }
+  .main-nav {
+    display: none;
   }
 }

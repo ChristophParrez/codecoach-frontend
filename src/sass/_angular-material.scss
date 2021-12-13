@@ -1,0 +1,51 @@
+@use "@angular/material" as mat;
+@import "~@angular/material/theming";
+@include mat.core();
+
+$codecoach-palette: (
+  50: #e1f5fb,
+  100: #b2e6f6,
+  200: #80d5f0,
+  300: #4ec4eb,
+  400: #22B6E9,
+  500: #00abe7,
+  600: #009dd9,
+  700: #008ac6,
+  800: #0079b2,
+  900: #005a93,
+  A100: #009dd9,
+  A200: #008ac6,
+  A400: #0079b2,
+  A700: #005a93,
+  contrast: (
+    50: #e1f5fb,
+  )
+);
+
+$light-primary: mat.define-palette($codecoach-palette);
+$light-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$light-warn: mat.define-palette(mat.$red-palette);
+
+$codecoach-light-theme: mat.define-light-theme((
+  color: (
+    primary: $light-primary,
+    accent: $light-accent,
+    warn: $light-warn,
+  )
+));
+
+// Dark Theme
+$dark-primary: mat.define-palette($codecoach-palette);
+$dark-accent:  mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$dark-warn:    mat.define-palette(mat.$red-palette);
+$codecoach-dark-theme: mat.define-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+.codecoach-dark-theme {
+  @include mat.all-component-themes($codecoach-dark-theme);
+  .mat-toolbar.mat-primary {
+    color: yellow;
+  }
+}
+
+@include mat.all-component-themes($codecoach-light-theme);
+// End Material Theming
