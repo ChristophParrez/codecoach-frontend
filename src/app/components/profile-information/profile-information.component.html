@@ -1,25 +1,29 @@
-<mat-card class="user-profile" *ngIf="user">
-  <img class="profile-image" src="https://randomuser.me/api/portraits/women/65.jpg">
-  <div class="responsive-table profile-information">
-    <div class="row">
-      <div class="title">First name</div>
-      <div>{{ user.firstName }}</div>
-    </div>
-    <div class="row">
-      <div class="title">Last name</div>
-      <div>{{ user.lastName }}</div>
-    </div>
-    <div class="row">
-      <div class="title">Email name</div>
-      <div><a href="mailto:{{ user.email }}">{{ user.email }}</a></div>
-    </div>
-    <div class="row">
-      <div class="title">Class name</div>
-      <div>{{ user.coachInformation }}</div>
-    </div>
-    <div class="row">
-      <div class="title">CodeCoach role</div>
-      {{ user.roles | userRoles }}
+<mat-card *ngIf="user">
+  <app-page-title [editButton]="true" (editButtonClicked)="toggleEditMode()">Profile Information</app-page-title>
+  <app-edit-user *ngIf="editMode" [user]="user" (toggleEditMode)="toggleEditMode()"></app-edit-user>
+  <div class="user-profile" *ngIf="!editMode">
+    <img class="profile-image" src="https://randomuser.me/api/portraits/women/65.jpg">
+    <div class="responsive-table profile-information">
+      <div class="row">
+        <div class="title">First name</div>
+        <div>{{ user.firstName }}</div>
+      </div>
+      <div class="row">
+        <div class="title">Last name</div>
+        <div>{{ user.lastName }}</div>
+      </div>
+      <div class="row">
+        <div class="title">Email name</div>
+        <div><a href="mailto:{{ user.email }}">{{ user.email }}</a></div>
+      </div>
+      <div class="row">
+        <div class="title">Class name</div>
+        <div>{{ user.coachInformation }}</div>
+      </div>
+      <div class="row">
+        <div class="title">CodeCoach role</div>
+        {{ user.roles | userRoles }}
+      </div>
     </div>
   </div>
 </mat-card>

@@ -9,10 +9,16 @@ import { User } from "../../model/User";
 export class ProfileInformationComponent implements OnInit {
 
   @Input() user: User | undefined;
+  editMode: boolean = false;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  toggleEditMode(): void {
+    this.editMode = !this.editMode;
   }
 
 }

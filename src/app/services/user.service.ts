@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { User } from "../model/User";
 import { environment } from "../../environments/environment";
@@ -22,6 +22,13 @@ export class UserService {
 
   registerUser(user: User): Observable<User> {
     return this.http.post<User>(this.urlUsers, user);
+  }
+
+  updateUser(user: User, id: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.getToken()}`
+    })
+    return this.http.put<User>(this.urlUsers + '/' + id, user, { headers: headers });
   }
 
   loginUser(user: User): Observable<any> {

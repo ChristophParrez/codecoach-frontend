@@ -1,9 +1,31 @@
+@import '../../../sass/variables';
+
 :host {
   display: block;
   margin-bottom: 30px;
   //padding: 0 0.60rem;
   h1 {
-    margin-top: 10px;
+    margin: 0 !important;
     font-size: 1.5rem;
+  }
+
+  .icon-button {
+    $size: 30px;
+    cursor: pointer;
+    background: $accent-color;
+    border-radius: 50%;
+    width: $size;
+    height: $size;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    mat-icon {
+      font-size: 15px;
+      height: auto;
+      width: auto;
+    }
   }
 }

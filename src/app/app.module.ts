@@ -26,6 +26,7 @@ import { AboutComponent } from './components/about/about.component';
 import { ProfileInformationComponent } from './components/profile-information/profile-information.component';
 import { MatCardModule } from "@angular/material/card";
 import { UserRolesPipe } from './pipes/user-roles.pipe';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { UserRolesPipe } from './pipes/user-roles.pipe';
     CoacheeProfileComponent,
     AboutComponent,
     ProfileInformationComponent,
-    UserRolesPipe
+    UserRolesPipe,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { User } from "../../model/User";
 
 @Component({
   selector: 'app-page-title',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-title.component.scss']
 })
 export class PageTitleComponent implements OnInit {
+
+  @Input() editButton: boolean = false;
+  @Output() editButtonClicked = new EventEmitter<any>();
 
   constructor() { }
 

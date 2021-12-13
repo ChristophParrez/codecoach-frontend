@@ -1,0 +1,35 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" *ngIf="user">
+  <div class="form-row">
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput id="first_name" type="text" formControlName="firstName">
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput id="last_name" type="text" formControlName="lastName">
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field class="full-width" appearance="fill">
+      <input matInput id="email" type="text" class="" formControlName="email">
+      <mat-label for="email" class="active">Email</mat-label>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field class="full-width" appearance="fill">
+      <input matInput id="picture" type="text" class="" formControlName="picture">
+      <mat-label for="email" class="active">Picture</mat-label>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <button mat-raised-button color="primary" type="submit">Save</button>
+    <app-error-message [messages]="errorMessages"></app-error-message>
+  </div>
+
+</form>

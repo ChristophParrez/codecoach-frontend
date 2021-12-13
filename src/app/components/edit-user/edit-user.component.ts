@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { UserService } from "../../services/user.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import { User } from "../../model/User";
 
 @Component({
-  selector: 'app-register-user',
-  templateUrl: './register-user.component.html',
-  styleUrls: ['./register-user.component.scss']
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.scss']
 })
-export class RegisterUserComponent implements OnInit {
+export class EditUserComponent implements OnInit {
+
+  @Input() user: any;
+  @Output() toggleEditMode = new EventEmitter<any>();
 
   formGroup: FormGroup = this.formBuilder.group({
     firstName: ['Mert', Validators.required],
     lastName: ['Demirok', Validators.required],
-    companyName: ['Switchfully', Validators.required],
-    password: ['Switchfully0', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[A-Z])(?=\\S+$).{8,}')]],
-    email: ['mert1@gmail.com', [Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")]],
-    roles: [[{}]],
+    picture: '',
+    email: ['mert1@gmail.com', [Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")]]
   });
 
   errorMessages: string[] = [];
@@ -36,11 +38,14 @@ export class RegisterUserComponent implements OnInit {
       this.triggerValidationOnFields();
     } else {
       this.formGroup.disable();
-      this.userService.registerUser(this.formGroup.value).subscribe({
-        next: () => this.router.navigate(['/'], {relativeTo: this.route}),
+      const userId = this.route.snapshot.paramMap.get('id');
+      this.userService.updateUser(this.formGroup.value, userId!).subscribe({
+        next: () => this.toggleEditMode.emit(),
         error: (response) => {
           console.log(response);
-          if (typeof response.error === 'string') this.errorMessages.push(response.error);
+          if (response.status === 401 || response.status === 403) {
+            this.errorMessages.push('You are not authorized to use this function')
+          }
           this.formGroup.enable();
         }
       });
