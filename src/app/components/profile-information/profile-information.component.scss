@@ -1,0 +1,21 @@
+$breakpoint: 550px;
+
+.profile-image {
+  $size: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  width: $size;
+  height: $size;
+  margin-bottom: 15px;
+}
+
+@media (min-width: $breakpoint) {
+  .user-profile {
+    display: flex;
+
+    .profile-image {
+      margin-right: 30px;
+      margin-bottom: 0;
+    }
+  }
+}

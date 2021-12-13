@@ -1,7 +1,9 @@
 export interface User {
-  firstname: string;
-  lastname: string;
-  company: string;
+  coachInformation: any;
+  companyName: string;
   email: string;
-  password: string;
+  firstName: string;
+  lastName: string;
+  picture: string;
+  roles: string[]
 }

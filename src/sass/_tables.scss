@@ -1,0 +1,23 @@
+th {
+  text-align: left;
+}
+
+// Responsive Fake Table
+.responsive-table {
+  .row {
+    padding: 5px 0;
+    @media (min-width: 500px) {
+      display: flex;
+    }
+  }
+
+  .title {
+    font-weight: 500;
+    padding-right: 20px;
+  }
+}
+
+.profile-information .title {
+  width: 120px;
+}
+

@@ -23,6 +23,8 @@ import { CoacheeProfileComponent } from './components/coachee-profile/coachee-pr
 import { MatIconModule, MatIconRegistry } from "@angular/material/icon";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AboutComponent } from './components/about/about.component';
+import { ProfileInformationComponent } from './components/profile-information/profile-information.component';
+import { MatCardModule } from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { AboutComponent } from './components/about/about.component';
     ErrorMessageComponent,
     LoginComponent,
     CoacheeProfileComponent,
-    AboutComponent
+    AboutComponent,
+    ProfileInformationComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { AboutComponent } from './components/about/about.component';
     MatNativeDateModule,
     MatToolbarModule,
     MatIconModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

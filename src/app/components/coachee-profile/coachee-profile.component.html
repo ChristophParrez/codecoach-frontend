@@ -1,1 +1,4 @@
-<p>coachee-profile works!</p>
+<ng-container *ngIf="user">
+  <app-page-title>Profile Information</app-page-title>
+  <app-profile-information [user]="user"></app-profile-information>
+</ng-container>

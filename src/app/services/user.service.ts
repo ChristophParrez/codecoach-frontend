@@ -10,14 +10,18 @@ import jwt_decode from "jwt-decode";
 })
 export class UserService {
 
-  private urlRegister = `${environment.backendUrl}/users`
+  private urlUsers = `${environment.backendUrl}/users`
   private urlLogin = `${environment.backendUrl}/security/login`
 
   constructor(private http: HttpClient) {
   }
 
+  getUser(id: string): Observable<User> {
+    return this.http.get<User>(this.urlUsers + '/' + id);
+  }
+
   registerUser(user: User): Observable<User> {
-    return this.http.post<User>(this.urlRegister, user);
+    return this.http.post<User>(this.urlUsers, user);
   }
 
   loginUser(user: User): Observable<any> {
