@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
           const auth = response.headers.get('Authorization');
           if (auth !== null) {
             const token = auth.split(' ')[1];
-            sessionStorage.setItem("code_coach_token", token)
+            sessionStorage.setItem(this.userService.tokenName, token)
             const userId = this.userService.getUserId();
             this.router.navigate([`/users/${userId}`], {relativeTo: this.route})
           }

@@ -33,6 +33,7 @@ $breakpoint: 750px;
 
   .app-name {
     position: relative;
+
     .by-rt {
       color: $accent-color;
       position: absolute;
@@ -55,6 +56,7 @@ $breakpoint: 750px;
       color: $main-text-color;
       transition: color 300ms;
       font-size: 15px;
+      cursor: pointer;
 
       &:hover {
         color: $accent-color;
@@ -72,6 +74,7 @@ $breakpoint: 750px;
     color: $main-text-color;
     font-size: 20px;
     transition: all 300ms;
+
     &:hover {
       color: $accent-color;
     }

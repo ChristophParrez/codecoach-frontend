@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { UserService } from "../../services/user.service";
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit {
   @Output() openSidenav = new EventEmitter<any>();
   gitHubIcon = faGithub;
 
-  constructor() {
+  constructor(public userService: UserService) {
   }
 
   ngOnInit(): void {

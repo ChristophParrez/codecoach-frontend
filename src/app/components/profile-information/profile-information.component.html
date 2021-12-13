@@ -1,6 +1,6 @@
 <mat-card *ngIf="user">
   <app-page-title [editButton]="true" (editButtonClicked)="userChanged()">Profile Information</app-page-title>
-  <app-edit-user *ngIf="editMode" [user]="user" (userIsUpdated)="userChanged()"></app-edit-user>
+  <app-edit-user *ngIf="editMode" [user]="user" (userIsUpdated)="userChanged()" (cancel)="editMode=false"></app-edit-user>
   <div class="user-profile" *ngIf="!editMode">
     <img class="profile-image" [src]="user.picture" (error)="showDefaultImage($event)">
     <div class="responsive-table profile-information">

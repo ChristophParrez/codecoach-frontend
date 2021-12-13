@@ -12,6 +12,7 @@ export class UserService {
 
   private urlUsers = `${environment.backendUrl}/users`
   private urlLogin = `${environment.backendUrl}/security/login`
+  public tokenName = 'code_coach_token';
 
   constructor(private http: HttpClient) {
   }
@@ -35,8 +36,16 @@ export class UserService {
     return this.http.post(this.urlLogin, user, {observe: "response"});
   }
 
+  logoutUser() {
+    sessionStorage.removeItem(this.tokenName);
+  }
+
+  isLoggedIn() {
+    return this.getToken() !== null;
+  }
+
   getToken(): string | null {
-    return sessionStorage.getItem("code_coach_token");
+    return sessionStorage.getItem(this.tokenName);
   }
 
   getDecodedToken(): any {

@@ -13,6 +13,7 @@ export class EditUserComponent implements OnInit {
 
   @Input() user: any;
   @Output() userIsUpdated = new EventEmitter<any>();
+  @Output() cancel = new EventEmitter<any>();
 
   formGroup: FormGroup = this.formBuilder.group({
     firstName: ['', Validators.required],

@@ -56,6 +56,10 @@ form .hint {
   display: block;
 }
 
+button + button, .mat-raised-button + .mat-raised-button {
+  margin-left: 10px;
+}
+
 html, body {
   height: 100%;
   width: 100%;

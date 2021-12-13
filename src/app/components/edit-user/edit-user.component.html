@@ -29,6 +29,7 @@
 
   <div class="form-row">
     <button mat-raised-button color="primary" type="submit">Save</button>
+    <button mat-raised-button color="" type="button" (click)="cancel.emit()">Cancel</button>
     <app-error-message [messages]="errorMessages"></app-error-message>
   </div>
 
