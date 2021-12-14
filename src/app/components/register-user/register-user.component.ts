@@ -39,9 +39,10 @@ export class RegisterUserComponent implements OnInit {
       this.userService.registerUser(this.formGroup.value).subscribe({
         next: () => this.router.navigate(['/'], {relativeTo: this.route}),
         error: (response) => {
-          console.log(response);
-          if (typeof response.error === 'string') this.errorMessages.push(response.error);
           this.formGroup.enable();
+          console.log(response);
+          if (response.error.status === 400) this.errorMessages.push('Something went wrong. Please try again later.')
+          else if (typeof response.error === 'string') this.errorMessages.push(response.error);
         }
       });
     }

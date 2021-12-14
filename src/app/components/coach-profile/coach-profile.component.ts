@@ -19,7 +19,7 @@ export class CoachProfileComponent implements OnInit {
   }
 
   getUser(): void {
-    this.userService.getUser(this.route.snapshot.paramMap.get('id')!).subscribe({
+    this.userService.getCoach(this.route.snapshot.paramMap.get('id')!).subscribe({
       next: (user) => {
         console.log(user)
         this.user = user

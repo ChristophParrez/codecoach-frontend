@@ -11,6 +11,7 @@ import jwt_decode from "jwt-decode";
 export class UserService {
 
   private urlUsers = `${environment.backendUrl}/users`
+  private urlCoach = `${environment.backendUrl}/coaches`
   private urlLogin = `${environment.backendUrl}/security/login`
   public tokenName = 'code_coach_token';
 
@@ -19,6 +20,10 @@ export class UserService {
 
   getUser(id: string): Observable<User> {
     return this.http.get<User>(this.urlUsers + '/' + id);
+  }
+
+  getCoach(id: string): Observable<User> {
+    return this.http.get<User>(this.urlCoach + '/' + id);
   }
 
   registerUser(user: User): Observable<User> {
