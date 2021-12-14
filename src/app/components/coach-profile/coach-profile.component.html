@@ -1,4 +1,4 @@
-<ng-container *ngIf="user && userService.isCoach()">
+<div class="wrapper" *ngIf="user && userService.isCoach()">
   <div>
     <mat-card class="sidebar">
       <h3>My Coach Profile</h3>
@@ -9,5 +9,5 @@
   <div class="content">
     <app-profile-information [user]="user" (userIsUpdated)="getUser()"></app-profile-information>
   </div>
-</ng-container>
+</div>
 <app-unauthorized *ngIf="!userService.isCoach()"></app-unauthorized>
