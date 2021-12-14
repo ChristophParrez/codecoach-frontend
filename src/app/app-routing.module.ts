@@ -5,6 +5,7 @@ import { RegisterUserComponent } from "./components/register-user/register-user.
 import { LoginComponent } from "./components/login/login.component";
 import { CoacheeProfileComponent } from "./components/coachee-profile/coachee-profile.component";
 import { AboutComponent } from "./components/about/about.component";
+import { CoachProfileComponent } from "./components/coach-profile/coach-profile.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'contact', component: RegisterUserComponent},
   {path: 'login', component: LoginComponent},
   {path: 'users/:id', component: CoacheeProfileComponent},
+  {path: 'coach/:id', component: CoachProfileComponent},
 
 ];
 

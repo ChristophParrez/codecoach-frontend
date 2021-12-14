@@ -1,13 +1,13 @@
-<ng-container *ngIf="user">
+<ng-container *ngIf="user && userService.isCoach()">
   <div>
     <mat-card class="sidebar">
-      <h3>My Profile</h3>
-      <a routerLinkActive="active" [routerLink]="'/users/' + user.userId">Profile Information</a>
+      <h3>My Coach Profile</h3>
+      <a routerLinkActive="active" [routerLink]="'/coach/' + user.userId">Profile Information</a>
       <a routerLinkActive="active">Coaching Sessions</a>
-      <a routerLinkActive="active" (click)="becomeCoach()">Apply to become a coach</a>
     </mat-card>
   </div>
   <div class="content">
     <app-profile-information [user]="user" (userIsUpdated)="getUser()"></app-profile-information>
   </div>
 </ng-container>
+<app-unauthorized *ngIf="!userService.isCoach()"></app-unauthorized>

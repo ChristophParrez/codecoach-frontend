@@ -27,9 +27,16 @@ export class UserService {
 
   updateUser(user: User, id: string): Observable<any> {
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.getToken()}`
+      'Authorization': `${this.getToken()}`
     })
     return this.http.put<User>(this.urlUsers + '/' + id, user, { headers: headers });
+  }
+
+  becomeCoach(id: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `${this.getToken()}`
+    })
+    return this.http.patch(this.urlUsers + '/' + id, '', {headers: headers});
   }
 
   loginUser(user: User): Observable<any> {
@@ -59,5 +66,9 @@ export class UserService {
 
   getUserId(): string {
     return this.getDecodedToken().id || '';
+  }
+
+  isCoach(): boolean {
+    return this.getUserRoles().includes('COACH');
   }
 }

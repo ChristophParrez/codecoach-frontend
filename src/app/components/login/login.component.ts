@@ -35,9 +35,8 @@ export class LoginComponent implements OnInit {
       this.formGroup.disable();
       this.userService.loginUser(this.formGroup.value).subscribe({
         next: (response) => {
-          const auth = response.headers.get('Authorization');
-          if (auth !== null) {
-            const token = auth.split(' ')[1];
+          const token = response.headers.get('Authorization');
+          if (token !== null) {
             sessionStorage.setItem(this.userService.tokenName, token)
             const userId = this.userService.getUserId();
             this.router.navigate([`/users/${userId}`], {relativeTo: this.route})

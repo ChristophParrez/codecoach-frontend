@@ -27,6 +27,8 @@ import { ProfileInformationComponent } from './components/profile-information/pr
 import { MatCardModule } from "@angular/material/card";
 import { UserRolesPipe } from './pipes/user-roles.pipe';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { CoachProfileComponent } from './components/coach-profile/coach-profile.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
     AboutComponent,
     ProfileInformationComponent,
     UserRolesPipe,
-    EditUserComponent
+    EditUserComponent,
+    CoachProfileComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,
