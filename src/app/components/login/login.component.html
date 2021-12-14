@@ -1,20 +1,22 @@
 <app-page-title>Login</app-page-title>
 
-<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-  <div class="form-row">
+<mat-card>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="form-row">
       <mat-form-field class="full-width" appearance="fill">
         <input matInput id="email" type="text" class="" formControlName="username">
         <mat-label for="email" class="active">Email</mat-label>
       </mat-form-field>
-  </div>
-  <div class="form-row">
+    </div>
+    <div class="form-row">
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>Password</mat-label>
         <input matInput id="password" type="password" formControlName="password">
       </mat-form-field>
-  </div>
-  <div class="form-row">
+    </div>
+    <div class="form-row">
       <button mat-raised-button color="primary" type="submit">Login</button>
       <app-error-message [messages]="errorMessages"></app-error-message>
-  </div>
-</form>
+    </div>
+  </form>
+</mat-card>

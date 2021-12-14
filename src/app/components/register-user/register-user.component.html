@@ -1,46 +1,47 @@
 <app-page-title>Register</app-page-title>
 
-<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-  <div class="form-row">
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>First Name</mat-label>
-      <input matInput id="first_name" type="text" formControlName="firstName">
-    </mat-form-field>
-  </div>
+<mat-card>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput id="first_name" type="text" formControlName="firstName">
+      </mat-form-field>
+    </div>
 
-  <div class="form-row">
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Last Name</mat-label>
-      <input matInput id="last_name" type="text" formControlName="lastName">
-    </mat-form-field>
-  </div>
+    <div class="form-row">
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input matInput id="last_name" type="text" formControlName="lastName">
+      </mat-form-field>
+    </div>
 
-  <div class="form-row">
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Company</mat-label>
-      <input matInput id="company" type="text" formControlName="companyName">
-    </mat-form-field>
-  </div>
+    <div class="form-row">
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Company</mat-label>
+        <input matInput id="company" type="text" formControlName="companyName">
+      </mat-form-field>
+    </div>
 
-  <div class="form-row">
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Password</mat-label>
-      <input matInput id="password" type="password" formControlName="password">
-    </mat-form-field>
-    <div class="hint">(minimum 8 characters, one uppercase and one number)</div>
-  </div>
+    <div class="form-row">
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput id="password" type="password" formControlName="password">
+      </mat-form-field>
+      <div class="hint">(minimum 8 characters, one uppercase and one number)</div>
+    </div>
 
-  <div class="form-row">
-    <mat-form-field class="full-width" appearance="fill">
-      <input matInput id="email" type="text" class="" formControlName="email">
-      <mat-label for="email" class="active">Email</mat-label>
-    </mat-form-field>
-  </div>
+    <div class="form-row">
+      <mat-form-field class="full-width" appearance="fill">
+        <input matInput id="email" type="text" class="" formControlName="email">
+        <mat-label for="email" class="active">Email</mat-label>
+      </mat-form-field>
+    </div>
 
-  <div class="form-row">
-    <button mat-raised-button color="primary" type="submit">Register</button>
-    <app-error-message [messages]="errorMessages"></app-error-message>
-  </div>
+    <div class="form-row">
+      <button mat-raised-button color="primary" type="submit">Register</button>
+      <app-error-message [messages]="errorMessages"></app-error-message>
+    </div>
 
-</form>
-
+  </form>
+</mat-card>
