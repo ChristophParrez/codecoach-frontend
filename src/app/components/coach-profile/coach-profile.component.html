@@ -1,6 +1,6 @@
-<div class="wrapper" *ngIf="user && userService.isCoach()">
+<div class="wrapper" *ngIf="user && (userService.isCoach() || userService.isAdmin())">
   <div>
-    <mat-card class="sidebar">
+    <mat-card class="sidebar secondary">
       <h3>My Coach Profile</h3>
       <a routerLinkActive="active" [routerLink]="'/coach/' + user.userId">Profile Information</a>
       <a routerLinkActive="active">Coaching Sessions</a>
@@ -9,7 +9,7 @@
   <div class="content">
     <app-profile-information [user]="user" (userIsUpdated)="getUser()"></app-profile-information>
     <mat-card>
-      <app-page-title>Coach Information</app-page-title>
+      <app-page-title [editButton]="true">Coach Information</app-page-title>
       <div class="responsive-table coach-information">
         <div class="row">
           <div class="title">Coach XP</div>
@@ -26,7 +26,7 @@
       </div>
     </mat-card>
     <mat-card>
-      <app-page-title>Coaching Topics</app-page-title>
+      <app-page-title [editButton]="true">Coaching Topics</app-page-title>
       <div class="responsive-table coaching-topics">
         <div class="row" *ngFor="let coachingTopic of user.coachInformation.coachingTopics">
           <div class="title">{{ coachingTopic.topic.name }}</div>

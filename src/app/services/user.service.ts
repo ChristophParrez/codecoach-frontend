@@ -81,4 +81,8 @@ export class UserService {
   isCoach(): boolean {
     return this.getUserRoles().includes('COACH');
   }
+
+  isAdmin(): boolean {
+    return this.getUserRoles().includes('ADMIN');
+  }
 }
