@@ -1,1 +1,15 @@
-<p>overview of all the coaches works!</p>
+<app-page-title>Overview of all Coaches</app-page-title>
+
+<div class="coaches-content">
+  <mat-card class="coach-card" *ngFor="let x of amount">
+    <div class="col">
+      <img class="profile-image" [src]="'./assets/images/image-not-found.png'">
+    </div>
+    <div class="col">
+      <div class="title">Name:</div>
+      <div>{{name}}</div>
+      <div class="title">Topics:</div>
+      <div>{{topic1}} & {{topic2}}</div>
+    </div>
+  </mat-card>
+</div>

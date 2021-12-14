@@ -1,0 +1,15 @@
+.coaches-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.coach-card {
+  display: flex;
+  width: 32%;
+  margin-bottom: 20px;
+}
+
+.coach-card .col {
+  margin-right: 10px;
+}
