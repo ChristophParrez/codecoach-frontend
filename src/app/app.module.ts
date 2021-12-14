@@ -30,6 +30,7 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { CoachProfileComponent } from './components/coach-profile/coach-profile.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import { CoachesComponent } from './components/coaches/coaches.component';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { CoachesComponent } from './components/coaches/coaches.component';
     MatToolbarModule,
     MatIconModule,
     FontAwesomeModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

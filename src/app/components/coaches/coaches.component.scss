@@ -6,10 +6,37 @@
 
 .coach-card {
   display: flex;
-  width: 32%;
-  margin-bottom: 20px;
 }
 
 .coach-card .col {
   margin-right: 10px;
+}
+
+.coaches-content .coach-card-container {
+  padding: 10px;
+  width: 33%;
+}
+
+.search-fields {
+  width: 100%;
+}
+
+.search-fields mat-form-field {
+  margin-right: 20px;
+}
+
+.search-coach-name {
+  width: 250px;
+}
+
+@media (max-width: 1000px) {
+  .coaches-content .coach-card-container {
+    width: 50%;
+  }
+}
+
+@media (max-width: 750px) {
+  .coaches-content .coach-card-container {
+    width: 100%;
+  }
 }

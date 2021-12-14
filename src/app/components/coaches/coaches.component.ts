@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {User} from "../../model/User";
 
 @Component({
   selector: 'app-coaches',
@@ -11,7 +10,7 @@ export class CoachesComponent implements OnInit {
   public name: string = "Coach";
   public topic1: string = "HTML";
   public topic2: string = "Java";
-  public amount: number[] = [1, 2, 3, 4];
+  public amount: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   constructor() {
   }
