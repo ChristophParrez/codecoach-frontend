@@ -14,11 +14,21 @@
       <li><a routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/">Home</a></li>
       <li><a routerLinkActive="active" routerLink="about">About</a></li>
       <li><a routerLinkActive="active" routerLink="coaches">Find a Coach</a></li>
-      <li><a routerLinkActive="active" routerLink="contact">Contact</a></li>
-      <li><a routerLinkActive="active" routerLink="register" *ngIf="!userService.isLoggedIn()">Register</a></li>
-      <li><a routerLinkActive="active" routerLink="login" *ngIf="!userService.isLoggedIn()">Login</a></li>
-      <li><a routerLinkActive="active" routerLink="login" *ngIf="userService.isLoggedIn()"
-             (click)="userService.logoutUser()">Logout</a></li>
+      <li>
+        <a>
+          Account
+          <div class="submenu left">
+            <ul>
+              <li><a routerLinkActive="active" [routerLink]="'users/' + userService.getUserId()" *ngIf="userService.isLoggedIn()">My Profile</a></li>
+              <li><a routerLinkActive="active" [routerLink]="'coach/' + userService.getUserId()" *ngIf="userService.isCoach()">My Coach Profile</a></li>
+              <li><a routerLinkActive="active" routerLink="register" *ngIf="!userService.isLoggedIn()">Register</a></li>
+              <li><a routerLinkActive="active" routerLink="login" *ngIf="!userService.isLoggedIn()">Login</a></li>
+              <li><a routerLinkActive="active" routerLink="login" *ngIf="userService.isLoggedIn()"
+                     (click)="userService.logoutUser()">Logout</a></li>
+            </ul>
+          </div>
+        </a>
+      </li>
     </ul>
   </nav>
 

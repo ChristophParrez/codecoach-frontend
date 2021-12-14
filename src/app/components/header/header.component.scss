@@ -46,13 +46,19 @@ $breakpoint: 750px;
 }
 
 .main-nav {
-  ul {
+  > ul {
     display: flex;
+
+    > li > a {
+      margin: 5px 10px;
+    }
+  }
+
+  ul {
     list-style: none;
     padding: 0;
 
-    a {
-      padding: 5px 10px;
+    li a {
       text-decoration: none;
       color: $main-text-color;
       transition: color 300ms;
@@ -118,6 +124,15 @@ li {
       z-index: -1;
     }
 
+    &.left {
+      left: -5px;
+      right: auto;
+      &::before {
+        left: 15px;
+        right: auto;
+      }
+    }
+
     > ul {
       background: #fff;
       padding: 5px;
@@ -129,11 +144,12 @@ li {
       text-decoration: none;
       padding: 5px 10px;
       font-size: 15px;
+      white-space: nowrap;
     }
   }
 }
 
-li:hover .submenu, .submenu:hover {
+a:hover .submenu, .submenu:hover {
   display: block;
   opacity: 1;
   transform: none;

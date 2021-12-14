@@ -66,7 +66,7 @@ export class UserService {
   }
 
   getUserRoles(): string[] {
-    return this.getDecodedToken().role || [];
+    return this.getDecodedToken()?.role || [];
   }
 
   getUserId(): string {
