@@ -1,9 +1,15 @@
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .content {
   margin-top: 20px;
 }
 
 @media (min-width: 700px) {
-  :host {
+  .wrapper {
     display: flex;
   }
 
