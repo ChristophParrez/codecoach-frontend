@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../../services/user.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-coachee-profile',
@@ -11,11 +11,20 @@ export class CoacheeProfileComponent implements OnInit {
 
   user: any;
 
-  constructor(private userService: UserService, private route: ActivatedRoute) {
+  constructor(private userService: UserService,
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit(): void {
     this.getUser();
+  }
+
+  becomeCoach(): void {
+    this.userService.becomeCoach(this.user!.userId)
+      .subscribe(() => {
+        this.router.navigate([`/coach/${this.user.userId}`])
+      });
   }
 
   getUser(): void {

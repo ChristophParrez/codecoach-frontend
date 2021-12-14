@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from "../../model/User";
+import { UserService } from "../../services/user.service";
 
 @Component({
   selector: 'app-profile-information',
@@ -13,7 +14,7 @@ export class ProfileInformationComponent implements OnInit {
 
   editMode: boolean = false;
 
-  constructor() {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -27,5 +28,4 @@ export class ProfileInformationComponent implements OnInit {
   showDefaultImage(event: any): void {
     event.target.src = './assets/images/image-not-found.png';
   }
-
 }

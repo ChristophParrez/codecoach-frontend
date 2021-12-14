@@ -1,6 +1,7 @@
 import { UserRole } from "./UserRole";
 
 export interface User {
+  userId: string;
   coachInformation: any;
   companyName: string;
   email: string;
