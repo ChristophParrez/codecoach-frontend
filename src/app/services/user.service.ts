@@ -26,6 +26,11 @@ export class UserService {
     return this.http.get<User>(this.urlCoach + '/' + id);
   }
 
+  // TODO needs to be properly implemented
+  getAllCoaches(): void {
+
+  }
+
   registerUser(user: User): Observable<User> {
     return this.http.post<User>(this.urlUsers, user);
   }
