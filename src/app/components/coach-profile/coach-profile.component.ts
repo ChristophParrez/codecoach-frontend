@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../../services/user.service";
 import { ActivatedRoute } from "@angular/router";
+import { User } from "../../model/User";
 
 @Component({
   selector: 'app-coach-profile',
@@ -9,7 +10,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class CoachProfileComponent implements OnInit {
 
-  user: any;
+  user: User | undefined;
 
   constructor(public userService: UserService, private route: ActivatedRoute) {
   }

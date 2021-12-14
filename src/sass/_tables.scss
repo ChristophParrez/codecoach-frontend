@@ -4,6 +4,7 @@ th {
 
 // Responsive Fake Table
 .responsive-table {
+  margin-top: -5px;
   .row {
     padding: 5px 0;
     @media (min-width: 500px) {

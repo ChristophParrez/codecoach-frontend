@@ -8,6 +8,33 @@
   </div>
   <div class="content">
     <app-profile-information [user]="user" (userIsUpdated)="getUser()"></app-profile-information>
+    <mat-card>
+      <app-page-title>Coach Information</app-page-title>
+      <div class="responsive-table coach-information">
+        <div class="row">
+          <div class="title">Coach XP</div>
+          <div>{{ user.coachInformation.coachXp }}</div>
+        </div>
+        <div class="row">
+          <div class="title">Introduction</div>
+          <div>{{ user.coachInformation.introduction }}</div>
+        </div>
+        <div class="row">
+          <div class="title">Availability</div>
+          <div>{{ user.coachInformation.availability }}</div>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card>
+      <app-page-title>Coaching Topics</app-page-title>
+      <div class="responsive-table coaching-topics">
+        <div class="row" *ngFor="let coachingTopic of user.coachInformation.coachingTopics">
+          <div class="title">{{ coachingTopic.topic.name }}</div>
+          <div>{{ coachingTopic.experience }}</div>
+        </div>
+        <div *ngIf="user.coachInformation.coachingTopics.length === 0">No topics found. Please add them here.</div>
+      </div>
+    </mat-card>
   </div>
 </div>
 <app-unauthorized *ngIf="!userService.isCoach()"></app-unauthorized>

@@ -2,6 +2,10 @@
 
 $breakpoint: 550px;
 
+:host {
+  display: block;
+}
+
 .profile-image {
   $size: 120px;
   border-radius: 50%;
