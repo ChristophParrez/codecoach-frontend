@@ -29,6 +29,7 @@ import { UserRolesPipe } from './pipes/user-roles.pipe';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { CoachProfileComponent } from './components/coach-profile/coach-profile.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { CoachesComponent } from './components/coaches/coaches.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { UnauthorizedComponent } from './components/unauthorized/unauthorized.co
     UserRolesPipe,
     EditUserComponent,
     CoachProfileComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+    CoachesComponent
   ],
   imports: [
     BrowserModule,
