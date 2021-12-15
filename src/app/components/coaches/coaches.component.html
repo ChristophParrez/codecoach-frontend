@@ -15,27 +15,15 @@
       <input matInput id="name" type="text">
     </mat-form-field>
   </div>
-  <div *ngFor="let x of amount" class="coach-card-container">
+  <div *ngFor="let coach of coaches" class="coach-card-container">
+    <div class="coach-name">{{coach.firstName}} {{coach.lastName}}</div>
     <mat-card class="coach-card">
       <div class="col">
         <img class="profile-image" [src]="'./assets/images/image-not-found.png'">
       </div>
       <div class="col">
-        <div class="title">Name:</div>
-        <div>{{name}}</div>
-        <div class="title">Topics:</div>
-        <div>{{topic1}} & {{topic2}}</div>
+        <div *ngFor="let topic of coach.coachInformation.coachingTopics">{{topic.topic.name}}</div>
       </div>
     </mat-card>
   </div>
 </mat-card>
-
-
-<!--
-<div class="form-row">
-      <mat-form-field class="full-width" appearance="fill">
-        <input matInput id="email" type="text" class="" formControlName="username">
-        <mat-label for="email" class="active">Email</mat-label>
-      </mat-form-field>
-    </div>
--->

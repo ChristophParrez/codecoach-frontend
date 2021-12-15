@@ -26,9 +26,8 @@ export class UserService {
     return this.http.get<User>(this.urlCoach + '/' + id);
   }
 
-  // TODO needs to be properly implemented
-  getAllCoaches(): void {
-
+  getAllCoaches(): Observable<User[]> {
+    return this.http.get<User[]>(this.urlCoach);
   }
 
   registerUser(user: User): Observable<User> {
@@ -36,10 +35,18 @@ export class UserService {
   }
 
   updateUser(user: User, id: string): Observable<any> {
+    console.log('this: ', this);
     const headers = new HttpHeaders({
       'Authorization': `${this.getToken()}`
     })
     return this.http.put<User>(this.urlUsers + '/' + id, user, { headers: headers });
+  }
+
+  updateCoach(user: User, id: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `${this.getToken()}`
+    })
+    return this.http.put<User>(this.urlCoach + '/' + id, user, { headers: headers });
   }
 
   becomeCoach(id: string): Observable<any> {
@@ -59,6 +66,10 @@ export class UserService {
 
   isLoggedIn() {
     return this.getToken() !== null;
+  }
+
+  setToken(token: string) {
+    sessionStorage.setItem(this.tokenName, token);
   }
 
   getToken(): string | null {

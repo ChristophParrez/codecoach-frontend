@@ -7,7 +7,7 @@
     </mat-card>
   </div>
   <div class="content">
-    <app-profile-information [user]="user" (userIsUpdated)="getUser()"></app-profile-information>
+    <app-profile-information [user]="user" [pageRole]="roles.COACH" (userIsUpdated)="getUser()"></app-profile-information>
     <mat-card>
       <app-page-title [editButton]="true">Coach Information</app-page-title>
       <div class="responsive-table coach-information">

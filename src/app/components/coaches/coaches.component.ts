@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {User} from "../../model/User";
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
+import {User} from "../../model/User";
 
 @Component({
   selector: 'app-coaches',
@@ -9,19 +9,18 @@ import {UserService} from "../../services/user.service";
 })
 export class CoachesComponent implements OnInit {
 
-  public name: string = "Coach";
-  public topic1: string = "HTML";
-  public topic2: string = "Java";
-  public amount: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  public coaches: User[] = [];
 
   constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
+    this.getAllCoaches();
   }
 
   getAllCoaches(): void {
-    return this.userService.getAllCoaches();
+    this.userService.getAllCoaches()
+      .subscribe(coaches => this.coaches = coaches);
   }
 
   showDefaultImage(event: any): void {

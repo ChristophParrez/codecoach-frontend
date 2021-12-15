@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from "../../model/User";
+import { Role } from "../../model/Role";
 import { UserService } from "../../services/user.service";
 
 @Component({
@@ -10,6 +11,7 @@ import { UserService } from "../../services/user.service";
 export class ProfileInformationComponent implements OnInit {
 
   @Input() user: User | undefined;
+  @Input() pageRole: Role = Role.COACHEE;
   @Output() userIsUpdated = new EventEmitter<any>();
 
   editMode: boolean = false;

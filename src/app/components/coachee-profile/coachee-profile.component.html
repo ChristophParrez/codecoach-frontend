@@ -1,10 +1,10 @@
-<ng-container *ngIf="user">
+<ng-container *ngIf="user && userService.isLoggedIn()">
   <div>
     <mat-card class="sidebar primary">
       <h3>My Profile</h3>
       <a routerLinkActive="active" [routerLink]="'/users/' + user.userId">Profile Information</a>
       <a routerLinkActive="active">Coaching Sessions</a>
-      <a routerLinkActive="active" (click)="becomeCoach()">Apply to become a coach</a>
+      <a routerLinkActive="active" (click)="becomeCoach()" *ngIf="!userService.isCoach()">Apply to become a coach</a>
     </mat-card>
   </div>
   <div class="content">
