@@ -11,7 +11,7 @@ export class CoacheeProfileComponent implements OnInit {
 
   user: any;
 
-  constructor(private userService: UserService,
+  constructor(public userService: UserService,
               private route: ActivatedRoute,
               private router: Router) {
   }
