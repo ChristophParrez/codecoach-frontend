@@ -6,12 +6,12 @@ import {User} from "../model/User";
 })
 export class NameFilterPipe implements PipeTransform {
 
-  transform(users: User[], searchText: string): any[] {
+  transform(coaches: User[], searchText: string): any[] {
     searchText = searchText.toLocaleLowerCase();
 
-    return users.filter(user => user.firstName.toLocaleLowerCase().includes(searchText)
-      || user.lastName.toLocaleLowerCase().includes(searchText)
-      || user.email.toLocaleLowerCase().includes(searchText));
+    return coaches.filter(coach => coach.firstName.toLocaleLowerCase().includes(searchText)
+      || coach.lastName.toLocaleLowerCase().includes(searchText)
+      || coach.email.toLocaleLowerCase().includes(searchText));
   }
 
 }

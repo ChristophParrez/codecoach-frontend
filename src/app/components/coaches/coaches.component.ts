@@ -15,7 +15,7 @@ export class CoachesComponent implements OnInit {
   public coaches: User[] = [];
   public topics: Topic[] = [];
   public searchText: string = '';
-  topicControl = new FormControl();
+  public topicControl = new FormControl();
   yearControl = new FormControl();
   options: FormGroup;
 
@@ -29,14 +29,6 @@ export class CoachesComponent implements OnInit {
   ngOnInit(): void {
     this.getAllCoaches();
     this.getAllTopics();
-  }
-
-  filterTopic(): void {
-
-  }
-
-  filterYear(): void {
-
   }
 
   getAllCoaches(): void {

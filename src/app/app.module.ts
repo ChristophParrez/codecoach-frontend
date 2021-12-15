@@ -34,6 +34,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {RequestSessionComponent} from './components/request-session/request-session.component';
 import {SessionRequestFormComponent} from './components/session-request-form/session-request-form.component';
 import {NameFilterPipe} from "./pipes/name-filter.pipe";
+import { TopicFilterPipe } from './pipes/topic-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import {NameFilterPipe} from "./pipes/name-filter.pipe";
     CoachesComponent,
     RequestSessionComponent,
     SessionRequestFormComponent,
-    NameFilterPipe
+    NameFilterPipe,
+    TopicFilterPipe
   ],
   imports: [
     BrowserModule,

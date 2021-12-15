@@ -5,13 +5,14 @@
     <form [formGroup]="options">
       <mat-form-field>
         <mat-label>Search topic:</mat-label>
-        <mat-select [formControl]="topicControl"  (selectionChange)="filterTopic()">
+        <mat-select [formControl]="topicControl">
+          <mat-option (onSelectionChange)="topicControl.reset()">-- All --</mat-option>
           <mat-option *ngFor="let topic of topics" value="{{topic.name}}">{{topic.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Search year:</mat-label>
-        <mat-select [formControl]="yearControl" (selectionChange)="filterYear()">
+        <mat-select [formControl]="yearControl">
           <mat-option value="2021">2021</mat-option>
         </mat-select>
       </mat-form-field>
@@ -22,7 +23,7 @@
     </mat-form-field>
   </div>
 
-  <div *ngFor="let coach of coaches | nameFilter:searchText" class="coach-card-container">
+  <div *ngFor="let coach of coaches | nameFilter:searchText | topicFilter:topicControl.value" class="coach-card-container">
     <mat-card class="coach-card">
       <div class="row1">{{coach.firstName}} {{coach.lastName}}<br/>{{coach.email}}</div>
       <mat-divider [inset]="true"></mat-divider>
