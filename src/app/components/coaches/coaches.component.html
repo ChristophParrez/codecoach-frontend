@@ -16,13 +16,16 @@
     </mat-form-field>
   </div>
   <div *ngFor="let coach of coaches" class="coach-card-container">
-    <div class="coach-name">{{coach.firstName}} {{coach.lastName}}</div>
     <mat-card class="coach-card">
-      <div class="col">
-        <img class="profile-image" [src]="'./assets/images/image-not-found.png'">
-      </div>
-      <div class="col">
-        <div *ngFor="let topic of coach.coachInformation.coachingTopics">{{topic.topic.name}}</div>
+      <div class="row1">{{coach.firstName}} {{coach.lastName}}</div>
+      <mat-divider [inset]="true"></mat-divider>
+      <div class="row2">
+        <div class="col-left">
+          <img class="profile-image" [src]="'./assets/images/image-not-found.png'">
+        </div>
+        <div class="col-right">
+          <div class="topic" *ngFor="let topic of coach.coachInformation.coachingTopics"><p>{{topic.topic.name}}</p></div>
+        </div>
       </div>
     </mat-card>
   </div>
