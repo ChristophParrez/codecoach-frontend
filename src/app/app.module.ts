@@ -1,39 +1,38 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { RegisterUserComponent } from './components/register-user/register-user.component';
-import { HomeComponent } from './components/home/home.component';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from '@angular/common/http';
-import { PageTitleComponent } from './components/page-title/page-title.component';
-import { ErrorMessageComponent } from './components/error-message/error-message.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule } from "@angular/material/input";
-import { MatSidenavModule } from "@angular/material/sidenav";
-import { MatListModule } from "@angular/material/list";
-import { MatButtonModule } from '@angular/material/button';
-import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
-import { MatDatepickerModule } from "@angular/material/datepicker";
-import { MatToolbarModule } from "@angular/material/toolbar";
-import { LoginComponent } from './components/login/login.component';
-import { CoacheeProfileComponent } from './components/coachee-profile/coachee-profile.component';
-import { MatIconModule, MatIconRegistry } from "@angular/material/icon";
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { AboutComponent } from './components/about/about.component';
-import { ProfileInformationComponent } from './components/profile-information/profile-information.component';
-import { MatCardModule } from "@angular/material/card";
-import { UserRolesPipe } from './pipes/user-roles.pipe';
-import { EditUserComponent } from './components/edit-user/edit-user.component';
-import { CoachProfileComponent } from './components/coach-profile/coach-profile.component';
-import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
-import { CoachesComponent } from './components/coaches/coaches.component';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HeaderComponent} from './components/header/header.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {RegisterUserComponent} from './components/register-user/register-user.component';
+import {HomeComponent} from './components/home/home.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from '@angular/common/http';
+import {PageTitleComponent} from './components/page-title/page-title.component';
+import {ErrorMessageComponent} from './components/error-message/error-message.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatInputModule} from "@angular/material/input";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
+import {MatButtonModule} from '@angular/material/button';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {LoginComponent} from './components/login/login.component';
+import {CoacheeProfileComponent} from './components/coachee-profile/coachee-profile.component';
+import {MatIconModule, MatIconRegistry} from "@angular/material/icon";
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {AboutComponent} from './components/about/about.component';
+import {ProfileInformationComponent} from './components/profile-information/profile-information.component';
+import {MatCardModule} from "@angular/material/card";
+import {UserRolesPipe} from './pipes/user-roles.pipe';
+import {EditUserComponent} from './components/edit-user/edit-user.component';
+import {CoachProfileComponent} from './components/coach-profile/coach-profile.component';
+import {UnauthorizedComponent} from './components/unauthorized/unauthorized.component';
+import {CoachesComponent} from './components/coaches/coaches.component';
 import {MatSelectModule} from "@angular/material/select";
-import { RequestSessionComponent } from './components/request-session/request-session.component';
-import { SessionRequestFormComponent } from './components/session-request-form/session-request-form.component';
-import {NgxMatTimepickerModule} from "ngx-mat-timepicker";
+import {RequestSessionComponent} from './components/request-session/request-session.component';
+import {SessionRequestFormComponent} from './components/session-request-form/session-request-form.component';
 
 @NgModule({
   declarations: [
@@ -74,9 +73,7 @@ import {NgxMatTimepickerModule} from "ngx-mat-timepicker";
     MatIconModule,
     FontAwesomeModule,
     MatCardModule,
-    MatSelectModule,
-    NgxMatTimepickerModule
-
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

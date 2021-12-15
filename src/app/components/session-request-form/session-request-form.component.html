@@ -16,6 +16,12 @@
     </div>
     <div class="form-row">
       <mat-form-field class="full-width" appearance="fill">
+        <input matInput id="time" type="time" class="" formControlName="time">
+        <mat-label for="time" class="active">Time</mat-label>
+      </mat-form-field>
+    </div>
+    <!--<div class="form-row">
+      <mat-form-field class="full-width" appearance="fill">
         <mat-label>Choose a time</mat-label>
         <input matInput
                name="selected_time_B"
@@ -31,14 +37,14 @@
       </mat-form-field>
       <ngx-mat-timepicker color="accent"
                           #picker></ngx-mat-timepicker>
-    </div>
+    </div>-->
 
     <div class="form-row">
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>Location</mat-label>
         <mat-select>
           <mat-option value="one">Online</mat-option>
-          <mat-option value="two">Face-to-face</mat-option>
+          <mat-option value="two">Face2Face</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
