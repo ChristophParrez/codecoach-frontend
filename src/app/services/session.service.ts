@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import {environment} from "../../environments/environment";
 import {User} from "../model/User";
 import {Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Session} from "../model/Session";
+import {UserService} from "./user.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,13 @@ import {Session} from "../model/Session";
 export class SessionService {
 
   private urlSession = `${environment.backendUrl}/sessions`
-  public tokenName = 'code_coach_token';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private userService: UserService) { }
 
   requestSession(session: Session): Observable<Session> {
-    return this.http.post<Session>(this.urlSession, session);
+    const headers = new HttpHeaders({
+      'Authorization': `${this.userService.getToken()}`
+    })
+    return this.http.post<Session>(this.urlSession, session, { headers: headers });
   }
 }

@@ -1,7 +1,7 @@
 export interface Session {
   subject: string;
-  date: number;
+  date: Date;
   time: number;
-  location: string;
+  location: object;
   remarks:string;
 }
