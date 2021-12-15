@@ -61,6 +61,10 @@ export class UserService {
     return this.getToken() !== null;
   }
 
+  setToken(token: string) {
+    sessionStorage.setItem(this.tokenName, token);
+  }
+
   getToken(): string | null {
     return sessionStorage.getItem(this.tokenName);
   }

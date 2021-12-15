@@ -37,9 +37,8 @@ export class LoginComponent implements OnInit {
         next: (response) => {
           const token = response.headers.get('Authorization');
           if (token !== null) {
-            sessionStorage.setItem(this.userService.tokenName, token)
-            const userId = this.userService.getUserId();
-            this.router.navigate([`/users/${userId}`], {relativeTo: this.route})
+            this.userService.setToken(token);
+            this.router.navigate([`/users/${this.userService.getUserId()}`], {relativeTo: this.route})
           }
         },
         error: (response) => {
