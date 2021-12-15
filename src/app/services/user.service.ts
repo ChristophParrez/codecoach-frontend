@@ -26,9 +26,8 @@ export class UserService {
     return this.http.get<User>(this.urlCoach + '/' + id);
   }
 
-  // TODO needs to be properly implemented
-  getAllCoaches(): void {
-
+  getAllCoaches(): Observable<User[]> {
+    return this.http.get<User[]>(this.urlCoach);
   }
 
   registerUser(user: User): Observable<User> {
