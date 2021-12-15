@@ -31,6 +31,9 @@ import { CoachProfileComponent } from './components/coach-profile/coach-profile.
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import { CoachesComponent } from './components/coaches/coaches.component';
 import {MatSelectModule} from "@angular/material/select";
+import { RequestSessionComponent } from './components/request-session/request-session.component';
+import { SessionRequestFormComponent } from './components/session-request-form/session-request-form.component';
+import {NgxMatTimepickerModule} from "ngx-mat-timepicker";
 
 @NgModule({
   declarations: [
@@ -49,7 +52,9 @@ import {MatSelectModule} from "@angular/material/select";
     EditUserComponent,
     CoachProfileComponent,
     UnauthorizedComponent,
-    CoachesComponent
+    CoachesComponent,
+    RequestSessionComponent,
+    SessionRequestFormComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +74,9 @@ import {MatSelectModule} from "@angular/material/select";
     MatIconModule,
     FontAwesomeModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    NgxMatTimepickerModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
