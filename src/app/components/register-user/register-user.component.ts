@@ -37,7 +37,7 @@ export class RegisterUserComponent implements OnInit {
     } else {
       this.formGroup.disable();
       this.userService.registerUser(this.formGroup.value).subscribe({
-        next: () => this.router.navigate(['/'], {relativeTo: this.route}),
+        next: () => this.router.navigate(['/login'], {relativeTo: this.route}),
         error: (response) => {
           this.formGroup.enable();
           console.log(response);
