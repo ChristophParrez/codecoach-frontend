@@ -9,7 +9,7 @@
     <div class="form-row">
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="date"formControlName="date">
+        <input matInput [matDatepicker]="date" formControlName="date">
         <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
         <mat-datepicker #date></mat-datepicker>
       </mat-form-field>
@@ -20,25 +20,6 @@
         <mat-label for="time" class="active">Time</mat-label>
       </mat-form-field>
     </div>
-    <!--<div class="form-row">
-      <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Choose a time</mat-label>
-        <input matInput
-               name="selected_time_B"
-                [format]=24
-               formControlName="time"
-               [ngxMatTimepicker]="picker"
-               placeholder="16:00"
-               readonly />
-        <mat-icon matSuffix
-                  (click)="picker.open()">
-          watch_later
-        </mat-icon>
-      </mat-form-field>
-      <ngx-mat-timepicker color="accent"
-                          #picker></ngx-mat-timepicker>
-    </div>-->
-
     <div class="form-row">
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>Location</mat-label>

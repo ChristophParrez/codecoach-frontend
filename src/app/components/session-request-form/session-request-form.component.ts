@@ -3,6 +3,7 @@ import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {SessionService} from "../../services/session.service";
+import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'app-session-request-form',
@@ -38,7 +39,9 @@ export class SessionRequestFormComponent implements OnInit {
       this.triggerValidationOnFields();
     } else {
       this.formGroup.disable();
-      console.log(this.formGroup.value);
+      this.formGroup.value.date = formatDate(this.formGroup.value.date, "YYYY-MM-dd", "en-US");
+      this.formGroup.value.location = {name: this.formGroup.value.location}
+
       this.sessionService.requestSession(this.formGroup.value).subscribe({
         next: () => this.router.navigate(['/'], {relativeTo: this.route}),
         error: (response) => {
