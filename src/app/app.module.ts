@@ -35,6 +35,7 @@ import {RequestSessionComponent} from './components/request-session/request-sess
 import {SessionRequestFormComponent} from './components/session-request-form/session-request-form.component';
 import {NameFilterPipe} from "./pipes/name-filter.pipe";
 import { TopicFilterPipe } from './pipes/topic-filter.pipe';
+import {MatChipsModule} from "@angular/material/chips";
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { TopicFilterPipe } from './pipes/topic-filter.pipe';
     MatIconModule,
     FontAwesomeModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

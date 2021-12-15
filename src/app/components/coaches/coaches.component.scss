@@ -3,6 +3,11 @@
   flex-wrap: wrap;
 }
 
+.coach-card-title {
+  display: flex;
+  justify-content: space-between;
+}
+
 .search-fields {
   width: 100%;
 }

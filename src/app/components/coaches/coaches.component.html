@@ -25,7 +25,12 @@
 
   <div *ngFor="let coach of coaches | nameFilter:searchText | topicFilter:topicControl.value" class="coach-card-container">
     <mat-card class="coach-card">
-      <div class="row1">{{coach.firstName}} {{coach.lastName}}<br/>{{coach.email}}</div>
+      <div class="coach-card-title">
+        <div class="row1">{{coach.firstName}} {{coach.lastName}}<br/>{{coach.email}}</div>
+        <mat-chip-list aria-label="session selection">
+          <mat-chip color="primary" selected>Session</mat-chip>
+        </mat-chip-list>
+      </div>
       <mat-divider [inset]="true"></mat-divider>
       <div class="row2">
         <div class="col-left">
