@@ -24,12 +24,19 @@ export class CoachesComponent implements OnInit {
               private formBuilder: FormBuilder) {
     this.options = formBuilder.group({topic: this.topicControl,
       year: this.yearControl});
-    console.log(this.options);
   }
 
   ngOnInit(): void {
     this.getAllCoaches();
     this.getAllTopics();
+  }
+
+  filterTopic(): void {
+
+  }
+
+  filterYear(): void {
+
   }
 
   getAllCoaches(): void {
