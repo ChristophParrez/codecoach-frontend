@@ -3,7 +3,7 @@
   <app-edit-user *ngIf="editMode" [user]="user" [userRole]="pageRole" (userIsUpdated)="userChanged()"
                  (cancel)="editMode=false"></app-edit-user>
   <div class="user-profile" *ngIf="!editMode">
-    <img class="profile-image" [src]="user.picture" (error)="showDefaultImage($event)">
+    <img class="profile-image" [src]="user.picture" (error)="appService.showDefaultImage($event)">
     <div class="responsive-table profile-information">
       <div class="row">
         <div class="title">First name</div>

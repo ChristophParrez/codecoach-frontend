@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from "../../model/User";
 import { Role } from "../../model/Role";
 import { UserService } from "../../services/user.service";
+import { AppService } from "../../services/app.service";
 
 @Component({
   selector: 'app-profile-information',
@@ -16,7 +17,7 @@ export class ProfileInformationComponent implements OnInit {
 
   editMode: boolean = false;
 
-  constructor(private userService: UserService) {
+  constructor(public appService: AppService) {
   }
 
   ngOnInit(): void {
@@ -25,9 +26,5 @@ export class ProfileInformationComponent implements OnInit {
   userChanged(): void {
     this.editMode = !this.editMode;
     this.userIsUpdated.emit();
-  }
-
-  showDefaultImage(event: any): void {
-    event.target.src = './assets/images/image-not-found.png';
   }
 }

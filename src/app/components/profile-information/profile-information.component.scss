@@ -13,6 +13,9 @@ $breakpoint: 550px;
   width: $size;
   height: $size;
   margin-bottom: 15px;
+  &.default-image {
+    border-radius: 0;
+  }
 }
 
 @media (min-width: $breakpoint) {
