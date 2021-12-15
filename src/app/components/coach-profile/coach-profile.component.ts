@@ -13,6 +13,8 @@ export class CoachProfileComponent implements OnInit {
 
   user: User | undefined;
   roles: typeof Role = Role;
+  showCoachInformationForm: boolean = false;
+  showCoachingTopicsForm: boolean = false;
 
   constructor(public userService: UserService, private route: ActivatedRoute) {
   }
