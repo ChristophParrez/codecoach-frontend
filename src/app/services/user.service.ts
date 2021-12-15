@@ -35,10 +35,18 @@ export class UserService {
   }
 
   updateUser(user: User, id: string): Observable<any> {
+    console.log('this: ', this);
     const headers = new HttpHeaders({
       'Authorization': `${this.getToken()}`
     })
     return this.http.put<User>(this.urlUsers + '/' + id, user, { headers: headers });
+  }
+
+  updateCoach(user: User, id: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `${this.getToken()}`
+    })
+    return this.http.put<User>(this.urlCoach + '/' + id, user, { headers: headers });
   }
 
   becomeCoach(id: string): Observable<any> {

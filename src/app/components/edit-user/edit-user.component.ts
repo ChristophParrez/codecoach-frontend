@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { UserService } from "../../services/user.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { User } from "../../model/User";
+import { Role } from "../../model/Role";
 
 @Component({
   selector: 'app-edit-user',
@@ -12,14 +12,16 @@ import { User } from "../../model/User";
 export class EditUserComponent implements OnInit {
 
   @Input() user: any;
+  @Input() userRole: Role = Role.COACHEE;
   @Output() userIsUpdated = new EventEmitter<any>();
   @Output() cancel = new EventEmitter<any>();
 
   formGroup: FormGroup = this.formBuilder.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
+    email: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")]],
     picture: '',
-    email: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")]]
+    coachInformation: null
   });
 
   errorMessages: string[] = [];
@@ -35,7 +37,8 @@ export class EditUserComponent implements OnInit {
       firstName: this.user.firstName,
       lastName: this.user.lastName,
       picture: this.user.picture,
-      email: this.user.email
+      email: this.user.email,
+      coachInformation: this.user.coachInformation
     });
   }
 
@@ -46,7 +49,9 @@ export class EditUserComponent implements OnInit {
     } else {
       this.formGroup.disable();
       const userId = this.route.snapshot.paramMap.get('id');
-      this.userService.updateUser(this.formGroup.value, userId!).subscribe({
+      const updateUserFunction = (this.userRole == Role.COACH) ? this.userService.updateCoach : this.userService.updateUser;
+      // this.userService.updateUser(this.formGroup.value, userId!).subscribe({
+      updateUserFunction.bind(this.userService)(this.formGroup.value, userId!).subscribe({
         next: () => this.userIsUpdated.emit(),
         error: (response) => {
           console.log(response);

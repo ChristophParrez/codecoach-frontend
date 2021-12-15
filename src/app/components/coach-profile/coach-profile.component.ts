@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from "../../services/user.service";
 import { ActivatedRoute } from "@angular/router";
 import { User } from "../../model/User";
+import { Role } from "../../model/Role";
 
 @Component({
   selector: 'app-coach-profile',
@@ -11,12 +12,14 @@ import { User } from "../../model/User";
 export class CoachProfileComponent implements OnInit {
 
   user: User | undefined;
+  roles: typeof Role = Role;
 
   constructor(public userService: UserService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.getUser();
+    console.log('type of role = ', typeof Role);
   }
 
   getUser(): void {
