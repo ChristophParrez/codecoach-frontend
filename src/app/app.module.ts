@@ -33,6 +33,7 @@ import {CoachesComponent} from './components/coaches/coaches.component';
 import {MatSelectModule} from "@angular/material/select";
 import {RequestSessionComponent} from './components/request-session/request-session.component';
 import {SessionRequestFormComponent} from './components/session-request-form/session-request-form.component';
+import {NameFilterPipe} from "./pipes/name-filter.pipe";
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {SessionRequestFormComponent} from './components/session-request-form/ses
     UnauthorizedComponent,
     CoachesComponent,
     RequestSessionComponent,
-    SessionRequestFormComponent
+    SessionRequestFormComponent,
+    NameFilterPipe
   ],
   imports: [
     BrowserModule,
