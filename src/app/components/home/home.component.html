@@ -10,8 +10,8 @@
     <mat-card class="topics">
       <h3>Topics</h3>
       <p>We currently provide coaching for the following topics:</p>
-      <ul>
-        <li *ngFor="let topic of topics">{{topic.name}}</li>
-      </ul>
+      <mat-chip-list aria-label="topics selection">
+        <mat-chip color="primary" *ngFor="let topic of topics">{{topic.name}}</mat-chip>
+      </mat-chip-list>
     </mat-card>
   </mat-card>
