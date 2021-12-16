@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.welcome {
+  width: 68%;
+}
+
+.topics {
+  width: 30%;
+}
+
+@media (max-width: 800px) {
+  .welcome, .topics {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+
