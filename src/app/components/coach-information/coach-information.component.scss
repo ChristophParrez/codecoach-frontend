@@ -1,0 +1,10 @@
+.coach-xp {
+  flex: 1;
+  position: relative;
+  span {
+    position: absolute;
+    top: -18px;
+    //left: 50%;
+    //transform: translateX(-50%);
+  }
+}

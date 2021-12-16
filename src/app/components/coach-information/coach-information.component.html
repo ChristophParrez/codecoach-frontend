@@ -1,0 +1,23 @@
+<mat-card>
+  <app-page-title [editButton]="!editMode" (editButtonClicked)="editMode=true">
+    Coach Information
+  </app-page-title>
+  <div class="responsive-table coach-information" *ngIf="user && !editMode">
+    <div class="row">
+      <div class="title">Coach XP</div>
+      <div class="coach-xp">
+        <span [ngStyle]="{left:user.coachInformation.coachXp+'%'}">{{ user.coachInformation.coachXp }}</span>
+        <mat-progress-bar mode="determinate" [value]="user.coachInformation.coachXp"></mat-progress-bar>
+      </div>
+    </div>
+    <div class="row">
+      <div class="title">Introduction</div>
+      <div>{{ user.coachInformation.introduction }}</div>
+    </div>
+    <div class="row">
+      <div class="title">Availability</div>
+      <div>{{ user.coachInformation.availability }}</div>
+    </div>
+  </div>
+  <app-edit-coach-information *ngIf="user && editMode" [user]="user" (cancel)="editMode=false" (userIsUpdated)="formWasSubmitted()"></app-edit-coach-information>
+</mat-card>

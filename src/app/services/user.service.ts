@@ -13,7 +13,7 @@ export class UserService {
   private urlUsers = `${environment.backendUrl}/users`
   private urlCoach = `${environment.backendUrl}/coaches`
   private urlLogin = `${environment.backendUrl}/security/login`
-  public tokenName = 'code_coach_token';
+  private tokenName = 'code_coach_token';
 
   constructor(private http: HttpClient) {
   }
@@ -35,7 +35,6 @@ export class UserService {
   }
 
   updateUser(user: User, id: string): Observable<any> {
-    console.log('this: ', this);
     const headers = new HttpHeaders({
       'Authorization': `${this.getToken()}`
     })

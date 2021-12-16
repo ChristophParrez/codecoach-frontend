@@ -1,0 +1,16 @@
+<mat-card>
+  <app-page-title [editButton]="true" (editButtonClicked)="editMode=true">
+    Coaching Topics
+  </app-page-title>
+  <div class="responsive-table coaching-topics" *ngIf="user && !editMode">
+    <div class="row" *ngFor="let coachingTopic of user.coachInformation.coachingTopics">
+      <div class="title">{{ coachingTopic.topic.name }}</div>
+      <div>{{ coachingTopic.experience }}</div>
+    </div>
+    <div *ngIf="user.coachInformation.coachingTopics.length === 0">No topics found. Please add them here.</div>
+  </div>
+  <ng-container *ngIf="user && editMode">
+    <p>The coaching topics form will comes here</p>
+    <button mat-raised-button color="primary" (click)="editMode=false">Okay I got it!</button>
+  </ng-container>
+</mat-card>

@@ -3,6 +3,7 @@ import { UserService } from "../../services/user.service";
 import { ActivatedRoute } from "@angular/router";
 import { User } from "../../model/User";
 import { Role } from "../../model/Role";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-coach-profile',
@@ -13,10 +14,8 @@ export class CoachProfileComponent implements OnInit {
 
   user: User | undefined;
   roles: typeof Role = Role;
-  showCoachInformationForm: boolean = false;
-  showCoachingTopicsForm: boolean = false;
 
-  constructor(public userService: UserService, private route: ActivatedRoute) {
+  constructor(public userService: UserService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -35,5 +34,4 @@ export class CoachProfileComponent implements OnInit {
       }
     });
   }
-
 }

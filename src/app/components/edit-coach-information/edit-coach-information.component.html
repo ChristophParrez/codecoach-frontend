@@ -1,0 +1,23 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" *ngIf="user">
+  <ng-container formGroupName="coachInformation">
+    <div class="form-row">
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Introduction</mat-label>
+        <textarea rows="10" matInput formControlName="introduction"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Availability</mat-label>
+        <textarea rows="10" matInput formControlName="availability"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <button mat-raised-button color="primary" type="submit">Save</button>
+      <button mat-raised-button type="button" (click)="cancel.emit()">Cancel</button>
+      <app-error-message [messages]="errorMessages"></app-error-message>
+    </div>
+  </ng-container>
+</form>

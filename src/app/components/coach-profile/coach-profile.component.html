@@ -7,45 +7,9 @@
     </mat-card>
   </div>
   <div class="content">
-    <app-profile-information [user]="user" [pageRole]="roles.COACH"
-                             (userIsUpdated)="getUser()"></app-profile-information>
-    <mat-card>
-      <ng-container *ngIf="!showCoachInformationForm">
-        <app-page-title [editButton]="!showCoachInformationForm" (editButtonClicked)="showCoachInformationForm=true">Coach Information</app-page-title>
-        <div class="responsive-table coach-information">
-          <div class="row">
-            <div class="title">Coach XP</div>
-            <div>{{ user.coachInformation.coachXp }}</div>
-          </div>
-          <div class="row">
-            <div class="title">Introduction</div>
-            <div>{{ user.coachInformation.introduction }}</div>
-          </div>
-          <div class="row">
-            <div class="title">Availability</div>
-            <div>{{ user.coachInformation.availability }}</div>
-          </div>
-        </div>
-      </ng-container>
-      <ng-container *ngIf="showCoachInformationForm">
-        The coach information form comes here
-      </ng-container>
-    </mat-card>
-    <mat-card>
-      <ng-container *ngIf="!showCoachingTopicsForm">
-        <app-page-title [editButton]="!showCoachingTopicsForm" (editButtonClicked)="showCoachingTopicsForm=true">Coaching Topics</app-page-title>
-        <div class="responsive-table coaching-topics">
-          <div class="row" *ngFor="let coachingTopic of user.coachInformation.coachingTopics">
-            <div class="title">{{ coachingTopic.topic.name }}</div>
-            <div>{{ coachingTopic.experience }}</div>
-          </div>
-          <div *ngIf="user.coachInformation.coachingTopics.length === 0">No topics found. Please add them here.</div>
-        </div>
-      </ng-container>
-      <ng-container *ngIf="showCoachingTopicsForm">
-        The coaching topics form comes here
-      </ng-container>
-    </mat-card>
+    <app-profile-information [user]="user" [pageRole]="roles.COACH" (userIsUpdated)="getUser()"></app-profile-information>
+    <app-coach-information [user]="user" (userIsUpdated)="getUser()"></app-coach-information>
+    <app-coach-topics [user]="user" (userIsUpdated)="getUser()"></app-coach-topics>
   </div>
 </div>
 <app-unauthorized *ngIf="!userService.isCoach()"></app-unauthorized>

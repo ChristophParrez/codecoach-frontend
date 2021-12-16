@@ -36,6 +36,10 @@ import {SessionRequestFormComponent} from './components/session-request-form/ses
 import {NameFilterPipe} from "./pipes/name-filter.pipe";
 import { TopicFilterPipe } from './pipes/topic-filter.pipe';
 import {MatChipsModule} from "@angular/material/chips";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { CoachInformationComponent } from './components/coach-information/coach-information.component';
+import { EditCoachInformationComponent } from './components/edit-coach-information/edit-coach-information.component';
+import { CoachTopicsComponent } from './components/coach-topics/coach-topics.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +62,10 @@ import {MatChipsModule} from "@angular/material/chips";
     RequestSessionComponent,
     SessionRequestFormComponent,
     NameFilterPipe,
-    TopicFilterPipe
+    TopicFilterPipe,
+    CoachInformationComponent,
+    EditCoachInformationComponent,
+    CoachTopicsComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +86,8 @@ import {MatChipsModule} from "@angular/material/chips";
     FontAwesomeModule,
     MatCardModule,
     MatSelectModule,
-    MatChipsModule
+    MatChipsModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
