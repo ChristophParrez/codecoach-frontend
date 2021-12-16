@@ -5,7 +5,7 @@
   <div class="responsive-table coaching-topics" *ngIf="user && !editMode">
     <div class="row" *ngFor="let coachingTopic of user.coachInformation.coachingTopics">
       <div class="title">{{ coachingTopic.topic.name }}</div>
-      <div>{{ coachingTopic.experience }}</div>
+      <div><app-stars [max]="7" [value]="coachingTopic.experience"></app-stars></div>
     </div>
     <div *ngIf="user.coachInformation.coachingTopics.length === 0">No topics found. Please add them here.</div>
   </div>

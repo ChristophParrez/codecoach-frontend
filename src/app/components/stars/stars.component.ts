@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-stars',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stars.component.scss']
 })
 export class StarsComponent implements OnInit {
+
+  @Input() max: number = 5;
+  @Input() value: number = 0;
 
   constructor() { }
 

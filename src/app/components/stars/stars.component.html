@@ -1,1 +1,5 @@
-<p>stars works!</p>
+<!--<ng-container *ngFor="let i of [].constructor(20)">--> <!-- <<<<<< WORKING -->
+<ng-container *ngFor="let i of [].constructor(max)">
+  <mat-icon *ngIf="value < i">star</mat-icon>
+  <mat-icon *ngIf="value < i">star</mat-icon>
+</ng-container>
