@@ -7,13 +7,9 @@ import {User} from "../model/User";
 export class TopicFilterPipe implements PipeTransform {
 
   transform(coaches: User[], selectedTopics: string[]): any[] {
-    console.log(selectedTopics);
     return coaches.filter(
       coach => coach.coachInformation.coachingTopics.filter(
-        topic => {
-          console.log(topic);
-          selectedTopics?.includes(topic?.topic?.name);
-        }
+        topic => selectedTopics?.includes(topic?.topic?.name)
       ));
   }
 }
