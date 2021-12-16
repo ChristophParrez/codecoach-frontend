@@ -1,11 +1,6 @@
-.coaches-content, .row2 {
+.coaches-content {
   display: flex;
   flex-wrap: wrap;
-}
-
-.coach-card-title, .coach-buttons {
-  display: flex;
-  justify-content: space-between;
 }
 
 .search-fields {
@@ -21,43 +16,9 @@
   width: 250px;
 }
 
-.row1, .row2 {
-  width: 100%;
-}
-
-.row2 {
-  margin-top: 5px;
-}
-
-.col-left {
-  margin-right: 10px;
-}
-
-.topic {
-  text-align: center;
-}
-
 .coaches-content .coach-card-container {
   padding: 10px;
   width: 33%;
-}
-
-.col-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  margin: 0 auto;
-}
-
-.profile-image {
-  $size: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  width: $size;
-  height: $size;
-  &.default-image {
-    border-radius: 0;
-  }
 }
 
 @media (max-width: 1000px) {

@@ -17,13 +17,12 @@ export class CoachesComponent implements OnInit {
   public topics: Topic[] = [];
   public searchText: string = '';
   public topicControl = new FormControl();
-  options: FormGroup;
+  public options: FormGroup = this.formBuilder.group({topic: this.topicControl});
 
   constructor(private userService: UserService,
               private topicService: TopicService,
               private formBuilder: FormBuilder,
               public appService: AppService) {
-    this.options = formBuilder.group({topic: this.topicControl});
   }
 
   ngOnInit(): void {
