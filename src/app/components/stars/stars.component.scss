@@ -1,7 +1,14 @@
+@import '../../../sass/variables';
+
 :host {
   display: flex;
 }
 
 mat-icon {
-  //color: #e9d422;
+  &.filled {
+    color: $accent-color-secondary;
+  }
+  &.empty {
+    color: rgba($accent-color-secondary, 0.4);
+  }
 }

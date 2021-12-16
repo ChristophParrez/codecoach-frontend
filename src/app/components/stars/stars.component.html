@@ -1,4 +1,3 @@
 <!--<ng-container *ngFor="let i of [].constructor(20)">--> <!-- <<<<<< WORKING -->
-<ng-container *ngFor="let i of [].constructor(value)">
-  <mat-icon>star</mat-icon>
-</ng-container>
+<mat-icon class="filled" *ngFor="let i of [].constructor(value)">star</mat-icon>
+<mat-icon class="empty"  *ngFor="let i of [].constructor(max - value)">star_outline</mat-icon>
