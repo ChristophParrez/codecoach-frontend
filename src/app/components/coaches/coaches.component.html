@@ -15,7 +15,6 @@
       </mat-form-field>
     </form>
   </div>
-
   <div *ngFor="let coach of coaches | nameFilter:searchText | topicFilter:options.value.topic" class="coach-card-container">
     <mat-card class="example-card">
       <mat-card-header>
@@ -25,11 +24,21 @@
       </mat-card-header>
       <img mat-card-image [src]="coach.picture" (error)="appService.showDefaultImage($event)" alt="Profile picture">
       <mat-card-content>
+
+      <!--
+        <mat-chip-list aria-label="topics selection">
+          <mat-chip color="primary" *ngFor="let topic of coach.coachInformation.coachingTopics">{{topic.topic.name}}</mat-chip>
+        </mat-chip-list>
+      -->
+
         <p>Topics: <span *ngFor="let topic of coach.coachInformation.coachingTopics">{{topic.topic.name}} </span></p>
       </mat-card-content>
+      <mat-divider></mat-divider>
       <mat-card-actions>
-        <button mat-button [routerLink]="'/coach/' + coach.userId">Coach profile</button>
-        <button mat-button [routerLink]="'/sessions/request/' + coach.userId">Request Session</button>
+        <div class="coach-buttons">
+          <button class="button" mat-button [routerLink]="'/coach/' + coach.userId">Coach profile</button>
+          <button class="button" mat-button [routerLink]="'/sessions/request/' + coach.userId">Request Session</button>
+        </div>
       </mat-card-actions>
     </mat-card>
 

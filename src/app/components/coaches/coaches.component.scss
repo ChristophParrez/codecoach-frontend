@@ -26,6 +26,15 @@
   background-size: cover;
 }
 
+.coach-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  margin: 0 !important;
+}
+
 @media (max-width: 1000px) {
   .coaches-content .coach-card-container {
     width: 50%;
