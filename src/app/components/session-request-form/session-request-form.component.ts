@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -14,6 +14,12 @@ export class SessionRequestFormComponent implements OnInit {
 
   selectedTime: number | undefined
 
+  public today: Date = new Date();
+  public currentYear: number = this.today.getFullYear();
+  public currentMonth: number = this.today.getMonth();
+  public currentDay: number = this.today.getDate();
+  public minDate: Object = new Date(this.currentYear, this.currentMonth, this.currentDay);
+
   formGroup: FormGroup = this.formBuilder.group({
     subject: ['Java', Validators.required],
     date: ['', Validators.required],
@@ -27,10 +33,11 @@ export class SessionRequestFormComponent implements OnInit {
   constructor(private sessionService: SessionService,
               private formBuilder: FormBuilder,
               private router: Router,
-              private route: ActivatedRoute) { }
-
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
+
   }
 
   onSubmit(): void {
