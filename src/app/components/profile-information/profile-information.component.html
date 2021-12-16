@@ -14,11 +14,11 @@
         <div>{{ user.lastName }}</div>
       </div>
       <div class="row">
-        <div class="title">Email name</div>
+        <div class="title">Email</div>
         <div><a href="mailto:{{ user.email }}">{{ user.email }}</a></div>
       </div>
       <div class="row">
-        <div class="title">CodeCoach role</div>
+        <div class="title">Role</div>
         {{ user.roles | userRoles }}
       </div>
     </div>
