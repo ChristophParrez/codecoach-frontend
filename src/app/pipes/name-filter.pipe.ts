@@ -11,7 +11,8 @@ export class NameFilterPipe implements PipeTransform {
       searchText = searchText.toLocaleLowerCase();
       return coaches.filter(coach => coach.firstName.toLocaleLowerCase().includes(searchText)
         || coach.lastName.toLocaleLowerCase().includes(searchText)
-        || coach.email.toLocaleLowerCase().includes(searchText));
+        || coach.email.toLocaleLowerCase().includes(searchText)
+        || (coach.firstName + ' ' + coach.lastName).toLocaleLowerCase().includes(searchText));
     }
     return coaches;
   }
