@@ -52,7 +52,7 @@ export class UserService {
     const headers = new HttpHeaders({
       'Authorization': `${this.getToken()}`
     })
-    return this.http.patch(this.urlUsers + '/' + id, '', {headers: headers});
+    return this.http.patch(this.urlUsers + '/' + id, '', {headers: headers, observe: "response"});
   }
 
   loginUser(user: User): Observable<any> {
