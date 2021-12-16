@@ -2,34 +2,26 @@
 
 <mat-card class="coaches-content">
   <div class="search-fields">
-    <form [formGroup]="options">
-      <mat-form-field>
-        <mat-label>Search topic:</mat-label>
-        <mat-select [formControl]="topicControl">
-          <mat-option (onSelectionChange)="topicControl.reset()">-- All --</mat-option>
-          <mat-option *ngFor="let topic of topics" value="{{topic.name}}">{{topic.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Search year:</mat-label>
-        <mat-select [formControl]="yearControl">
-          <mat-option value="2021">2021</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </form>
     <mat-form-field class="search-coach-name">
       <mat-label>First name, last name or email:</mat-label>
       <input matInput id="name" type="text" [(ngModel)]="searchText">
     </mat-form-field>
+    <form [formGroup]="options">
+      <mat-form-field>
+        <mat-label>Search topic:</mat-label>
+        <mat-select [formControl]="topicControl" multiple>
+          <mat-option (onSelectionChange)="topicControl.reset()">-- All --</mat-option>
+          <mat-option *ngFor="let topic of topics" value="{{topic.name}}">{{topic.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
   </div>
 
   <div *ngFor="let coach of coaches | nameFilter:searchText | topicFilter:topicControl.value" class="coach-card-container">
     <mat-card class="coach-card">
       <div class="coach-card-title">
         <div class="row1">{{coach.firstName}} {{coach.lastName}}<br/>{{coach.email}}</div>
-        <mat-chip-list aria-label="session selection">
-          <mat-chip color="primary" selected>Session</mat-chip>
-        </mat-chip-list>
+        <div><button mat-raised-button color="primary" type="submit">Session</button></div>
       </div>
       <mat-divider [inset]="true"></mat-divider>
       <div class="row2">
