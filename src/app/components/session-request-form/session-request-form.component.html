@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="coachingTopics">
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
     <div class="form-row" *ngIf="coachingTopics.length > 0">
       <mat-form-field class="full-width" appearance="fill">
