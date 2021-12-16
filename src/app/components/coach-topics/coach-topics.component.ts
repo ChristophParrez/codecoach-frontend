@@ -9,6 +9,7 @@ import { User } from "../../model/User";
 export class CoachTopicsComponent implements OnInit {
 
   @Input() user: User | undefined;
+  @Input() editable: boolean = true;
   @Output() userIsUpdated = new EventEmitter<any>();
   editMode: boolean = false;
 

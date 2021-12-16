@@ -23,12 +23,12 @@ export class CoacheeProfileComponent implements OnInit {
   becomeCoach(): void {
     this.userService.becomeCoach(this.user!.userId)
       .subscribe(() => {
-        this.router.navigate([`/coach/${this.user.userId}`])
+        this.router.navigate(['/coach-profile/'])
       });
   }
 
   getUser(): void {
-    this.userService.getUser(this.route.snapshot.paramMap.get('id')!).subscribe({
+    this.userService.getUser(this.userService.getUserId()).subscribe({
       next: (user) => {
         console.log(user)
         this.user = user

@@ -48,10 +48,7 @@ export class EditUserComponent implements OnInit {
       this.triggerValidationOnFields();
     } else {
       this.formGroup.disable();
-      const userId = this.route.snapshot.paramMap.get('id');
-      // const updateUserFunction = (this.userRole == Role.COACH) ? this.userService.updateCoach : this.userService.updateUser;
-      this.userService.updateUser(this.formGroup.value, userId!).subscribe({
-      // updateUserFunction.bind(this.userService)(this.formGroup.value, userId!).subscribe({
+      this.userService.updateUser(this.formGroup.value, this.user.userId).subscribe({
         next: () => this.userIsUpdated.emit(),
         error: (response) => {
           console.log(response);

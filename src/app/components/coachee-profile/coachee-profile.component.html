@@ -1,8 +1,9 @@
-<ng-container *ngIf="user && userService.isLoggedIn()">
+<app-page-title>My Profile</app-page-title>
+<div class="wrapper" *ngIf="user && userService.isLoggedIn()">
   <div>
     <mat-card class="sidebar primary">
       <h3>My Profile</h3>
-      <a routerLinkActive="active" [routerLink]="'/users/' + user.userId">Profile Information</a>
+      <a routerLinkActive="active" routerLink="/user-profile">Profile Information</a>
       <a routerLinkActive="active">Coaching Sessions</a>
       <a routerLinkActive="active" (click)="becomeCoach()" *ngIf="!userService.isCoach()">Apply to become a coach</a>
     </mat-card>
@@ -10,4 +11,4 @@
   <div class="content">
     <app-profile-information [user]="user" (userIsUpdated)="getUser()"></app-profile-information>
   </div>
-</ng-container>
+</div>

@@ -40,6 +40,7 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { CoachInformationComponent } from './components/coach-information/coach-information.component';
 import { EditCoachInformationComponent } from './components/edit-coach-information/edit-coach-information.component';
 import { CoachTopicsComponent } from './components/coach-topics/coach-topics.component';
+import { CoachDetailsComponent } from './components/coach-details/coach-details.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { CoachTopicsComponent } from './components/coach-topics/coach-topics.com
     TopicFilterPipe,
     CoachInformationComponent,
     EditCoachInformationComponent,
-    CoachTopicsComponent
+    CoachTopicsComponent,
+    CoachDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
           const token = response.headers.get('Authorization');
           if (token !== null) {
             this.userService.setToken(token);
-            this.router.navigate([`/users/${this.userService.getUserId()}`], {relativeTo: this.route})
+            this.router.navigate(['/user-profile/'], {relativeTo: this.route})
           }
         },
         error: (response) => {

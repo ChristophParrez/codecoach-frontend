@@ -1,5 +1,5 @@
 <mat-card>
-  <app-page-title [editButton]="true" (editButtonClicked)="editMode=true">
+  <app-page-title [showEditButton]="editable && !editMode" (editButtonClicked)="editMode=true">
     Coaching Topics
   </app-page-title>
   <div class="responsive-table coaching-topics" *ngIf="user && !editMode">

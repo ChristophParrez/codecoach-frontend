@@ -12,6 +12,7 @@ import { AppService } from "../../services/app.service";
 export class ProfileInformationComponent implements OnInit {
 
   @Input() user: User | undefined;
+  @Input() editable: boolean = true;
   @Input() pageRole: Role = Role.COACHEE;
   @Output() userIsUpdated = new EventEmitter<any>();
 
