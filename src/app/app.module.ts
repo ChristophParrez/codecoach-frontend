@@ -46,6 +46,8 @@ import { CoachingSessionsComponent } from './components/coaching-sessions/coachi
 import { CoacheeCoachingSessionsComponent } from './components/coachee-coaching-sessions/coachee-coaching-sessions.component';
 import { CoachCoachingSessionsComponent } from './components/coach-coaching-sessions/coach-coaching-sessions.component';
 import { AccountComponent } from './components/account/account.component';
+import { MatTableModule } from "@angular/material/table";
+import { MatSortModule } from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -99,7 +101,9 @@ import { AccountComponent } from './components/account/account.component';
     MatCardModule,
     MatSelectModule,
     MatChipsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTableModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

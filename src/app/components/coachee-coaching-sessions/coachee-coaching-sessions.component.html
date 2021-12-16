@@ -1,3 +1,5 @@
 <app-account>
-  <app-coaching-sessions coacheeId="" coachId="" [pageRole]="role.COACHEE"></app-coaching-sessions>
+  <app-coaching-sessions [sessions]="sessions" title="My upcoming sessions" [pageRole]="role.COACHEE"></app-coaching-sessions>
+  <app-coaching-sessions [sessions]="sessions" title="Waiting for feedback" [pageRole]="role.COACHEE"></app-coaching-sessions>
+  <app-coaching-sessions [sessions]="sessions" title="Archive" [pageRole]="role.COACHEE"></app-coaching-sessions>
 </app-account>

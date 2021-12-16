@@ -1,3 +1,24 @@
-<p>coaching-sessions works!</p>
-CoacheeId: {{ coacheeId }}
-CoachId: {{ coachId }}
+<mat-card>
+  <app-page-title *ngIf="title">{{ title }}</app-page-title>
+  <table matSort (matSortChange)="sortData($event)" *ngIf="sessions.length > 0">
+    <tr>
+      <th mat-sort-header="coach">Coach</th>
+      <th mat-sort-header="subject">Subject</th>
+      <th mat-sort-header="date">Date</th>
+      <th mat-sort-header="time">Time</th>
+      <th mat-sort-header="location">Location</th>
+      <th mat-sort-header="status">Status</th>
+      <th>Actions</th>
+    </tr>
+
+    <tr *ngFor="let session of sortedData">
+      <td>{{session.coach?.firstName}} {{session.coach?.lastName}}</td>
+      <td>{{session.subject}}</td>
+      <td>{{session.date}}</td>
+      <td>{{session.time}}</td>
+      <td>{{session.location.name}}</td>
+      <td>{{session.status.statusName}}</td>
+      <td></td>
+    </tr>
+  </table>
+</mat-card>
