@@ -41,6 +41,7 @@ import { CoachInformationComponent } from './components/coach-information/coach-
 import { EditCoachInformationComponent } from './components/edit-coach-information/edit-coach-information.component';
 import { CoachTopicsComponent } from './components/coach-topics/coach-topics.component';
 import { CoachDetailsComponent } from './components/coach-details/coach-details.component';
+import { StarsComponent } from './components/stars/stars.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { CoachDetailsComponent } from './components/coach-details/coach-details.
     CoachInformationComponent,
     EditCoachInformationComponent,
     CoachTopicsComponent,
-    CoachDetailsComponent
+    CoachDetailsComponent,
+    StarsComponent,
   ],
   imports: [
     BrowserModule,

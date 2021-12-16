@@ -1,4 +1,4 @@
-<app-page-title *ngIf="user">{{ user.firstName }} {{ user.lastName }}</app-page-title>
+<app-page-title *ngIf="user" [main]="true">{{ user.firstName }} {{ user.lastName }}</app-page-title>
 <app-profile-information [user]="user" [editable]="false" (userIsUpdated)="getUser()"></app-profile-information>
 <app-coach-information [user]="user" [editable]="false" (userIsUpdated)="getUser()"></app-coach-information>
 <app-coach-topics [user]="user" [editable]="false" (userIsUpdated)="getUser()"></app-coach-topics>

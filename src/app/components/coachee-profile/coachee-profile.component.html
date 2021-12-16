@@ -1,4 +1,4 @@
-<app-page-title>Account</app-page-title>
+<app-page-title [main]="true">Account</app-page-title>
 <div class="wrapper" *ngIf="user && userService.isLoggedIn()">
   <div>
     <mat-card class="sidebar primary">

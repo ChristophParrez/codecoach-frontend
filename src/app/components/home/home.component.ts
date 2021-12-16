@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {TopicService} from "../../services/topic.service";
+import {Topic} from "../../model/Topic";
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public topics: Topic[] = [];
+
+  constructor(private topicService: TopicService) { }
 
   ngOnInit(): void {
+    this.getAllTopics();
   }
 
+  getAllTopics(): void {
+    this.topicService.getAllTopics()
+      .subscribe(topics => this.topics = topics);
+  }
 }
