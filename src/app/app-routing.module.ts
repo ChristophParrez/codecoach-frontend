@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'coach-profile', component: CoachProfileComponent},
   {path: 'coach/:id', component: CoachDetailsComponent},
   {path: 'coaches', component: CoachesComponent},
-  {path: 'sessions', component: RequestSessionComponent}
+  {path: 'sessions/request/:id', component: RequestSessionComponent}
 ];
 
 @NgModule({
