@@ -20,18 +20,6 @@ export class CoacheeProfileComponent implements OnInit {
     this.getUser();
   }
 
-  becomeCoach(): void {
-    this.userService.becomeCoach(this.user!.userId)
-      .subscribe((response) => {
-        console.log(response);
-        const token = response.headers.get('Authorization');
-        if (token !== null) {
-          this.userService.setToken(token);
-        }
-        this.router.navigate(['/coach-profile/'])
-      });
-  }
-
   getUser(): void {
     this.userService.getUser(this.userService.getUserId()).subscribe({
       next: (user) => {

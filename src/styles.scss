@@ -23,6 +23,10 @@
   background: $accent-color-primary;
 }
 
+img {
+  //max-width: 100%;
+}
+
 .form-row {
   margin-bottom: 5px;
 }
@@ -150,13 +154,16 @@ body {
   }
 }
 
-
 .sidebar.secondary {
   a {
     &.active, &:hover {
       color: $accent-color-secondary !important;
     }
   }
+}
+
+.mat-card-header-text {
+  overflow: hidden;
 }
 
 .mat-typography mat-card h3 {

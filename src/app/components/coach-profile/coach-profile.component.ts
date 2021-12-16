@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from "../../services/user.service";
-import { ActivatedRoute } from "@angular/router";
-import { User } from "../../model/User";
-import { Role } from "../../model/Role";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-coach-profile',
@@ -12,15 +9,15 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class CoachProfileComponent implements OnInit {
 
-  user: User | undefined;
-  roles: typeof Role = Role;
+  user: any;
 
-  constructor(public userService: UserService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
+  constructor(public userService: UserService,
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit(): void {
     this.getUser();
-    console.log('type of role = ', typeof Role);
   }
 
   getUser(): void {

@@ -1,14 +1,3 @@
-<app-page-title [main]="true">Account</app-page-title>
-<div class="wrapper" *ngIf="user && userService.isLoggedIn()">
-  <div>
-    <mat-card class="sidebar primary">
-      <h3>My Profile</h3>
-      <a routerLinkActive="active" routerLink="/user-profile">Profile Information</a>
-      <a routerLinkActive="active">Coaching Sessions</a>
-      <a routerLinkActive="active" (click)="becomeCoach()" *ngIf="!userService.isCoach()">Apply to become a coach</a>
-    </mat-card>
-  </div>
-  <div class="content">
+<app-account>
     <app-profile-information [user]="user" (userIsUpdated)="getUser()"></app-profile-information>
-  </div>
-</div>
+</app-account>

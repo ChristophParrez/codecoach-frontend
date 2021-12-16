@@ -9,6 +9,8 @@ import { CoachProfileComponent } from "./components/coach-profile/coach-profile.
 import { CoachesComponent } from "./components/coaches/coaches.component";
 import { RequestSessionComponent } from "./components/request-session/request-session.component";
 import { CoachDetailsComponent } from "./components/coach-details/coach-details.component";
+import { CoachCoachingSessionsComponent } from "./components/coach-coaching-sessions/coach-coaching-sessions.component";
+import { CoacheeCoachingSessionsComponent } from "./components/coachee-coaching-sessions/coachee-coaching-sessions.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -17,7 +19,9 @@ const routes: Routes = [
   {path: 'contact', component: RegisterUserComponent},
   {path: 'login', component: LoginComponent},
   {path: 'user-profile', component: CoacheeProfileComponent},
+  {path: 'user/sessions', component: CoacheeCoachingSessionsComponent},
   {path: 'coach-profile', component: CoachProfileComponent},
+  {path: 'coach/sessions', component: CoachCoachingSessionsComponent},
   {path: 'coach/:id', component: CoachDetailsComponent},
   {path: 'coaches', component: CoachesComponent},
   {path: 'sessions/request/:id', component: RequestSessionComponent}

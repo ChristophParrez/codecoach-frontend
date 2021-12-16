@@ -3,24 +3,3 @@
   display: flex;
   flex-direction: column;
 }
-
-.content {
-  margin-top: 20px;
-}
-
-@media (min-width: 700px) {
-  .wrapper {
-    display: flex;
-  }
-
-  .content {
-    flex: 1;
-    margin-top: 0;
-    margin-left: 20px;
-  }
-}
-
-.content > * {
-  display: block;
-  margin-bottom: 20px;
-}

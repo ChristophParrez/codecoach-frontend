@@ -1,17 +1,28 @@
 <app-page-title [main]="true">Welcome</app-page-title>
-  <mat-card class="container">
-    <mat-card class="welcome">
-      <h3>Welcome to CodeCoach!</h3>
-      <p>If you are new here, please
-        <a routerLink="register">register yourself</a></p>
-      <p>If you have gained experience in certain topics, you may be interested in
-        <a>applying to become a Coach</a></p>
-    </mat-card>
-    <mat-card class="topics">
-      <h3>Topics</h3>
-      <p>We currently provide coaching for the following topics:</p>
-      <mat-chip-list aria-label="topics selection">
-        <mat-chip color="primary" *ngFor="let topic of topics">{{topic.name}}</mat-chip>
-      </mat-chip-list>
-    </mat-card>
+<div class="wrapper">
+  <mat-card class="welcome">
+    <h3>Welcome to CodeCoach!</h3>
+    <p>If you are new here, please <a routerLink="register">register yourself</a></p>
+    <p>If you have gained experience in certain topics, you may be interested in <a>applying to become a Coach</a></p>
+    <p>
+      CodeCoach aims to facilitate the peer-to-peer coaching sessions between professional programmers. Developers can
+      register as coachee or coach and ask for support to grow: Using a coaching session, via a codereview, ...
+    </p>
+    <p>
+      This digital platform has the following features:
+    </p>
+    <ul>
+      <li>Register</li>
+      <li>Request coaching or codereview</li>
+      <li>Provide coaching or codereview</li>
+      <li>Provide feedback</li>
+    </ul>
   </mat-card>
+  <mat-card class="topics">
+    <h3>Topics</h3>
+    <p>We currently provide coaching for the following topics:</p>
+    <mat-chip-list aria-label="topics selection">
+      <mat-chip color="primary" *ngFor="let topic of topics">{{topic.name}}</mat-chip>
+    </mat-chip-list>
+  </mat-card>
+</div>

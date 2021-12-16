@@ -1,0 +1,21 @@
+<ng-template #contentTpl><ng-content></ng-content></ng-template>
+<app-page-title [main]="true">Account</app-page-title>
+<div class="wrapper" *ngIf="user && userService.isLoggedIn()">
+  <div>
+    <mat-card class="sidebar primary" *ngIf="pageRole=='COACHEE'">
+      <h3>My Profile</h3>
+      <a routerLinkActive="active" routerLink="/user-profile">Profile Information</a>
+      <a routerLinkActive="active" routerLink="/user/sessions">Coaching Sessions</a>
+      <a routerLinkActive="active" (click)="becomeCoach()" *ngIf="!userService.isCoach()">Apply to become a coach</a>
+    </mat-card>
+    <mat-card class="sidebar secondary" *ngIf="pageRole=='COACH'">
+      <h3>My Coach Profile</h3>
+      <a routerLinkActive="active" routerLink="/coach-profile/">Profile Information</a>
+      <a routerLinkActive="active" routerLink="/coach/sessions">Coaching Sessions</a>
+    </mat-card>
+  </div>
+  <div class="content">
+    <ng-container class="content" *ngTemplateOutlet="contentTpl"></ng-container>
+  </div>
+</div>
+

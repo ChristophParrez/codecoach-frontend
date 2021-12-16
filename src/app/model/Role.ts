@@ -1,3 +1,3 @@
 export enum Role {
-  COACHEE, COACH, ADMIN
+  COACHEE = 'COACHEE', COACH = 'COACH', ADMIN = 'ADMIN'
 }
