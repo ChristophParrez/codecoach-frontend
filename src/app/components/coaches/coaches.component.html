@@ -21,7 +21,6 @@
     <mat-card class="coach-card">
       <div class="coach-card-title">
         <div class="row1">{{coach.firstName}} {{coach.lastName}}<br/>{{coach.email}}</div>
-        <div><button mat-raised-button color="primary" type="submit">Session</button></div>
       </div>
       <mat-divider [inset]="true"></mat-divider>
       <div class="row2">
@@ -37,7 +36,10 @@
           </div>
         </div>
       </div>
-      <div><button mat-raised-button color="primary" type="submit"><a [routerLink]="'/coach/' + coach.userId">Coach profile</a></button></div>
+      <div class="coach-buttons">
+        <button mat-raised-button color="primary" type="submit" [routerLink]="'/coach/' + coach.userId">Coach profile</button>
+        <button mat-raised-button color="primary" type="submit">Session</button>
+      </div>
     </mat-card>
   </div>
 </mat-card>
