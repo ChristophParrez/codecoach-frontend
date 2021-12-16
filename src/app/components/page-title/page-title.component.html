@@ -1,4 +1,8 @@
-<h1>
-  <ng-content></ng-content>
+<ng-template #contentTpl><ng-content></ng-content></ng-template>
+<h1 *ngIf="main">
+  <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
 </h1>
+<h2 *ngIf="!main">
+  <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+</h2>
 <div class="icon-button" *ngIf="showEditButton" (click)="editButtonClicked.emit()"><mat-icon>edit</mat-icon></div>
