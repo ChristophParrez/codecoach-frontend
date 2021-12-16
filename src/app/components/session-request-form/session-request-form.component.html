@@ -1,9 +1,11 @@
 <mat-card>
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-    <div class="form-row">
+    <div class="form-row" *ngIf="coachingTopics.length > 0">
       <mat-form-field class="full-width" appearance="fill">
-        <input matInput id="subject" type="text" class="" formControlName="subject">
-        <mat-label for="subject" class="active">On which topic would you like to have a coaching session?</mat-label>
+        <mat-label>On which topic would you like to have a coaching session?</mat-label>
+        <mat-select formControlName="subject">
+          <mat-option *ngFor="let coachingTopic of coachingTopics" value="{{coachingTopic.topic.name}}">{{coachingTopic.topic.name}}</mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
     <div class="form-row">
@@ -23,9 +25,9 @@
     <div class="form-row">
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>Location</mat-label>
-        <mat-select>
-          <mat-option value="one">Online</mat-option>
-          <mat-option value="two">Face2Face</mat-option>
+        <mat-select formControlName="location">
+          <mat-option value="Online">Online</mat-option>
+          <mat-option value="Face2Face">Face2Face</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
