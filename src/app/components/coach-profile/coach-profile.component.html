@@ -1,16 +1,19 @@
-<app-page-title>Account</app-page-title>
-<div class="wrapper" *ngIf="user && (userService.isCoach() || userService.isAdmin())">
-  <div>
-    <mat-card class="sidebar secondary">
-      <h3>My Coach Profile</h3>
-      <a routerLinkActive="active" routerLink="/coach-profile/">Profile Information</a>
-      <a routerLinkActive="active">Coaching Sessions</a>
-    </mat-card>
+<ng-container *ngIf="user && (userService.isCoach() || userService.isAdmin())">
+  <app-page-title>Account</app-page-title>
+  <div class="wrapper">
+    <div>
+      <mat-card class="sidebar secondary">
+        <h3>My Coach Profile</h3>
+        <a routerLinkActive="active" routerLink="/coach-profile/">Profile Information</a>
+        <a routerLinkActive="active">Coaching Sessions</a>
+      </mat-card>
+    </div>
+    <div class="content">
+      <app-profile-information [user]="user" [pageRole]="roles.COACH" [editable]="false"
+                               (userIsUpdated)="getUser()"></app-profile-information>
+      <app-coach-information [user]="user" (userIsUpdated)="getUser()"></app-coach-information>
+      <app-coach-topics [user]="user" (userIsUpdated)="getUser()"></app-coach-topics>
+    </div>
   </div>
-  <div class="content">
-    <app-profile-information [user]="user" [pageRole]="roles.COACH" [editable]="false" (userIsUpdated)="getUser()"></app-profile-information>
-    <app-coach-information [user]="user" (userIsUpdated)="getUser()"></app-coach-information>
-    <app-coach-topics [user]="user" (userIsUpdated)="getUser()"></app-coach-topics>
-  </div>
-</div>
+</ng-container>
 <app-unauthorized *ngIf="!userService.isCoach()"></app-unauthorized>

@@ -67,7 +67,7 @@ import { CoachDetailsComponent } from './components/coach-details/coach-details.
     CoachInformationComponent,
     EditCoachInformationComponent,
     CoachTopicsComponent,
-    CoachDetailsComponent
+    CoachDetailsComponent,
   ],
   imports: [
     BrowserModule,
