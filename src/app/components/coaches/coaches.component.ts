@@ -4,6 +4,7 @@ import {User} from "../../model/User";
 import {TopicService} from "../../services/topic.service";
 import {Topic} from "../../model/Topic";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {AppService} from "../../services/app.service";
 
 @Component({
   selector: 'app-coaches',
@@ -20,7 +21,8 @@ export class CoachesComponent implements OnInit {
 
   constructor(private userService: UserService,
               private topicService: TopicService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              public appService: AppService) {
     this.options = formBuilder.group({topic: this.topicControl});
   }
 
@@ -37,9 +39,5 @@ export class CoachesComponent implements OnInit {
   getAllTopics(): void {
     this.topicService.getAllTopics()
       .subscribe(topics => this.topics = topics);
-  }
-
-  showDefaultImage(event: any): void {
-    event.target.src = './assets/images/image-not-found.png';
   }
 }

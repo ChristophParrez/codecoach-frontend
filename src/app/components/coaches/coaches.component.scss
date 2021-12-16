@@ -49,6 +49,17 @@
   margin: 0 auto;
 }
 
+.profile-image {
+  $size: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  width: $size;
+  height: $size;
+  &.default-image {
+    border-radius: 0;
+  }
+}
+
 @media (max-width: 1000px) {
   .coaches-content .coach-card-container {
     width: 50%;

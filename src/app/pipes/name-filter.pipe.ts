@@ -7,11 +7,13 @@ import {User} from "../model/User";
 export class NameFilterPipe implements PipeTransform {
 
   transform(coaches: User[], searchText: string): any[] {
-    searchText = searchText.toLocaleLowerCase();
-
-    return coaches.filter(coach => coach.firstName.toLocaleLowerCase().includes(searchText)
-      || coach.lastName.toLocaleLowerCase().includes(searchText)
-      || coach.email.toLocaleLowerCase().includes(searchText));
+    if (searchText.length > 2) {
+      searchText = searchText.toLocaleLowerCase();
+      return coaches.filter(coach => coach.firstName.toLocaleLowerCase().includes(searchText)
+        || coach.lastName.toLocaleLowerCase().includes(searchText)
+        || coach.email.toLocaleLowerCase().includes(searchText));
+    }
+    return coaches;
   }
 
 }
