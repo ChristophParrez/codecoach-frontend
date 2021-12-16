@@ -7,29 +7,10 @@ import {User} from "../model/User";
 export class TopicFilterPipe implements PipeTransform {
 
   transform(coaches: User[], selectedTopics: string[]): any[] {
+    if (selectedTopics === null) return coaches;
+    if (selectedTopics.length == 0) return coaches;
     return coaches.filter(
-      coach => coach.coachInformation.coachingTopics.filter(
-        topic => selectedTopics?.includes(topic?.topic?.name)
-      ));
+      coach => selectedTopics.includes(coach.coachInformation.coachingTopics[0]?.topic.name) ||
+        selectedTopics.includes(coach.coachInformation.coachingTopics[1]?.topic.name));
   }
 }
-
-/*
-
-if (selectedTopics !== null) {
-      let updatedCoaches: User[] = [];
-      for (let coach of coaches) {
-        for (let topic of coach.coachInformation.coachingTopics) {
-          for (let selectedTopic of selectedTopics) {
-            if (topic.topic.name === selectedTopic) {
-              updatedCoaches.push(coach);
-            }
-          }
-        }
-      }
-      return updatedCoaches;
-    }
-    return coaches;
-  }
-
- */
