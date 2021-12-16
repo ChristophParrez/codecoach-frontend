@@ -1,5 +1,5 @@
 <ng-container *ngIf="user && (userService.isCoach() || userService.isAdmin())">
-  <app-page-title>Account</app-page-title>
+  <app-page-title [main]="true">Account</app-page-title>
   <div class="wrapper">
     <div>
       <mat-card class="sidebar secondary">
