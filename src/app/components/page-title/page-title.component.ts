@@ -9,6 +9,7 @@ import { User } from "../../model/User";
 export class PageTitleComponent implements OnInit {
 
   @Input() showEditButton: boolean = false;
+  @Input() showEventButton: boolean = false;
   @Input() main: boolean = false;
   @Output() editButtonClicked = new EventEmitter<any>();
 
