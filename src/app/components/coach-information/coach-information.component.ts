@@ -16,7 +16,6 @@ export class CoachInformationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.user);
   }
 
   formWasSubmitted() {

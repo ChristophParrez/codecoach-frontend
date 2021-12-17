@@ -4,12 +4,14 @@ import { Observable } from "rxjs";
 import { User } from "../model/User";
 import { environment } from "../../environments/environment";
 import jwt_decode from "jwt-decode";
+import { Role } from "../model/Role";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+  private userRoles: typeof Role = Role;
   private urlUsers = `${environment.backendUrl}/users`
   private urlCoach = `${environment.backendUrl}/coaches`
   private urlLogin = `${environment.backendUrl}/security/login`
@@ -85,11 +87,12 @@ export class UserService {
   }
 
   getUserId(): string {
-    return this.getDecodedToken().id || '';
+    return this.getDecodedToken()?.id || '';
   }
 
-  isCoach(): boolean {
-    return this.getUserRoles().includes('COACH');
+  isCoach(user?: User): boolean {
+    if (user == null) return this.getUserRoles().includes(this.userRoles.COACH);
+    return user.roles.map(role => role.role).includes(this.userRoles.COACH)
   }
 
   isAdmin(): boolean {

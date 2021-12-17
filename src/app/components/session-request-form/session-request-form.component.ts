@@ -1,12 +1,13 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {UserService} from "../../services/user.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {SessionService} from "../../services/session.service";
-import {formatDate} from "@angular/common";
-import {User} from "../../model/User";
-import {Observable} from "rxjs";
-import {CoachingTopic} from "../../model/CoachingTopic";
+import { Component, Input, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { UserService } from "../../services/user.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { SessionService } from "../../services/session.service";
+import { formatDate } from "@angular/common";
+import { User } from "../../model/User";
+import { Observable } from "rxjs";
+import { CoachingTopic } from "../../model/CoachingTopic";
+import { AppService } from "../../services/app.service";
 
 @Component({
   selector: 'app-session-request-form',
@@ -16,9 +17,9 @@ import {CoachingTopic} from "../../model/CoachingTopic";
 export class SessionRequestFormComponent implements OnInit {
 
   selectedTime: number | undefined
-  coach : User | undefined
+  coach: User | undefined
   coachId: string | any;
-  coachingTopics : CoachingTopic[] | undefined;
+  coachingTopics: CoachingTopic[] | undefined;
 
   public today: Date = new Date();
   public currentYear: number = this.today.getFullYear();
@@ -36,11 +37,13 @@ export class SessionRequestFormComponent implements OnInit {
 
   errorMessages: string[] = [];
 
-  constructor(private userService: UserService,
-              private sessionService: SessionService,
-              private formBuilder: FormBuilder,
-              private router: Router,
-              private route: ActivatedRoute) {
+  constructor(
+    public appService: AppService,
+    private userService: UserService,
+    private sessionService: SessionService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
