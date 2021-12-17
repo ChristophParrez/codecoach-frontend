@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Session } from "../../model/Session";
-import { SessionService } from "../../services/session.service";
 import { Role } from "../../model/Role";
 import { Sort } from '@angular/material/sort';
 
@@ -17,6 +16,7 @@ export class CoachingSessionsComponent implements OnInit, AfterViewInit, OnChang
   @Input() pageRole: Role | undefined;
   @Input() title: string | undefined;
 
+  roles: typeof Role = Role;
   sortedData: Session[] | null = null;
 
   constructor() {
@@ -49,8 +49,18 @@ export class CoachingSessionsComponent implements OnInit, AfterViewInit, OnChang
     this.sortedData = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
+        case 'coach':
+          return compare(a.coach.firstName, b.coach.firstName, isAsc);
         case 'subject':
           return compare(a.subject, b.subject, isAsc);
+        case 'date':
+          return compare(a.date.getTime(), b.date.getTime(), isAsc);
+        case 'time':
+          return compare(a.time, b.time, isAsc);
+        case 'location':
+          return compare(a.location.name, b.location.name, isAsc);
+        case 'status':
+          return compare(a.status.statusName, b.status.statusName, isAsc);
         default:
           return 0;
       }

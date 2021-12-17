@@ -26,18 +26,7 @@ export class CoacheeCoachingSessionsComponent implements OnInit {
     this.sessionService.getSessions(Role.COACHEE).subscribe({
       next: (sessions) => {
         console.log(sessions)
-        // this.sessions = sessions
-        this.mapCoaches(sessions)
-      },
-      error: (e) => console.log(e)
-    });
-  }
-
-  mapCoaches(sessions: Session[]): void {
-    this.userService.getAllCoaches().subscribe({
-      next: (coaches) => {
-        sessions.map(session => session.coach = coaches.filter((coach) => coach.userId === session.coachId)[0]);
-        this.sessions = sessions;
+        this.sessions = sessions
       },
       error: (e) => console.log(e)
     });

@@ -4,6 +4,8 @@ import { User } from "./User";
 
 export interface Session {
   coachId: string;
+  coacheeId: string;
+  coachee: User;
   coach: User;
   subject: string;
   date: Date;
