@@ -21,6 +21,7 @@
             <ul>
               <li><a routerLinkActive="active" routerLink="user-profile" *ngIf="userService.isLoggedIn()">My Profile</a></li>
               <li><a routerLinkActive="active" routerLink="coach-profile" *ngIf="userService.isCoach()">My Coach Profile</a></li>
+              <li><a routerLinkActive="active" routerLink="admin-profile" *ngIf="userService.isAdmin()">My Admin Profile</a></li>
               <li><a routerLinkActive="active" routerLink="register" *ngIf="!userService.isLoggedIn()">Register</a></li>
               <li><a routerLinkActive="active" routerLink="login" *ngIf="!userService.isLoggedIn()">Login</a></li>
               <li><a routerLinkActive="active" routerLink="login" *ngIf="userService.isLoggedIn()" (click)="userService.logoutUser()">Logout</a></li>

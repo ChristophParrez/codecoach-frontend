@@ -50,6 +50,7 @@ import { MatTableModule } from "@angular/material/table";
 import { MatSortModule } from "@angular/material/sort";
 import { SessionStatusPipe } from './pipes/session-status.pipe';
 import { AdminProfileComponent } from './components/admin-profile/admin-profile.component';
+import { EditTopicsComponent } from './components/edit-topics/edit-topics.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { AdminProfileComponent } from './components/admin-profile/admin-profile.
     CoachCoachingSessionsComponent,
     AccountComponent,
     SessionStatusPipe,
+    EditTopicsComponent,
     AdminProfileComponent,
   ],
   imports: [
