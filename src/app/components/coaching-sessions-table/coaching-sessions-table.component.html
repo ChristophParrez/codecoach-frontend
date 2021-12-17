@@ -1,0 +1,29 @@
+<mat-card>
+  <app-page-title *ngIf="title">{{ title }}</app-page-title>
+  <ng-container *ngIf="sortedSessions; else stillLoading">
+  <table matSort (matSortChange)="sortData($event)" *ngIf="sortedSessions.length > 0; else noResults">
+    <tr>
+      <th mat-sort-header="coach" *ngIf="pageRole === userRoles.COACHEE">Coach</th>
+      <th mat-sort-header="coach" *ngIf="pageRole === userRoles.COACH">Coachee</th>
+      <th mat-sort-header="subject">Subject</th>
+      <th mat-sort-header="date">Date</th>
+      <th mat-sort-header="time">Time</th>
+      <th mat-sort-header="location">Location</th>
+      <th mat-sort-header="status">Status</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let session of sortedSessions">
+      <td *ngIf="pageRole === userRoles.COACHEE">{{session.coach?.firstName}} {{session.coach?.lastName}}</td>
+      <td *ngIf="pageRole === userRoles.COACH">{{session.coachee?.firstName}} {{session.coachee?.lastName}}</td>
+      <td>{{session.subject}}</td>
+      <td>{{session.date | date: 'dd/MM/yyyy'}}</td>
+      <td>{{session.time}}</td>
+      <td>{{session.location.name}}</td>
+      <td>{{session.status.statusName}}</td>
+      <td></td>
+    </tr>
+  </table>
+  </ng-container>
+</mat-card>
+<ng-template #noResults><p>No sessions available.</p></ng-template>
+<ng-template #stillLoading><p>Loading...</p></ng-template>

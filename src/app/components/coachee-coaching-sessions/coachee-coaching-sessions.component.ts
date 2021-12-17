@@ -14,7 +14,7 @@ export class CoacheeCoachingSessionsComponent implements OnInit {
 
   role: typeof Role = Role;
   type: typeof SessionTableType = SessionTableType;
-  sessions: Session[] = [];
+  sessions: Session[] | undefined;
 
   constructor(private sessionService: SessionService, private userService: UserService) {
   }
