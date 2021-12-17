@@ -48,6 +48,7 @@ import { CoachCoachingSessionsComponent } from './components/coach-coaching-sess
 import { AccountComponent } from './components/account/account.component';
 import { MatTableModule } from "@angular/material/table";
 import { MatSortModule } from "@angular/material/sort";
+import { SessionStatusPipe } from './pipes/session-status.pipe';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { MatSortModule } from "@angular/material/sort";
     CoacheeCoachingSessionsComponent,
     CoachCoachingSessionsComponent,
     AccountComponent,
+    SessionStatusPipe,
   ],
   imports: [
     BrowserModule,
