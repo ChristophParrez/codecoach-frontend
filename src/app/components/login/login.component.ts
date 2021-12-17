@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { UserService } from "../../services/user.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { HttpResponse } from "@angular/common/http";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { AppService } from "../../services/app.service";
 
 @Component({
   selector: 'app-login',
@@ -14,14 +15,16 @@ export class LoginComponent implements OnInit {
   errorMessages: string[] = [];
 
   formGroup: FormGroup = this.formBuilder.group({
-    username: ['mert1@gmail.com', Validators.required],
+    username: ['mert1@gmail.com', [Validators.required, Validators.email]],
     password: ['Switchfully0', Validators.required]
   });
 
   constructor(private userService: UserService,
               private formBuilder: FormBuilder,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private appService: AppService,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -30,7 +33,8 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     this.errorMessages = [];
     if (this.formGroup.invalid) {
-      this.triggerValidationOnFields();
+      this.errorMessages.push('Please provide a valid email and password.')
+      this.appService.triggerValidationOnFields(this.formGroup);
     } else {
       this.formGroup.disable();
       this.userService.loginUser(this.formGroup.value).subscribe({
@@ -43,22 +47,17 @@ export class LoginComponent implements OnInit {
         },
         error: (response) => {
           console.log(response);
-          const message = (typeof response.error.message === 'string') ? response.error.message : 'Something went wrong. Please try again.'
-          this.errorMessages.push(message);
+          let message = (typeof response.error.message === 'string') ? response.error.message : 'Something went wrong. Please try again.'
+          if (response.status === 401 || response.status === 403) {
+            message = 'The combination of email and password is incorrect.';
+            // message = undefined;
+            // this.snackBar.open('The combination of email and password is incorrect. Please try again.', 'Okay'); // test
+          }
+          if (message) this.errorMessages.push(message);
           this.formGroup.enable();
         }
       });
     }
-  }
-
-  private triggerValidationOnFields(formGroup?: FormGroup | FormArray): void {
-    if (formGroup == null) formGroup = this.formGroup;
-    Object.keys(formGroup.controls).forEach(field => {
-      // @ts-ignore
-      const control = formGroup.controls[field];
-      if (control instanceof FormGroup || control instanceof FormArray) this.triggerValidationOnFields(control);
-      else control.markAsTouched({onlySelf: true});
-    });
   }
 
 }

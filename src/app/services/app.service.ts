@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Location } from '@angular/common'
 import { Role } from "../model/Role";
 import { NavigationEnd, Router } from "@angular/router";
+import { FormArray, FormGroup } from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
@@ -35,5 +36,15 @@ export class AppService {
     element.style.borderRadius = 0;
     element.style.objectFit = 'contain';
     element.classList.add('default-image');
+  }
+
+  triggerValidationOnFields(formGroup ?: FormGroup | FormArray): void {
+    if (formGroup == null) return;
+    Object.keys(formGroup.controls).forEach(field => {
+      // @ts-ignore
+      const control = formGroup.controls[field];
+      if (control instanceof FormGroup || control instanceof FormArray) this.triggerValidationOnFields(control);
+      else control.markAsTouched({onlySelf: true});
+    });
   }
 }

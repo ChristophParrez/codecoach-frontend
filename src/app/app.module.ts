@@ -50,6 +50,7 @@ import { MatSortModule } from "@angular/material/sort";
 import { AdminProfileComponent } from './components/admin-profile/admin-profile.component';
 import { EditTopicsComponent } from './components/edit-topics/edit-topics.component';
 import { CoachingSessionsTableComponent } from "./components/coaching-sessions-table/coaching-sessions-table.component";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -107,7 +108,8 @@ import { CoachingSessionsTableComponent } from "./components/coaching-sessions-t
     MatChipsModule,
     MatProgressBarModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
