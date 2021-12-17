@@ -2,26 +2,27 @@ import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } fro
 import { Session } from "../../model/Session";
 import { Role } from "../../model/Role";
 import { Sort } from '@angular/material/sort';
+import { SessionTableType } from "../../model/SessionTableType";
 
 @Component({
-  selector: 'app-coaching-sessions',
-  templateUrl: './coaching-sessions.component.html',
-  styleUrls: ['./coaching-sessions.component.scss']
+  selector: 'app-coaching-sessions-table',
+  templateUrl: './coaching-sessions-table.component.html',
+  styleUrls: ['./coaching-sessions-table.component.scss']
 })
-export class CoachingSessionsComponent implements OnInit, AfterViewInit, OnChanges {
+export class CoachingSessionsTableComponent implements OnInit, AfterViewInit, OnChanges {
 
   @Input() sessions: Session[] = [];
   @Input() coacheeId: string | undefined;
   @Input() coachId: string | undefined;
   @Input() pageRole: Role | undefined;
   @Input() title: string | undefined;
+  @Input() type: SessionTableType | undefined;
 
   roles: typeof Role = Role;
+  types: typeof SessionTableType = SessionTableType;
   sortedData: Session[] | null = null;
 
-  constructor() {
-
-  }
+  constructor() {}
 
   ngAfterViewInit(): void {
     console.log('sessions after view init', this.sessions)
@@ -29,7 +30,7 @@ export class CoachingSessionsComponent implements OnInit, AfterViewInit, OnChang
   }
 
   ngOnInit(): void {
-
+    this.setTitle();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -37,6 +38,20 @@ export class CoachingSessionsComponent implements OnInit, AfterViewInit, OnChang
     if (this.sortedData == null && this.sessions.length > 0) this.sortedData = this.sessions.slice();
     this.sortedData = this.sessions.slice();
     console.log('sorted data', this.sortedData)
+  }
+
+  setTitle(): void {
+    switch (this.type) {
+      case this.types.UPCOMING:
+        this.title = 'My upcoming sessions';
+        break;
+      case this.types.WAITING_FOR_FEEDBACK:
+        this.title = 'Waiting for feedback';
+        break;
+      case this.types.ARCHIVE:
+        this.title = 'Archive';
+        break;
+    }
   }
 
   sortData(sort: Sort) {

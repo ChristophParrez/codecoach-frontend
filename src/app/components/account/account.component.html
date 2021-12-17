@@ -13,6 +13,10 @@
       <a routerLinkActive="active" routerLink="/coach-profile/">Profile Information</a>
       <a routerLinkActive="active" routerLink="/coach/sessions">Coaching Sessions</a>
     </mat-card>
+    <mat-card class="sidebar secondary" *ngIf="pageRole=='ADMIN'">
+      <h3>My Admin Profile</h3>
+      <a routerLinkActive="active" routerLink="/admin-profile/">Profile Information</a>
+    </mat-card>
   </div>
   <div class="content">
     <ng-container class="content" *ngTemplateOutlet="contentTpl"></ng-container>

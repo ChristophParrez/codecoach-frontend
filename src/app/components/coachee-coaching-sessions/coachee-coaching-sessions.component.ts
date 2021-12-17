@@ -3,6 +3,7 @@ import { Role } from "../../model/Role";
 import { Session } from "../../model/Session";
 import { SessionService } from "../../services/session.service";
 import { UserService } from "../../services/user.service";
+import { SessionTableType } from "../../model/SessionTableType";
 
 @Component({
   selector: 'app-coachee-coaching-sessions',
@@ -12,8 +13,8 @@ import { UserService } from "../../services/user.service";
 export class CoacheeCoachingSessionsComponent implements OnInit {
 
   role: typeof Role = Role;
+  type: typeof SessionTableType = SessionTableType;
   sessions: Session[] = [];
-
 
   constructor(private sessionService: SessionService, private userService: UserService) {
   }
