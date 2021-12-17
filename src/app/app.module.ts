@@ -51,6 +51,8 @@ import { AdminProfileComponent } from './components/admin-profile/admin-profile.
 import { EditTopicsComponent } from './components/edit-topics/edit-topics.component';
 import { CoachingSessionsTableComponent } from "./components/coaching-sessions-table/coaching-sessions-table.component";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -85,6 +87,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     AccountComponent,
     EditTopicsComponent,
     AdminProfileComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -109,7 +112,8 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatProgressBarModule,
     MatTableModule,
     MatSortModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

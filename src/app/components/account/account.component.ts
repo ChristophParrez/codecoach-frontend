@@ -1,6 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { UserService } from "../../services/user.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ConfirmDialogData, ConfirmDialogComponent } from "../confirm-dialog/confirm-dialog.component";
+import { MatDialog } from '@angular/material/dialog';
+
+export interface ConfirmDialogModel {
+  title: string;
+  message: string;
+}
 
 @Component({
   selector: 'app-account',
@@ -14,7 +21,8 @@ export class AccountComponent implements OnInit {
 
   constructor(public userService: UserService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -22,15 +30,30 @@ export class AccountComponent implements OnInit {
   }
 
   becomeCoach(): void {
-    this.userService.becomeCoach(this.user!.userId)
-      .subscribe((response) => {
-        console.log(response);
-        const token = response.headers.get('Authorization');
-        if (token !== null) {
-          this.userService.setToken(token);
-        }
-        this.router.navigate(['/coach-profile/'])
-      });
+
+    // const dialogData = new ConfirmDialogModel2("Confirm Action", message);
+    const dialogData: ConfirmDialogData = {title: "Confirm Action", message: 'Are you sure you want to do this?'};
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      // this.result = dialogResult;
+      console.log('dialog result', dialogResult);
+      if (!dialogResult) return;
+
+      this.userService.becomeCoach(this.user!.userId)
+        .subscribe((response) => {
+          console.log(response);
+          const token = response.headers.get('Authorization');
+          if (token !== null) {
+            this.userService.setToken(token);
+          }
+          this.router.navigate(['/coach-profile/'])
+        });
+    });
   }
 
   getUser(): void {
