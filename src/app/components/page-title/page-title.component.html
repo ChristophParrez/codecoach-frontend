@@ -6,4 +6,4 @@
   <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
 </h2>
 <div class="icon-button" *ngIf="showEditButton" (click)="editButtonClicked.emit()"><mat-icon>edit</mat-icon></div>
-<div class="icon-button" *ngIf="showEventButton" routerLink="sessions/request"><mat-icon>event</mat-icon></div>
+<div class="icon-button" *ngIf="showEventButton" [routerLink]="'sessions/request/'+coachId"><mat-icon>event</mat-icon></div>

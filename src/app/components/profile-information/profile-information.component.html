@@ -1,5 +1,5 @@
 <mat-card *ngIf="user">
-  <app-page-title [showEditButton]="editable && !editMode" (editButtonClicked)="editMode=true" [showEventButton]="true" >Profile Information</app-page-title>
+  <app-page-title [showEditButton]="editable && !editMode" (editButtonClicked)="editMode=true" [showEventButton]="true" [coachId]="user.userId">Profile Information</app-page-title>
   <app-edit-user *ngIf="editMode" [user]="user" [userRole]="pageRole" (userIsUpdated)="userChanged()"
                  (cancel)="editMode=false"></app-edit-user>
   <div class="user-profile" *ngIf="!editMode">
