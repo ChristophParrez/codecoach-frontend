@@ -36,7 +36,8 @@ export class AccountComponent implements OnInit {
 
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
-      data: dialogData
+      data: dialogData,
+      // disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(dialogResult => {
