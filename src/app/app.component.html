@@ -6,9 +6,11 @@
     <mat-nav-list>
       <a (click)="sidenav.close()" mat-list-item routerLink="">Home</a>
       <a (click)="sidenav.close()" mat-list-item routerLink="about">About</a>
-      <a (click)="sidenav.close()" mat-list-item routerLink="contact">Contact</a>
+      <a (click)="sidenav.close()" mat-list-item routerLink="coaches">Find A Coach</a>
       <a (click)="sidenav.close()" mat-list-item routerLink="register" *ngIf="!userService.isLoggedIn()">Register</a>
       <a (click)="sidenav.close()" mat-list-item routerLink="login" *ngIf="!userService.isLoggedIn()">Login</a>
+      <a (click)="sidenav.close()" mat-list-item routerLink="user-profile" *ngIf="userService.isLoggedIn()">My Profile</a>
+      <a (click)="sidenav.close()" mat-list-item routerLink="coach-profile" *ngIf="userService.isLoggedIn()">My Coach Profile</a>
       <a (click)="sidenav.close(); userService.logoutUser()" mat-list-item routerLink="login" *ngIf="userService.isLoggedIn()">Logout</a>
     </mat-nav-list>
   </mat-sidenav>
