@@ -32,7 +32,7 @@ export class AccountComponent implements OnInit {
   becomeCoach(): void {
 
     // const dialogData = new ConfirmDialogModel2("Confirm Action", message);
-    const dialogData: ConfirmDialogData = {title: "Confirm Action", message: 'Are you sure you want to do this?'};
+    const dialogData: ConfirmDialogData = {title: "Confirm Action", message: 'Are you sure you want to become a coach?'};
 
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
