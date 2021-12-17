@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
+import { User } from "../model/User";
+import { Role } from "../model/Role";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
+
+  roles: typeof Role = Role;
 
   constructor() { }
 
@@ -14,5 +18,9 @@ export class AppService {
     element.style.borderRadius = 0;
     element.style.objectFit = 'contain';
     element.classList.add('default-image');
+  }
+
+  isCoach(user: User) {
+    return user.roles.map(role => role.role).includes(this.roles.COACH)
   }
 }

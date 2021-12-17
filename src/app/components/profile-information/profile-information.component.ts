@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from "../../model/User";
 import { Role } from "../../model/Role";
 import { AppService } from "../../services/app.service";
+import { UserService } from "../../services/user.service";
 
 @Component({
   selector: 'app-profile-information',
@@ -10,6 +11,7 @@ import { AppService } from "../../services/app.service";
 })
 export class ProfileInformationComponent implements OnInit {
 
+  roles: typeof Role = Role;
   @Input() user: User | undefined;
   @Input() editable: boolean = true;
   @Input() pageRole: Role = Role.COACHEE;
@@ -17,7 +19,7 @@ export class ProfileInformationComponent implements OnInit {
 
   editMode: boolean = false;
 
-  constructor(public appService: AppService) {
+  constructor(public userService: UserService, public appService: AppService) {
   }
 
   ngOnInit(): void {
