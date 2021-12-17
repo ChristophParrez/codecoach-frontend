@@ -1,3 +1,16 @@
+.wrapper {
+  display: flex;
+  gap: 20px;
+  > *:nth-child(2) {
+    text-align: center;
+    flex-basis: 25%;
+  }
+}
+
 mat-card {
   margin-bottom: 20px;
+}
+
+:host {
+  line-height: 1.5em;
 }
