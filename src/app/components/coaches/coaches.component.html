@@ -1,46 +1,49 @@
 <app-page-title [main]="true">Find A Coach</app-page-title>
-
-<div class="search-fields">
-  <mat-form-field class="search-coach-name">
-    <mat-label>First name, last name or email:</mat-label>
-    <input matInput id="name" type="text" [(ngModel)]="searchText">
-  </mat-form-field>
-  <form [formGroup]="options">
-    <mat-form-field>
-      <mat-label>Search topic:</mat-label>
-      <mat-select [formControl]="topicControl" multiple>
-        <mat-option *ngFor="let topic of topics" value="{{topic.name}}">{{topic.name}}</mat-option>
-      </mat-select>
+<ng-container *ngIf="coaches; else loading">
+  <div class="search-fields" *ngIf="coaches.length > 0; else noCoaches">
+    <mat-form-field class="search-coach-name">
+      <mat-label>First name, last name or email:</mat-label>
+      <input matInput id="name" type="text" [(ngModel)]="searchText">
     </mat-form-field>
-  </form>
-</div>
-<div class="coaches-content">
-  <div *ngFor="let coach of coaches | nameFilter:searchText | topicFilter:options.value.topic" class="coach-card-container">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{coach.firstName}} {{coach.lastName}}</mat-card-title>
-        <mat-card-subtitle>{{coach.email}}</mat-card-subtitle>
-      </mat-card-header>
-      <img class="coach" mat-card-image [src]="coach.picture" (error)="appService.showDefaultImage($event)" alt="Profile picture">
-      <mat-card-content>
-
-      <!--
-        <mat-chip-list aria-label="topics selection">
-          <mat-chip color="primary" *ngFor="let topic of coach.coachInformation.coachingTopics">{{topic.topic.name}}</mat-chip>
-        </mat-chip-list>
-      -->
-
-        <p>Topics: <span *ngFor="let topic of coach.coachInformation.coachingTopics">{{topic.topic.name}} </span></p>
-      </mat-card-content>
-      <mat-divider></mat-divider>
-      <mat-card-actions>
-        <div class="coach-buttons">
-          <button class="button" mat-button [routerLink]="'/coach/' + coach.userId">Coach profile</button>
-          <button class="button" mat-button [routerLink]="'/sessions/request/' + coach.userId">Request Session</button>
-        </div>
-      </mat-card-actions>
-    </mat-card>
-
+    <form [formGroup]="options">
+      <mat-form-field>
+        <mat-label>Search topic:</mat-label>
+        <mat-select [formControl]="topicControl" multiple>
+          <mat-option *ngFor="let topic of topics" value="{{topic.name}}">{{topic.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
   </div>
-</div>
+  <div class="coaches-content">
+    <div *ngFor="let coach of coaches | nameFilter:searchText | topicFilter:options.value.topic"
+         class="coach-card-container">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{coach.firstName}} {{coach.lastName}}</mat-card-title>
+          <mat-card-subtitle>{{coach.email}}</mat-card-subtitle>
+        </mat-card-header>
+        <img class="coach" mat-card-image [src]="coach.picture" (error)="appService.showDefaultImage($event)"
+             alt="Profile picture">
+        <mat-card-content>
+          <!--
+            <mat-chip-list aria-label="topics selection">
+              <mat-chip color="primary" *ngFor="let topic of coach.coachInformation.coachingTopics">{{topic.topic.name}}</mat-chip>
+            </mat-chip-list>
+          -->
+          <p>Topics: <span *ngFor="let topic of coach.coachInformation.coachingTopics">{{topic.topic.name}} </span></p>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions>
+          <div class="coach-buttons">
+            <button class="button" mat-button [routerLink]="'/coach/' + coach.userId">Coach profile</button>
+            <button class="button" mat-button [routerLink]="'/sessions/request/' + coach.userId">Request Session
+            </button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</ng-container>
+<ng-template #loading>Loading...</ng-template>
+<ng-template #noCoaches>No coaches found</ng-template>

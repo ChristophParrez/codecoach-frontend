@@ -6,7 +6,7 @@ import {User} from "../model/User";
 })
 export class NameFilterPipe implements PipeTransform {
 
-  transform(coaches: User[], searchText: string): any[] {
+  transform(coaches: User[], searchText: string): User[] {
     if (searchText.length > 2) {
       searchText = searchText.toLocaleLowerCase();
       return coaches.filter(coach => coach.firstName.toLocaleLowerCase().includes(searchText)

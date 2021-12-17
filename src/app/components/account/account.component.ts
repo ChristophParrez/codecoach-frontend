@@ -41,10 +41,7 @@ export class AccountComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(dialogResult => {
-      // this.result = dialogResult;
-      console.log('dialog result', dialogResult);
       if (!dialogResult) return;
-
       this.userService.becomeCoach(this.user!.userId)
         .subscribe((response) => {
           console.log(response);
