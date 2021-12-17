@@ -14,13 +14,16 @@
     margin: 0 !important;
     font-size: 1.2rem;
   }
-
+  .buttons {
+    display: flex;
+  }
   .icon-button {
     $size: 25px;
     cursor: pointer;
     background: #fff;
     color: $main-text-color;
     border-radius: 50%;
+    margin-left: 10px;
     width: $size;
     height: $size;
     text-align: center;
