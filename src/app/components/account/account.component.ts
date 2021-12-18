@@ -42,6 +42,7 @@ export class AccountComponent implements OnInit {
       if (!dialogResult) return;
       this.userService.becomeCoach(this.user!.userId)
         .subscribe((response) => {
+          console.log(response)
           const token = response.headers.get('Authorization');
           if (token !== null) {
             this.userService.setToken(token);

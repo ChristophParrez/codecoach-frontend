@@ -17,7 +17,7 @@
         <div class="title">Email</div>
         <div><a href="mailto:{{ user.email }}">{{ user.email }}</a></div>
       </div>
-      <div class="row" *ngIf="user.roles">
+      <div class="row" *ngIf="user.roles && userService.isAdmin()">
         <div class="title">Role</div>
         {{ user.roles | userRoles }}
       </div>
