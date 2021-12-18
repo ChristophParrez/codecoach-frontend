@@ -1,0 +1,2 @@
+<app-page-title *ngIf="user" [main]="true">{{ user.firstName }} {{ user.lastName }}</app-page-title>
+<app-profile-information [user]="user" [editable]="false" (userIsUpdated)="getUser()"></app-profile-information>

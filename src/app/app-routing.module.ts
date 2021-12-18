@@ -12,7 +12,8 @@ import { CoachDetailsComponent } from "./components/coach-details/coach-details.
 import { CoachCoachingSessionsComponent } from "./components/coach-coaching-sessions/coach-coaching-sessions.component";
 import { CoacheeCoachingSessionsComponent } from "./components/coachee-coaching-sessions/coachee-coaching-sessions.component";
 import { AdminProfileComponent } from "./components/admin-profile/admin-profile.component";
-import {EditTopicsComponent} from "./components/edit-topics/edit-topics.component";
+import { EditTopicsComponent } from "./components/edit-topics/edit-topics.component";
+import { CoacheeDetailsComponent } from "./components/coachee-details/coachee-details.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'user-profile', component: CoacheeProfileComponent},
   {path: 'user/sessions', component: CoacheeCoachingSessionsComponent},
+  {path: 'user/:id', component: CoacheeDetailsComponent},
   {path: 'coach-profile', component: CoachProfileComponent},
   {path: 'coach/sessions', component: CoachCoachingSessionsComponent},
   {path: 'coach/:id', component: CoachDetailsComponent},

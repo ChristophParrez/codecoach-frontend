@@ -54,6 +54,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { ConfirmDialogComponent } from './components/dialogs/confirm-dialog/confirm-dialog.component';
 import { AlertDialogComponent } from './components/dialogs/alert-dialog/alert-dialog.component';
 import { MatDialogModule } from "@angular/material/dialog";
+import { CoacheeDetailsComponent } from './components/coachee-details/coachee-details.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { MatDialogModule } from "@angular/material/dialog";
     EditTopicsComponent,
     AdminProfileComponent,
     ConfirmDialogComponent,
-    AlertDialogComponent
+    AlertDialogComponent,
+    CoacheeDetailsComponent
   ],
   imports: [
     BrowserModule,

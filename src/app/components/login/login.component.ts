@@ -68,6 +68,7 @@ export class LoginComponent implements OnInit {
     this.dialog.open(AlertDialogComponent, {
       maxWidth: "600px",
       data: dialogData,
+      autoFocus: false,
       // disableClose: true
     });
   }
