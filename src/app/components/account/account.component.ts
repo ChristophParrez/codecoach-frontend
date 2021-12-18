@@ -31,7 +31,6 @@ export class AccountComponent implements OnInit {
 
   becomeCoach(): void {
 
-    // const dialogData = new ConfirmDialogModel2("Confirm Action", message);
     const dialogData: ConfirmDialogData = {title: "Confirm Action", message: 'Are you sure you want to become a coach?'};
 
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
@@ -44,7 +43,6 @@ export class AccountComponent implements OnInit {
       if (!dialogResult) return;
       this.userService.becomeCoach(this.user!.userId)
         .subscribe((response) => {
-          console.log(response);
           const token = response.headers.get('Authorization');
           if (token !== null) {
             this.userService.setToken(token);
@@ -57,7 +55,6 @@ export class AccountComponent implements OnInit {
   getUser(): void {
     this.userService.getUser(this.userService.getUserId()).subscribe({
       next: (user) => {
-        console.log(user)
         this.user = user
       },
       error: (e) => console.log(e),

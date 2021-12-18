@@ -41,7 +41,10 @@ export class RegisterUserComponent implements OnInit {
         error: (response) => {
           this.formGroup.enable();
           console.log(response);
-          if (response.error.status === 400) this.errorMessages.push('Something went wrong. Please try again later.')
+          if (response.error.status === 400) {
+            if (typeof response.error.message === 'string') this.errorMessages.push(response.error.message);
+            else this.errorMessages.push('Something went wrong. Please try again later.')
+          }
           else if (typeof response.error === 'string') this.errorMessages.push(response.error);
         }
       });
