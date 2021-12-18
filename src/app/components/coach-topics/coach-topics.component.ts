@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { User } from "../../model/User";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {User} from "../../model/User";
 import {CoachingTopic} from "../../model/CoachingTopic";
 import {TopicService} from "../../services/topic.service";
 import {Topic} from "../../model/Topic";
@@ -17,6 +17,7 @@ export class CoachTopicsComponent implements OnInit {
   @Input() user: User | undefined;
   @Input() editable: boolean = true;
   @Output() userIsUpdated = new EventEmitter<any>();
+
   editMode: boolean = false;
   topics: Topic[] | undefined;
   coachingTopics: CoachingTopic[] | undefined;
@@ -32,7 +33,8 @@ export class CoachTopicsComponent implements OnInit {
   constructor(private topicService: TopicService,
               private appService: AppService,
               private coachService: CoachService,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder) {
+  }
 
   ngOnInit(): void {
     this.topicService.getAllTopics().subscribe(topics => this.topics = topics);
@@ -41,25 +43,32 @@ export class CoachTopicsComponent implements OnInit {
   formWasSubmitted() {
     this.editMode = false;
     this.userIsUpdated.emit();
+    this.formGroup.enable();
   }
 
   onSubmit(): void {
-    console.log("add topic form submitted")
     this.errorMessages = [];
     if (this.formGroup.invalid) {
       this.appService.triggerValidationOnFields(this.formGroup);
     } else {
       this.formGroup.disable();
+      if (this.user === undefined) return;
 
-     this.coachingTopics = [
-        { coachingTopicId: "", topic: { topicId: this.formGroup.value.topic1, name: this.formGroup.value.topic1}, experience: this.formGroup.value.experience1 },
-        { coachingTopicId: "", topic: { topicId: this.formGroup.value.topic2, name: this.formGroup.value.topic2}, experience: this.formGroup.value.experience2 },
+      this.coachingTopics = [
+        {
+          coachingTopicId: "",
+          topic: {topicId: this.formGroup.value.topic1, name: this.formGroup.value.topic1},
+          experience: this.formGroup.value.experience1
+        },
+        {
+          coachingTopicId: "",
+          topic: {topicId: this.formGroup.value.topic2, name: this.formGroup.value.topic2},
+          experience: this.formGroup.value.experience2
+        },
       ]
 
-     console.log(this.coachingTopics);
-
-     this.coachService.updateCoachingTopics(this.coachingTopics, this.user!.userId).subscribe({
-        next: () => this.userIsUpdated.emit(),
+      this.coachService.updateCoachingTopics(this.coachingTopics, this.user.userId).subscribe({
+        next: () => this.formWasSubmitted(),
         error: (response) => {
           console.log(response);
           if (response.status === 401 || response.status === 403) {
