@@ -20,7 +20,7 @@ export class EditCoachInformationComponent implements OnInit {
     coachInformation: this.formBuilder.group({
       introduction: '',
       availability: ''
-    })
+    }),
   });
 
   constructor(private userService: UserService, private formBuilder: FormBuilder) {

@@ -1,3 +1,4 @@
-<!--<ng-container *ngFor="let i of [].constructor(20)">--> <!-- <<<<<< WORKING -->
-<mat-icon class="filled" *ngFor="let i of [].constructor(value)">star</mat-icon>
-<mat-icon class="empty"  *ngFor="let i of [].constructor(max - value)">star_outline</mat-icon>
+<div class="icon-wrapper" [ngClass]="{'clickable': clickable, 'disabled': disabled}" *ngFor="let star of stars; let i = index" (click)="onStarClick(i+1)">
+  <mat-icon class="filled" *ngIf="star.filled">star</mat-icon>
+  <mat-icon class="empty" *ngIf="!star.filled">star_outlines</mat-icon>
+</div>
