@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { UserService } from "../../services/user.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { AppService } from "../../services/app.service";
+import { MatDialog } from "@angular/material/dialog";
+import { AlertDialogComponent, AlertDialogData } from "../dialogs/alert-dialog/alert-dialog.component";
 
 @Component({
   selector: 'app-login',
@@ -24,7 +26,8 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private appService: AppService,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -60,4 +63,12 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  resetPassword() {
+    const dialogData: AlertDialogData = {title: "Reset Password", message: 'Please contact your system administrator to reset your password.'};
+    this.dialog.open(AlertDialogComponent, {
+      maxWidth: "600px",
+      data: dialogData,
+      // disableClose: true
+    });
+  }
 }

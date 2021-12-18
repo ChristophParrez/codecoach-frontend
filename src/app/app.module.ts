@@ -51,7 +51,8 @@ import { AdminProfileComponent } from './components/admin-profile/admin-profile.
 import { EditTopicsComponent } from './components/edit-topics/edit-topics.component';
 import { CoachingSessionsTableComponent } from "./components/coaching-sessions-table/coaching-sessions-table.component";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
-import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from './components/dialogs/confirm-dialog/confirm-dialog.component';
+import { AlertDialogComponent } from './components/dialogs/alert-dialog/alert-dialog.component';
 import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
@@ -88,6 +89,7 @@ import { MatDialogModule } from "@angular/material/dialog";
     EditTopicsComponent,
     AdminProfileComponent,
     ConfirmDialogComponent,
+    AlertDialogComponent
   ],
   imports: [
     BrowserModule,

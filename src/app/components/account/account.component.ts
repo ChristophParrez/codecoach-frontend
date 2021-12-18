@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { UserService } from "../../services/user.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { ConfirmDialogData, ConfirmDialogComponent } from "../confirm-dialog/confirm-dialog.component";
+import { ConfirmDialogData, ConfirmDialogComponent } from "../dialogs/confirm-dialog/confirm-dialog.component";
 import { MatDialog } from '@angular/material/dialog';
 
 export interface ConfirmDialogModel {
@@ -32,7 +32,6 @@ export class AccountComponent implements OnInit {
   becomeCoach(): void {
 
     const dialogData: ConfirmDialogData = {title: "Confirm Action", message: 'Are you sure you want to become a coach?'};
-
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
       data: dialogData,
