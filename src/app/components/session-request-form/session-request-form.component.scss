@@ -1,0 +1,7 @@
+.buttons {
+  display: flex;
+  align-items: start;
+  button {
+    flex-shrink: 0;
+  }
+}

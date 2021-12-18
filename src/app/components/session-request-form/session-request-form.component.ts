@@ -49,6 +49,7 @@ export class SessionRequestFormComponent implements OnInit {
   ngOnInit(): void {
     this.coachId = this.route.snapshot.paramMap.get('id');
     this.userService.getCoach(this.coachId).subscribe(user => this.coachingTopics = user.coachInformation.coachingTopics);
+    this.errorMessages.push('Something went wrong. Please try again later.')
   }
 
   onSubmit(): void {
@@ -63,11 +64,15 @@ export class SessionRequestFormComponent implements OnInit {
       this.formGroup.value.coacheeId = this.userService.getUserId();
 
       this.sessionService.requestSession(this.formGroup.value).subscribe({
-        next: () => this.router.navigate(['/'], {relativeTo: this.route}),
+        next: () => this.router.navigate(['/user/sessions'], {relativeTo: this.route}),
         error: (response) => {
           this.formGroup.enable();
-          if (response.error.status === 400) this.errorMessages.push('Something went wrong. Please try again later.')
-          else if (typeof response.error === 'string') this.errorMessages.push(response.error);
+          console.log(response)
+          if (typeof response.error === 'string') this.errorMessages.push(response.error);
+          else if (typeof response.error.message === 'string') this.errorMessages.push(response.error.message);
+          else if (response.error.status === 400) {
+            this.errorMessages.push('Something went wrong. Please try again later.')
+          }
         }
       });
     }
