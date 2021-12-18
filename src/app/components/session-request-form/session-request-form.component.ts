@@ -49,7 +49,6 @@ export class SessionRequestFormComponent implements OnInit {
   ngOnInit(): void {
     this.coachId = this.route.snapshot.paramMap.get('id');
     this.userService.getCoach(this.coachId).subscribe(user => this.coachingTopics = user.coachInformation.coachingTopics);
-    this.errorMessages.push('Something went wrong. Please try again later.')
   }
 
   onSubmit(): void {
