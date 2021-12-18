@@ -1,6 +1,8 @@
-<app-page-title [main]="true">Login</app-page-title>
+<app-page-title [main]="true">Account</app-page-title>
 
 <mat-card>
+  <h3>Login</h3>
+  <p>Please login to get access to your account or <a routerLink="/register">register</a> to setup your account first.</p>
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
     <div class="form-row">
       <mat-form-field class="full-width" appearance="fill">

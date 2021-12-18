@@ -11,6 +11,8 @@ import { RequestSessionComponent } from "./components/request-session/request-se
 import { CoachDetailsComponent } from "./components/coach-details/coach-details.component";
 import { CoachCoachingSessionsComponent } from "./components/coach-coaching-sessions/coach-coaching-sessions.component";
 import { CoacheeCoachingSessionsComponent } from "./components/coachee-coaching-sessions/coachee-coaching-sessions.component";
+import { AdminProfileComponent } from "./components/admin-profile/admin-profile.component";
+import {EditTopicsComponent} from "./components/edit-topics/edit-topics.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -24,7 +26,9 @@ const routes: Routes = [
   {path: 'coach/sessions', component: CoachCoachingSessionsComponent},
   {path: 'coach/:id', component: CoachDetailsComponent},
   {path: 'coaches', component: CoachesComponent},
-  {path: 'sessions/request/:id', component: RequestSessionComponent}
+  {path: 'sessions/request/:id', component: RequestSessionComponent},
+  {path: 'admin-profile', component: AdminProfileComponent},
+  {path: 'edit-topics', component: EditTopicsComponent}
 ];
 
 @NgModule({

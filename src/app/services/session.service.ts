@@ -26,7 +26,6 @@ export class SessionService {
   }
 
   getSessions(role: Role): Observable<Session[]> {
-    console.log('role!!!!', role);
     const headers = new HttpHeaders({
       'Authorization': `${this.userService.getToken()}`
     })

@@ -1,5 +1,5 @@
 <app-account>
-  <app-coaching-sessions [sessions]="sessions" title="My upcoming sessions" [pageRole]="role.COACHEE"></app-coaching-sessions>
-  <app-coaching-sessions [sessions]="sessions" title="Waiting for feedback" [pageRole]="role.COACHEE"></app-coaching-sessions>
-  <app-coaching-sessions [sessions]="sessions" title="Archive" [pageRole]="role.COACHEE"></app-coaching-sessions>
+  <app-coaching-sessions-table [type]="type.UPCOMING" [sessions]="sessions" [pageRole]="role.COACHEE"></app-coaching-sessions-table>
+  <app-coaching-sessions-table [type]="type.WAITING_FOR_FEEDBACK" [sessions]="sessions" [pageRole]="role.COACHEE"></app-coaching-sessions-table>
+  <app-coaching-sessions-table [type]="type.ARCHIVE" [sessions]="sessions" [pageRole]="role.COACHEE"></app-coaching-sessions-table>
 </app-account>

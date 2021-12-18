@@ -6,7 +6,7 @@ import {User} from "../model/User";
 })
 export class TopicFilterPipe implements PipeTransform {
 
-  transform(coaches: User[], selectedTopics: string[]): any[] {
+  transform(coaches: User[], selectedTopics: string[]): User[] {
     if (selectedTopics === null) return coaches;
     if (selectedTopics.length == 0) return coaches;
     return coaches.filter(

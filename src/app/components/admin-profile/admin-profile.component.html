@@ -1,0 +1,4 @@
+<app-account *ngIf="user && userService.isAdmin()" pageRole="ADMIN">
+  <app-profile-information [user]="user" [editable]="false" (userIsUpdated)="getUser()"></app-profile-information>
+</app-account>
+<app-unauthorized *ngIf="!userService.isAdmin()"></app-unauthorized>

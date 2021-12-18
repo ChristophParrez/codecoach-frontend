@@ -42,13 +42,17 @@ import { EditCoachInformationComponent } from './components/edit-coach-informati
 import { CoachTopicsComponent } from './components/coach-topics/coach-topics.component';
 import { CoachDetailsComponent } from './components/coach-details/coach-details.component';
 import { StarsComponent } from './components/stars/stars.component';
-import { CoachingSessionsComponent } from './components/coaching-sessions/coaching-sessions.component';
 import { CoacheeCoachingSessionsComponent } from './components/coachee-coaching-sessions/coachee-coaching-sessions.component';
 import { CoachCoachingSessionsComponent } from './components/coach-coaching-sessions/coach-coaching-sessions.component';
 import { AccountComponent } from './components/account/account.component';
 import { MatTableModule } from "@angular/material/table";
 import { MatSortModule } from "@angular/material/sort";
-import { SessionStatusPipe } from './pipes/session-status.pipe';
+import { AdminProfileComponent } from './components/admin-profile/admin-profile.component';
+import { EditTopicsComponent } from './components/edit-topics/edit-topics.component';
+import { CoachingSessionsTableComponent } from "./components/coaching-sessions-table/coaching-sessions-table.component";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -77,11 +81,13 @@ import { SessionStatusPipe } from './pipes/session-status.pipe';
     CoachTopicsComponent,
     CoachDetailsComponent,
     StarsComponent,
-    CoachingSessionsComponent,
+    CoachingSessionsTableComponent,
     CoacheeCoachingSessionsComponent,
     CoachCoachingSessionsComponent,
     AccountComponent,
-    SessionStatusPipe,
+    EditTopicsComponent,
+    AdminProfileComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -105,7 +111,9 @@ import { SessionStatusPipe } from './pipes/session-status.pipe';
     MatChipsModule,
     MatProgressBarModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

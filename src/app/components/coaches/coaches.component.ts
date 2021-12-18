@@ -13,7 +13,7 @@ import {AppService} from "../../services/app.service";
 })
 export class CoachesComponent implements OnInit {
 
-  public coaches: User[] = [];
+  public coaches: User[] | undefined;
   public topics: Topic[] = [];
   public searchText: string = '';
   public topicControl = new FormControl();
