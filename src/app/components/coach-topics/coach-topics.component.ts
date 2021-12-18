@@ -44,6 +44,7 @@ export class CoachTopicsComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log("add topic form submitted")
     this.errorMessages = [];
     if (this.formGroup.invalid) {
       this.appService.triggerValidationOnFields(this.formGroup);

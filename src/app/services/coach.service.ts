@@ -20,6 +20,6 @@ export class CoachService {
     const headers = new HttpHeaders({
       'Authorization': `${this.userService.getToken()}`
     })
-    return this.http.put<Array<CoachingTopic>>(`${this.coachUrl} /${userId}/topics`, coachingTopics, { headers: headers });
+    return this.http.put<Array<CoachingTopic>>(`${this.coachUrl}/${userId}/topics`, coachingTopics, { headers: headers });
   }
 }
