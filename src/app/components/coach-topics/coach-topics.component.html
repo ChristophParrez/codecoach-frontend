@@ -1,5 +1,5 @@
 <mat-card>
-  <app-page-title [showEditButton]="editable && !editMode" (editButtonClicked)="editMode=true">
+  <app-page-title [showEditButton]="editable && !editMode" (editButtonClicked)="editMode = !editMode">
     Coaching Topics
   </app-page-title>
   <div class="responsive-table coaching-topics" *ngIf="user && !editMode">
@@ -9,8 +9,25 @@
     </div>
     <div *ngIf="user.coachInformation.coachingTopics.length === 0">No topics found. Please add them here.</div>
   </div>
-  <ng-container *ngIf="user && editMode">
-    <p>The coaching topics form will comes here</p>
-    <button mat-raised-button color="primary" (click)="editMode=false">Okay I got it!</button>
+
+  <ng-container *ngIf="topics && editMode">
+    <mat-label>You may select at most 2 topics</mat-label>
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <div class="form-row" *ngIf="topics.length > 0">
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-select formControlName="topic1">
+              <mat-option *ngFor="let topic of topics" value="{{topic.name}}">{{topic.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-row" *ngIf="topics.length > 0">
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-select formControlName="topic2">
+            <mat-option *ngFor="let topic of topics" value="{{topic.name}}">{{topic.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" (click)="editMode=false">Add topics</button>
+    </form>
   </ng-container>
 </mat-card>
