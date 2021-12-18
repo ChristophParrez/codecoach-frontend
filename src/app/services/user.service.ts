@@ -21,7 +21,10 @@ export class UserService {
   }
 
   getUser(id: string): Observable<User> {
-    return this.http.get<User>(this.urlUsers + '/' + id);
+    const headers = new HttpHeaders({
+      'Authorization': `${this.getToken()}`
+    })
+    return this.http.get<User>(this.urlUsers + '/' + id, { headers: headers });
   }
 
   getCoach(id: string): Observable<User> {

@@ -3,6 +3,8 @@ import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { UserService } from "../../services/user.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Role } from "../../model/Role";
+import { UserRole } from "../../model/UserRole";
+import { AppService } from "../../services/app.service";
 
 @Component({
   selector: 'app-edit-user',
@@ -21,15 +23,16 @@ export class EditUserComponent implements OnInit {
     lastName: ['', Validators.required],
     email: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")]],
     picture: '',
-    coachInformation: null
+    coachInformation: null,
+    roles: null,
   });
 
   errorMessages: string[] = [];
+  userRoles: typeof Role = Role;
 
-  constructor(private userService: UserService,
-              private formBuilder: FormBuilder,
-              private router: Router,
-              private route: ActivatedRoute) {
+  constructor(public userService: UserService,
+              private appService: AppService,
+              private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -38,16 +41,20 @@ export class EditUserComponent implements OnInit {
       lastName: this.user.lastName,
       picture: this.user.picture,
       email: this.user.email,
-      coachInformation: this.user.coachInformation
+      coachInformation: this.user.coachInformation,
+      roles: this.user.roles?.map((role: UserRole) => role.role),
     });
   }
 
   onSubmit(): void {
     this.errorMessages = [];
     if (this.formGroup.invalid) {
-      this.triggerValidationOnFields();
+      this.appService.triggerValidationOnFields(this.formGroup);
     } else {
       this.formGroup.disable();
+      this.formGroup.value.roles = this.formGroup.value.roles?.map((role: string) => {
+        return {role: role}
+      });
       this.userService.updateUser(this.formGroup.value, this.user.userId).subscribe({
         next: () => this.userIsUpdated.emit(),
         error: (response) => {
@@ -59,16 +66,6 @@ export class EditUserComponent implements OnInit {
         }
       });
     }
-  }
-
-  private triggerValidationOnFields(formGroup?: FormGroup | FormArray): void {
-    if (formGroup == null) formGroup = this.formGroup;
-    Object.keys(formGroup.controls).forEach(field => {
-      // @ts-ignore
-      const control = formGroup.controls[field];
-      if (control instanceof FormGroup || control instanceof FormArray) this.triggerValidationOnFields(control);
-      else control.markAsTouched({onlySelf: true});
-    });
   }
 
 }
