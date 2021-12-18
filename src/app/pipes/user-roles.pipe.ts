@@ -7,6 +7,7 @@ import { UserRole } from "../model/UserRole";
 export class UserRolesPipe implements PipeTransform {
 
   transform(roles: UserRole[], ...args: unknown[]): string {
+    if (!roles) return '-';
     return roles.map(role => role.role.charAt(0).toUpperCase() + role.role.substr(1).toLowerCase()).join(', ');
   }
 
