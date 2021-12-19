@@ -18,19 +18,24 @@ export class AccountComponent implements OnInit {
 
   @Input() pageRole: string = 'COACHEE';
   user: any;
+  pageRoleNew: string | undefined;
 
   constructor(public userService: UserService,
-              private route: ActivatedRoute,
+              public route: ActivatedRoute,
               private router: Router,
               public dialog: MatDialog) {
+    this.router.events.subscribe(() => {
+      this.pageRole = this.route.snapshot.paramMap.get('roleOfAccount')?.toUpperCase()!;
+    });
   }
 
   ngOnInit(): void {
-    this.getUser();
+    if (!this.userService.isLoggedIn()) this.router.navigate(['login']).then();
+    else this.getUser();
+
   }
 
   becomeCoach(): void {
-
     const dialogData: ConfirmDialogData = {title: "Confirm Action", message: 'Are you sure you want to become a coach?'};
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
@@ -47,7 +52,7 @@ export class AccountComponent implements OnInit {
           if (token !== null) {
             this.userService.setToken(token);
           }
-          this.router.navigate(['/coach-profile/'])
+          this.router.navigate(['account/coach', { outlets: { view: 'profile' } }]).then();
         });
     });
   }

@@ -1,6 +1,6 @@
-<app-account *ngIf="user && (userService.isCoach() || userService.isAdmin())" pageRole="COACH">
-  <app-profile-information [user]="user" [editable]="false" (userIsUpdated)="getUser()"></app-profile-information>
-  <app-coach-information [user]="user" (userIsUpdated)="getUser()"></app-coach-information>
-  <app-coach-topics [user]="user" (userIsUpdated)="getUser()"></app-coach-topics>
-</app-account>
-<app-unauthorized *ngIf="!userService.isCoach()"></app-unauthorized>
+<!--<app-account *ngIf="user && (userService.isCoach() || userService.isAdmin())" pageRole="COACH">-->
+<!--  <app-profile-information [user]="user" [editable]="false" (userIsUpdated)="getUser()"></app-profile-information>-->
+<!--  <app-coach-information [user]="user" (userIsUpdated)="getUser()"></app-coach-information>-->
+<!--  <app-coach-topics [user]="user" (userIsUpdated)="getUser()"></app-coach-topics>-->
+<!--</app-account>-->
+<!--<app-unauthorized *ngIf="!userService.isCoach()"></app-unauthorized>-->

@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.userService.isLoggedIn()) this.router.navigate(['account/coachee', { outlets: { view: 'profile' } }]).then()
   }
 
   onSubmit(): void {
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
           const token = response.headers.get('Authorization');
           if (token !== null) {
             this.userService.setToken(token);
-            this.router.navigate(['/user-profile/'], {relativeTo: this.route})
+            this.router.navigate(['account/coachee', { outlets: { view: 'profile' } }]).then();
           }
         },
         error: (response) => {

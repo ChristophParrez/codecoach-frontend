@@ -19,12 +19,14 @@
           Account
           <div class="submenu left">
             <ul>
-              <li><a routerLinkActive="active" routerLink="user-profile" *ngIf="userService.isLoggedIn()">My Profile</a></li>
-              <li><a routerLinkActive="active" routerLink="coach-profile" *ngIf="userService.isCoach()">My Coach Profile</a></li>
-              <li><a routerLinkActive="active" routerLink="admin-profile" *ngIf="userService.isAdmin()">My Admin Profile</a></li>
-              <li><a routerLinkActive="active" routerLink="register" *ngIf="!userService.isLoggedIn()">Register</a></li>
-              <li><a routerLinkActive="active" routerLink="login" *ngIf="!userService.isLoggedIn()">Sign In</a></li>
-              <li><a routerLinkActive="active" routerLink="login" *ngIf="userService.isLoggedIn()" (click)="userService.logoutUser()">Logout</a></li>
+              <li *ngIf="userService.isLoggedIn()"><a routerLinkActive="active" [routerLink]="['account/coachee', {outlets: {view: 'profile'} }]">My Profile</a></li>
+              <li *ngIf="userService.isCoach()"><a routerLinkActive="active" [routerLink]="['account/coach', {outlets: {view: 'profile'} }]">My Coach Profile</a></li>
+              <li *ngIf="userService.isAdmin()"><a routerLinkActive="active" [routerLink]="['account/admin', {outlets: {view: 'profile'} }]">My Admin Profile</a></li>
+<!--              <li><a routerLinkActive="active" routerLink="user-profile" *ngIf="userService.isLoggedIn()">My Profile</a></li>-->
+<!--              <li><a routerLinkActive="active" routerLink="admin-profile" *ngIf="userService.isAdmin()">My Admin Profile</a></li>-->
+              <li *ngIf="!userService.isLoggedIn()"><a routerLinkActive="active" routerLink="register">Register</a></li>
+              <li *ngIf="!userService.isLoggedIn()"><a routerLinkActive="active" routerLink="login">Sign In</a></li>
+              <li *ngIf="userService.isLoggedIn()"><a routerLinkActive="active" routerLink="login" (click)="userService.logoutUser()">Logout</a></li>
             </ul>
           </div>
         </a>

@@ -8,3 +8,8 @@ $footer-background: #005a93;
 $navbar-font-color: #000;
 $red: #9f0505;
 $input-error-color: $red;
+
+@mixin gradient-primary-secondary {
+  background: rgb(34,182,233);
+  background: linear-gradient(90deg, rgba(34,182,233,1) 0%, rgba(84,34,233,1) 35%);
+}
