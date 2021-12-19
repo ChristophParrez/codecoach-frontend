@@ -53,7 +53,6 @@ import { AlertDialogComponent } from './components/dialogs/alert-dialog/alert-di
 import { MatDialogModule } from "@angular/material/dialog";
 import { CoacheeDetailsComponent } from './components/coachee-details/coachee-details.component';
 import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
-import {  RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
 
 @NgModule({
   declarations: [
@@ -95,8 +94,6 @@ import {  RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    RxReactiveFormsModule,
-    RxReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatInputModule,
