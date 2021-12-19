@@ -6,6 +6,7 @@ import {Topic} from "../../model/Topic";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AppService} from "../../services/app.service";
 import {CoachService} from "../../services/coach.service";
+import {RxwebValidators} from "@rxweb/reactive-form-validators";
 
 @Component({
   selector: 'app-coach-topics',
@@ -26,7 +27,7 @@ export class CoachTopicsComponent implements OnInit {
   formGroup: FormGroup = this.formBuilder.group({
     topic1: ['', Validators.required],
     experience1: ['', Validators.required],
-    topic2: ['', Validators.required],
+    topic2: ['', RxwebValidators.different({fieldName:'topic1'})],
     experience2: ['', Validators.required],
   });
 
