@@ -1,18 +1,16 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { UserService } from "../../services/user.service";
+import { Component, OnInit } from '@angular/core';
+import { UserService } from "../../../services/user.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Role } from "../../model/Role";
 import { User } from 'src/app/model/User';
 
 @Component({
-  selector: 'app-coachee-profile',
-  templateUrl: './coachee-profile.component.html',
-  styleUrls: ['./coachee-profile.component.scss']
+  selector: 'app-user-profile',
+  templateUrl: './user-profile.component.html',
+  styleUrls: ['./user-profile.component.scss']
 })
-export class CoacheeProfileComponent implements OnInit {
+export class UserProfileComponent implements OnInit {
 
   user: User | undefined;
-  // coach: User | undefined;
   roleOfAccount: string | undefined;
 
   constructor(public userService: UserService, public router: Router, public route: ActivatedRoute) {

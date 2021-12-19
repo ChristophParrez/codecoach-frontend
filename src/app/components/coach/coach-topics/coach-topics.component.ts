@@ -1,11 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {User} from "../../model/User";
-import {CoachingTopic} from "../../model/CoachingTopic";
-import {TopicService} from "../../services/topic.service";
-import {Topic} from "../../model/Topic";
+import {User} from "../../../model/User";
+import {CoachingTopic} from "../../../model/CoachingTopic";
+import {TopicService} from "../../../services/topic.service";
+import {Topic} from "../../../model/Topic";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AppService} from "../../services/app.service";
-import {CoachService} from "../../services/coach.service";
+import {AppService} from "../../../services/app.service";
+import {CoachService} from "../../../services/coach.service";
 
 @Component({
   selector: 'app-coach-topics',

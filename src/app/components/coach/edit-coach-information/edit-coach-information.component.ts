@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { User } from "../../model/User";
-import { UserService } from "../../services/user.service";
+import { User } from "../../../model/User";
+import { UserService } from "../../../services/user.service";
 
 @Component({
   selector: 'app-edit-coach-information',

@@ -1,13 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { UserService } from "../../services/user.service";
+import { UserService } from "../../../services/user.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { SessionService } from "../../services/session.service";
+import { SessionService } from "../../../services/session.service";
 import { formatDate } from "@angular/common";
-import { User } from "../../model/User";
+import { User } from "../../../model/User";
 import { Observable } from "rxjs";
-import { CoachingTopic } from "../../model/CoachingTopic";
-import { AppService } from "../../services/app.service";
+import { CoachingTopic } from "../../../model/CoachingTopic";
+import { AppService } from "../../../services/app.service";
 
 @Component({
   selector: 'app-session-request-form',

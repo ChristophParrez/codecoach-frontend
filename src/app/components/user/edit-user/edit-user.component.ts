@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { UserService } from "../../services/user.service";
+import { UserService } from "../../../services/user.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Role } from "../../model/Role";
-import { UserRole } from "../../model/UserRole";
-import { AppService } from "../../services/app.service";
+import { Role } from "../../../model/Role";
+import { UserRole } from "../../../model/UserRole";
+import { AppService } from "../../../services/app.service";
 
 @Component({
   selector: 'app-edit-user',
