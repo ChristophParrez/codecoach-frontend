@@ -31,12 +31,11 @@ export class CoachesComponent implements OnInit {
   }
 
   getAllCoaches(): void {
-    this.userService.getAllCoaches()
-      .subscribe(coaches => this.coaches = coaches);
+    this.userService.getAllCoaches().subscribe(coaches => {this.coaches = coaches;
+      console.log(this.coaches.map(coach => coach.coachInformation.coachingTopics));});
   }
 
   getAllTopics(): void {
-    this.topicService.getAllTopics()
-      .subscribe(topics => this.topics = topics);
+    this.topicService.getAllTopics().subscribe(topics => this.topics = topics);
   }
 }
