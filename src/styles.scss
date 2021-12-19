@@ -183,22 +183,26 @@ body {
   font-weight: 500;
 }
 
-ul.arrows {
+ul.arrows, ul.checks {
   list-style: none;
   margin-left: 0;
-  padding-left: 20px;
+  padding-left: 10px;
 
   li {
     position: relative;
-    padding: 5px 0 5px 20px;
+    padding: 4px 0 4px 25px;
 
     &::before {
       content: '\f061';
       font-family: 'Font Awesome 5 Free', serif;
       font-weight: 900;
       position: absolute;
+      top: 4px;
       left: 0;
       color: $accent-color-secondary;
     }
   }
+}
+ul.checks li::before {
+  content: '\f00c';
 }
