@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from "../../../services/user.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { User } from 'src/app/model/User';
+import { Role } from "../../../model/Role";
 
 @Component({
   selector: 'app-user-profile',
@@ -11,7 +12,7 @@ import { User } from 'src/app/model/User';
 export class UserProfileComponent implements OnInit {
 
   user: User | undefined;
-  roleOfAccount: string | undefined;
+  roleOfAccount: Role | undefined;
 
   constructor(public userService: UserService, public router: Router, public route: ActivatedRoute) {
     this.route.parent?.params.subscribe(params => {

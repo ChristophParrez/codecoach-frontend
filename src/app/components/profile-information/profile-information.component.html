@@ -1,6 +1,6 @@
 <mat-card *ngIf="user">
   <app-page-title [showEditButton]="editable && !editMode" (editButtonClicked)="editMode=true" [showEventButton]="userService.getUserId() !== user.userId && userService.isCoach(user)" [coachId]="user.userId">Profile Information</app-page-title>
-  <app-edit-user *ngIf="editMode" [user]="user" [userRole]="pageRole" (userIsUpdated)="userChanged()"
+  <app-edit-user *ngIf="editMode" [user]="user" (userIsUpdated)="userChanged()"
                  (cancel)="editMode=false"></app-edit-user>
   <div class="user-profile" *ngIf="!editMode">
     <img class="profile-image" [src]="user.picture" (error)="appService.showDefaultImage($event)">
@@ -13,11 +13,15 @@
         <div class="title">Last name</div>
         <div>{{ user.lastName }}</div>
       </div>
+      <div class="row" *ngIf="pageRole==roles.COACH">
+        <div class="title">Company</div>
+        <div>{{ user.companyName }}</div>
+      </div>
       <div class="row">
         <div class="title">Email</div>
         <div><a href="mailto:{{ user.email }}">{{ user.email }}</a></div>
       </div>
-      <div class="row" *ngIf="user.roles && userService.isAdmin()">
+      <div class="row" *ngIf="user.roles && (userService.isCoach() || userService.isAdmin())">
         <div class="title">Role</div>
         {{ user.roles | userRoles }}
       </div>

@@ -14,7 +14,7 @@ import { AppService } from "../../../services/app.service";
 export class EditUserComponent implements OnInit {
 
   @Input() user: any;
-  @Input() userRole: Role = Role.COACHEE;
+  // @Input() userRole: Role = Role.COACHEE;
   @Output() userIsUpdated = new EventEmitter<any>();
   @Output() cancel = new EventEmitter<any>();
 
