@@ -93,13 +93,14 @@ body {
 }
 
 #main-content a {
-  color: $main-text-color;
+  color: #008ac6;
   transition: all 300ms;
   text-decoration: none;
-  border-bottom: 1px dotted $accent-color-primary;
+  border-bottom: 1px dotted transparent;
 
   &:hover {
     color: $accent-color-primary;
+    border-bottom: 1px dotted $accent-color-primary;
   }
 }
 
@@ -139,6 +140,7 @@ body {
   }
 
   a {
+    color: $main-text-color !important;
     display: block;
     padding: 0px;
     border-bottom: 0 !important;

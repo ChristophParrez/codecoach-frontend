@@ -1,14 +1,27 @@
 .search-fields {
-  width: 100%;
+  //width: 100%;
   display: flex;
+  margin: 0 -10px;
+  > * {
+    padding: 10px;
+  }
 }
 
 .search-fields mat-form-field {
-  margin-right: 20px;
+  //margin-right: 20px;
 }
 
 .search-coach-name {
-  width: 250px;
+  //width: 250px;
+  flex-basis: 33.33%;
+  //flex-grow: 1;
+}
+
+.search-fields form {
+  //flex-basis: 50%;
+  .mat-form-field {
+    width: 100%;
+  }
 }
 
 .coaches-content {
@@ -31,14 +44,21 @@
 .coach-buttons {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 }
 
 .button {
+  //background: #f7f8fe;
   margin: 0 !important;
+  flex: 1;
+
+  &:hover {
+    //background: #f7f8fe;
+  }
 }
 
 img.coach {
-  height: 200px;
+  height: 180px;
   object-fit: cover;
 
   &.default-image {

@@ -31,8 +31,7 @@ export class CoachesComponent implements OnInit {
   }
 
   getAllCoaches(): void {
-    this.userService.getAllCoaches().subscribe(coaches => {this.coaches = coaches;
-      console.log(this.coaches.map(coach => coach.coachInformation.coachingTopics));});
+    this.userService.getAllCoaches().subscribe(coaches => this.coaches = coaches);
   }
 
   getAllTopics(): void {
