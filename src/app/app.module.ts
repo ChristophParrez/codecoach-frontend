@@ -96,6 +96,7 @@ import {  RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
     FormsModule,
     ReactiveFormsModule,
     RxReactiveFormsModule,
+    RxReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatInputModule,

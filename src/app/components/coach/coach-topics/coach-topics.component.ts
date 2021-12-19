@@ -6,6 +6,7 @@ import {Topic} from "../../../model/Topic";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AppService} from "../../../services/app.service";
 import {CoachService} from "../../../services/coach.service";
+import {RxwebValidators} from "@rxweb/reactive-form-validators";
 
 @Component({
   selector: 'app-coach-topics',
