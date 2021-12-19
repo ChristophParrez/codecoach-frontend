@@ -1,16 +1,16 @@
 import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Session } from "../../model/Session";
-import { Role } from "../../model/Role";
+import { Session } from "../../../model/Session";
+import { Role } from "../../../model/Role";
 import { Sort } from '@angular/material/sort';
-import { SessionTableType } from "../../model/SessionTableType";
-import { Status } from "../../model/Status";
+import { SessionTableType } from "../../../model/SessionTableType";
+import { Status } from "../../../model/Status";
 
 @Component({
-  selector: 'app-coaching-sessions-table',
-  templateUrl: './coaching-sessions-table.component.html',
-  styleUrls: ['./coaching-sessions-table.component.scss']
+  selector: 'app-sessions-table',
+  templateUrl: './sessions-table.component.html',
+  styleUrls: ['./sessions-table.component.scss']
 })
-export class CoachingSessionsTableComponent implements OnInit, OnChanges {
+export class SessionsTableComponent implements OnInit, OnChanges {
 
   @Input() sessions: Session[] | undefined;
   @Input() coacheeId: string | undefined;

@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Role } from "../../model/Role";
-import { Session } from "../../model/Session";
-import { SessionService } from "../../services/session.service";
-import { UserService } from "../../services/user.service";
-import { SessionTableType } from "../../model/SessionTableType";
+import { Role } from "../../../model/Role";
+import { Session } from "../../../model/Session";
+import { SessionService } from "../../../services/session.service";
+import { UserService } from "../../../services/user.service";
+import { SessionTableType } from "../../../model/SessionTableType";
 import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
-  selector: 'app-coachee-coaching-sessions',
-  templateUrl: './coachee-coaching-sessions.component.html',
-  styleUrls: ['./coachee-coaching-sessions.component.scss']
+  selector: 'app-user-coaching-sessions',
+  templateUrl: './user-coaching-sessions.component.html',
+  styleUrls: ['./user-coaching-sessions.component.scss']
 })
-export class CoacheeCoachingSessionsComponent implements OnInit {
+export class UserCoachingSessionsComponent implements OnInit {
 
   roleOfAccount: Role | undefined;
   role: typeof Role = Role;

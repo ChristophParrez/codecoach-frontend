@@ -1,17 +1,17 @@
 <ng-container *ngIf="user">
   <ng-container *ngIf="roleOfAccount === 'COACHEE'">
-    <app-profile-information [user]="user" (userIsUpdated)="getUser()"></app-profile-information>
+    <app-profile-information [user]="user" [pageRole]="roleOfAccount" (userIsUpdated)="getUser()"></app-profile-information>
   </ng-container>
   <ng-container *ngIf="roleOfAccount === 'COACH'">
     <ng-container *ngIf="(userService.isCoach() || userService.isAdmin()); else unauthorized">
-      <app-profile-information [user]="user" [editable]="false" (userIsUpdated)="getUser()"></app-profile-information>
+      <app-profile-information [user]="user" [pageRole]="roleOfAccount" [editable]="false" (userIsUpdated)="getUser()"></app-profile-information>
       <app-coach-information [user]="user" (userIsUpdated)="getUser()"></app-coach-information>
       <app-coach-topics [user]="user" (userIsUpdated)="getUser()"></app-coach-topics>
     </ng-container>
   </ng-container>
   <ng-container *ngIf="roleOfAccount === 'ADMIN'">
     <ng-container *ngIf="userService.isAdmin(); else unauthorized">
-      <app-profile-information [user]="user" [editable]="false" (userIsUpdated)="getUser()"></app-profile-information>
+      <app-profile-information [user]="user" [pageRole]="roleOfAccount" [editable]="false" (userIsUpdated)="getUser()"></app-profile-information>
     </ng-container>
   </ng-container>
 </ng-container>

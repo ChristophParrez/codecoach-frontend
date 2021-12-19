@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { UserService } from "../../services/user.service";
+import { UserService } from "../../../services/user.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Role } from "../../model/Role";
-import { UserRole } from "../../model/UserRole";
-import { AppService } from "../../services/app.service";
+import { Role } from "../../../model/Role";
+import { UserRole } from "../../../model/UserRole";
+import { AppService } from "../../../services/app.service";
 
 @Component({
   selector: 'app-edit-user',
@@ -14,7 +14,7 @@ import { AppService } from "../../services/app.service";
 export class EditUserComponent implements OnInit {
 
   @Input() user: any;
-  @Input() userRole: Role = Role.COACHEE;
+  // @Input() userRole: Role = Role.COACHEE;
   @Output() userIsUpdated = new EventEmitter<any>();
   @Output() cancel = new EventEmitter<any>();
 

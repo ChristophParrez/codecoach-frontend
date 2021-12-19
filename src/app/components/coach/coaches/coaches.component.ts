@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from "../../services/user.service";
-import {User} from "../../model/User";
-import {TopicService} from "../../services/topic.service";
-import {Topic} from "../../model/Topic";
+import {UserService} from "../../../services/user.service";
+import {User} from "../../../model/User";
+import {TopicService} from "../../../services/topic.service";
+import {Topic} from "../../../model/Topic";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {AppService} from "../../services/app.service";
+import {AppService} from "../../../services/app.service";
 
 @Component({
   selector: 'app-coaches',
