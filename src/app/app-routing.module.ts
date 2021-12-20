@@ -14,6 +14,7 @@ import { CoacheeDetailsComponent } from "./components/coachee-details/coachee-de
 import { AccountComponent } from "./components/account/account.component";
 import { UserListComponent } from "./components/user/user-list/user-list.component";
 import {FeedbackToCoachComponent} from "./components/feedback/feedback-to-coach/feedback-to-coach.component";
+import {SessionsTableComponent} from "./components/session/sessions-table/sessions-table.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},

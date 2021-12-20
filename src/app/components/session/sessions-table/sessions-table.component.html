@@ -3,8 +3,8 @@
   <ng-container *ngIf="sortedSessions; else stillLoading">
   <table matSort (matSortChange)="sortData($event)" *ngIf="sortedSessions.length > 0; else noResults">
     <tr>
-      <th mat-sort-header="coach" *ngIf="pageRole === userRoles.COACHEE">Coach</th>
-      <th mat-sort-header="coach" *ngIf="pageRole === userRoles.COACH">Coachee</th>
+      <th mat-sort-header="coach" *ngIf="pageRole === userRoles.COACHEE || pageRole === userRoles.ADMIN">Coach</th>
+      <th mat-sort-header="coach" *ngIf="pageRole === userRoles.COACH || pageRole === userRoles.ADMIN">Coachee</th>
       <th mat-sort-header="subject">Subject</th>
       <th mat-sort-header="date">Date</th>
       <th mat-sort-header="time">Time</th>
@@ -13,8 +13,8 @@
       <th>Actions</th>
     </tr>
     <tr *ngFor="let session of sortedSessions">
-      <td *ngIf="pageRole === userRoles.COACHEE">{{session.coach?.firstName}} {{session.coach?.lastName}}</td>
-      <td *ngIf="pageRole === userRoles.COACH">{{session.coachee?.firstName}} {{session.coachee?.lastName}}</td>
+      <td *ngIf="pageRole === userRoles.COACHEE || pageRole === userRoles.ADMIN">{{session.coach?.firstName}} {{session.coach?.lastName}}</td>
+      <td *ngIf="pageRole === userRoles.COACH || pageRole === userRoles.ADMIN">{{session.coachee?.firstName}} {{session.coachee?.lastName}}</td>
       <td>{{session.subject}}</td>
       <td>{{session.date | date: 'dd/MM/yyyy'}}</td>
       <td>{{session.time}}</td>
