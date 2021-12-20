@@ -13,7 +13,7 @@ import { EditTopicsComponent } from "./components/edit-topics/edit-topics.compon
 import { CoacheeDetailsComponent } from "./components/coachee-details/coachee-details.component";
 import { AccountComponent } from "./components/account/account.component";
 import { UserListComponent } from "./components/user/user-list/user-list.component";
-import {FeedbackToCoachComponent} from "./components/feedback/feedback-to-coach/feedback-to-coach.component";
+import {FeedbackComponent} from "./components/feedback/feedback.component";
 import {SessionsTableComponent} from "./components/session/sessions-table/sessions-table.component";
 
 const routes: Routes = [
@@ -34,7 +34,7 @@ const routes: Routes = [
   {path: 'profile/:id', component: CoachDetailsComponent},
   {path: 'coaches', component: CoachesComponent},
   {path: 'sessions/request/:id', component: RequestSessionComponent},
-  {path: 'sessions/:sessionId/feedback', component: FeedbackToCoachComponent},
+  {path: 'sessions/:sessionId/:role/feedback', component: FeedbackComponent},
 
 ];
 

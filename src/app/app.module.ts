@@ -54,7 +54,7 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { CoacheeDetailsComponent } from './components/coachee-details/coachee-details.component';
 import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
 import { UserListComponent } from './components/user/user-list/user-list.component';
-import { FeedbackToCoachComponent } from './components/feedback/feedback-to-coach/feedback-to-coach.component';
+import { FeedbackComponent } from './components/feedback/feedback.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import { SmilesComponent } from './components/smiles/smiles.component';
 
@@ -94,7 +94,7 @@ import { SmilesComponent } from './components/smiles/smiles.component';
     EnumToArrayPipe,
     UserListComponent,
     EnumToArrayPipe,
-    FeedbackToCoachComponent,
+    FeedbackComponent,
     SmilesComponent
   ],
     imports: [

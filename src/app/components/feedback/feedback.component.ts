@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AppService} from "../../../services/app.service";
-import {SessionService} from "../../../services/session.service";
+import {AppService} from "../../services/app.service";
+import {SessionService} from "../../services/session.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-feedback-to-coach',
-  templateUrl: './feedback-to-coach.component.html',
-  styleUrls: ['./feedback-to-coach.component.scss']
+  templateUrl: './feedback.component.html',
+  styleUrls: ['./feedback.component.scss']
 })
-export class FeedbackToCoachComponent implements OnInit {
+export class FeedbackComponent implements OnInit {
 
   errorMessages: string[] = [];
   sessionId: string | any;
