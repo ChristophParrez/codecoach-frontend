@@ -20,6 +20,13 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
+  getAllUsers(): Observable<User[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `${this.getToken()}`
+    })
+    return this.http.get<User[]>(this.urlUsers, { headers: headers });
+  }
+
   getUser(id: string): Observable<User> {
     const headers = new HttpHeaders({
       'Authorization': `${this.getToken()}`

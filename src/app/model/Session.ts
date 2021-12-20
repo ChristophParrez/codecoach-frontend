@@ -3,6 +3,7 @@ import { Location } from "./Location";
 import { User } from "./User";
 
 export interface Session {
+  id: string;
   coachId: string;
   coacheeId: string;
   coachee: User;

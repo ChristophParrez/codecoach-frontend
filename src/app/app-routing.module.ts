@@ -31,6 +31,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'user/:id', component: CoacheeDetailsComponent},
   {path: 'coach/:id', component: CoachDetailsComponent},
+  {path: 'profile/:id', component: CoachDetailsComponent},
   {path: 'coaches', component: CoachesComponent},
   {path: 'sessions/request/:id', component: RequestSessionComponent},
   {path: 'sessions/:sessionId/feedback', component: FeedbackToCoachComponent},
