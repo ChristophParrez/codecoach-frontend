@@ -31,7 +31,8 @@ export class CoachesComponent implements OnInit {
   }
 
   getAllCoaches(): void {
-    this.userService.getAllCoaches().subscribe(coaches => this.coaches = coaches);
+    this.userService.getAllCoaches().subscribe(coaches => this.coaches = coaches
+      .sort((coach1, coach2) => coach2.coachInformation.coachingTopics.length - coach1.coachInformation.coachingTopics.length));
   }
 
   getAllTopics(): void {
