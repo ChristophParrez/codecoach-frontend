@@ -1,4 +1,4 @@
-<mat-card *ngIf="coachingTopics">
+<mat-card *ngIf="coachingTopics && coachingTopics.length > 0 && userService.isLoggedIn()">
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
     <div class="form-row" *ngIf="coachingTopics.length > 0">
       <mat-form-field class="full-width" appearance="fill">
@@ -42,6 +42,17 @@
       <button mat-raised-button type="button" (click)="appService.goBack()">Cancel</button>
       <app-error-message [messages]="errorMessages"></app-error-message>
     </div>
-
   </form>
+</mat-card>
+
+<mat-card *ngIf="!userService.isLoggedIn()">
+  <p>You are not logged in as a coachee or coach.</p>
+</mat-card>
+
+<mat-card *ngIf="coachingTopics && coachingTopics.length === 0">
+  <p>Coach does not have any topics to offer.</p>
+</mat-card>
+
+<mat-card *ngIf="!coach">
+  <p>Coach can not be found.</p>
 </mat-card>

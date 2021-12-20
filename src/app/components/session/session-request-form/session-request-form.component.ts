@@ -39,7 +39,7 @@ export class SessionRequestFormComponent implements OnInit {
 
   constructor(
     public appService: AppService,
-    private userService: UserService,
+    public userService: UserService,
     private sessionService: SessionService,
     private formBuilder: FormBuilder,
     private router: Router,
@@ -48,7 +48,10 @@ export class SessionRequestFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.coachId = this.route.snapshot.paramMap.get('id');
-    this.userService.getCoach(this.coachId).subscribe(user => this.coachingTopics = user.coachInformation.coachingTopics);
+    this.userService.getCoach(this.coachId).subscribe(user => this.coachingTopics = user.coachInformation.coachingTopics,
+      (error:any) => {
+          console.log(error.error.message)
+      });
   }
 
   onSubmit(): void {
