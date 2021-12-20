@@ -9,7 +9,7 @@
           <p>Were the explanations given by your Coach clear?</p>
         </div>
         <div class="mat-rate-explanation">
-          <app-stars [max]="7" [clickable]="true" formControlName="explanation"></app-stars>
+          <app-stars [max]="7" [clickable]="true" formControlName="score1"></app-stars>
         </div>
       </div>
       <div class="form-row" >
@@ -17,12 +17,12 @@
           <p>Was the coaching session useful?</p>
         </div>
         <div class="mat-rate-explanation">
-          <app-stars [max]="7" [clickable]="true" formControlName="usefulness"></app-stars>
+          <app-stars [max]="7" [clickable]="true" formControlName="score2"></app-stars>
         </div>
       </div>
       <div class="form-row mat-comments-area">
         <mat-form-field appearance="fill">
-          <textarea rows="10" matInput formControlName="comments" placeholder="What did you like in the coaching session? How could your Coach get better? "></textarea>
+          <textarea rows="10" matInput formControlName="comment" placeholder="What did you like in the coaching session? How could your Coach get better? "></textarea>
         </mat-form-field>
       </div>
       <button mat-raised-button color="primary" type="submit">Send</button>

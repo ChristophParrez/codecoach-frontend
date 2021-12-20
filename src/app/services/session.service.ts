@@ -7,6 +7,8 @@ import { Session } from "../model/Session";
 import { UserService } from "./user.service";
 import { Role } from "../model/Role";
 import * as moment from 'moment';
+import {Feedback} from "../model/Feedback";
+import {Topic} from "../model/Topic";
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +44,15 @@ export class SessionService {
           }
         )
       );
+  }
+
+  giveFeedback(feedback:Feedback, sessionId: string): Observable<Feedback>{
+    const headers = new HttpHeaders({
+      'Authorization': `${this.userService.getToken()}`
+    })
+    console.log("token: " + this.userService.getToken());
+    console.log("feedback in session service: " + feedback)
+    return this.http.post<Feedback>(`${this.urlSession}/${sessionId}/feedback`, feedback, {headers: headers});
   }
 
 
