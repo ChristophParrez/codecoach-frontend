@@ -53,6 +53,7 @@ import { AlertDialogComponent } from './components/dialogs/alert-dialog/alert-di
 import { MatDialogModule } from "@angular/material/dialog";
 import { CoacheeDetailsComponent } from './components/coachee-details/coachee-details.component';
 import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
+import { UserListComponent } from './components/user/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
     ConfirmDialogComponent,
     AlertDialogComponent,
     CoacheeDetailsComponent,
-    EnumToArrayPipe
+    EnumToArrayPipe,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

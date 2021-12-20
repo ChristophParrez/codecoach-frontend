@@ -12,6 +12,7 @@ import { UserCoachingSessionsComponent } from "./components/user/user-coaching-s
 import { EditTopicsComponent } from "./components/edit-topics/edit-topics.component";
 import { CoacheeDetailsComponent } from "./components/coachee-details/coachee-details.component";
 import { AccountComponent } from "./components/account/account.component";
+import { UserListComponent } from "./components/user/user-list/user-list.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'account/:roleOfAccount', component: AccountComponent, children: [
       {path: 'profile', component: UserProfileComponent, outlet: 'view'},
       {path: 'edit-topics', component: EditTopicsComponent, outlet: 'view'},
-      {path: 'coaching-sessions', component: UserCoachingSessionsComponent, outlet: 'view'}
+      {path: 'coaching-sessions', component: UserCoachingSessionsComponent, outlet: 'view'},
+      {path: 'user-list', component: UserListComponent, outlet: 'view'}
     ]},
   {path: 'contact', component: RegisterUserComponent},
   {path: 'login', component: LoginComponent},

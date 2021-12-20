@@ -15,6 +15,7 @@
     <mat-card class="sidebar tertiary" *ngIf="pageRole=='ADMIN'">
       <h3>My Admin Profile</h3>
       <a routerLinkActive="active" [routerLink]="[{ outlets: { view : 'profile'} }]">Profile Information</a>
+      <a routerLinkActive="active" [routerLink]="[{ outlets: { view : 'user-list'} }]">User Overview</a>
       <a routerLinkActive="active" [routerLink]="[{ outlets: { view : 'edit-topics'} }]">Edit Coaching Topics</a>
     </mat-card>
   </div>
