@@ -42,20 +42,6 @@ export class UserListComponent implements OnInit {
     if (!event.target.classList.contains('disable-click')) this.router.navigate(['/profile/' + userId]).then();
   }
 
-  // private setAllowedStatusList(): void {
-  //   switch (this.type) {
-  //     case this.tableTypes.UPCOMING:
-  //       this.statusesToShow = [Status.REQUESTED, Status.ACCEPTED];
-  //       break;
-  //     case this.tableTypes.WAITING_FOR_FEEDBACK:
-  //       this.statusesToShow = [Status.DONE_WAITING_FOR_FEEDBACK];
-  //       break;
-  //     case this.tableTypes.ARCHIVE:
-  //       this.statusesToShow = [Status.DECLINED, Status.FINISHED_FEEDBACK_GIVEN, Status.FINISHED_AUTOMATICALLY_CLOSED, Status.FINISHED_CANCELLED_BY_COACHEE, Status.FINISHED_CANCELLED_BY_COACH];
-  //       break;
-  //   }
-  // }
-
   sortData(sort: Sort) {
     if (!this.sortedUsers) return;
     const data = this.sortedUsers.slice();
@@ -67,18 +53,16 @@ export class UserListComponent implements OnInit {
     this.sortedUsers = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
-        // case 'coach':
-        //   return this.compare(a.coach.firstName, b.coach.firstName, isAsc);
-        // case 'subject':
-        //   return this.compare(a.subject, b.subject, isAsc);
-        // case 'date':
-        //   return this.compare(a.date.getTime(), b.date.getTime(), isAsc);
-        // case 'time':
-        //   return this.compare(a.time, b.time, isAsc);
-        // case 'location':
-        //   return this.compare(a.location.name, b.location.name, isAsc);
-        // case 'status':
-        //   return this.compare(a.status.statusName, b.status.statusName, isAsc);
+        case 'first-name':
+          return this.compare(a.firstName, b.firstName, isAsc);
+        case 'last-name':
+          return this.compare(a.lastName, b.lastName, isAsc);
+        case 'company':
+          return this.compare(a.companyName, b.companyName, isAsc);
+        case 'roles':
+          return this.compare(a.roles.map(role => role.role).join(','), b.roles.map(role => role.role).join(','), isAsc);
+        case 'email':
+          return this.compare(a.email, b.email, isAsc);
         default:
           return 0;
       }

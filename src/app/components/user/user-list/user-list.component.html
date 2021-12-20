@@ -4,12 +4,12 @@
     <table matSort (matSortChange)="sortData($event)" *ngIf="sortedUsers.length > 0; else noResults">
       <thead>
       <tr>
-        <th mat-sort-header="location"></th>
-        <th mat-sort-header="coach">First Name</th>
-        <th mat-sort-header="subject">Last Name</th>
-        <th mat-sort-header="date">Company</th>
-        <th mat-sort-header="time">Roles</th>
-        <th mat-sort-header="status">Email</th>
+        <th></th>
+        <th mat-sort-header="first-name">First Name</th>
+        <th mat-sort-header="last-name">Last Name</th>
+        <th mat-sort-header="company">Company</th>
+        <th mat-sort-header="roles">Roles</th>
+        <th mat-sort-header="email">Email</th>
       </tr>
       </thead>
       <tbody>

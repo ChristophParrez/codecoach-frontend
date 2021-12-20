@@ -102,7 +102,7 @@ export class UserService {
 
   isCoach(user?: User): boolean {
     if (user == null) return this.getUserRoles().includes(this.userRoles.COACH);
-    return user.roles.map(role => role.role).includes(this.userRoles.COACH)
+    return user.roles?.map(role => role.role).includes(this.userRoles.COACH)
   }
 
   isAdmin(): boolean {
