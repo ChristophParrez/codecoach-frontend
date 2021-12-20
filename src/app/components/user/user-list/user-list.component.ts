@@ -30,7 +30,6 @@ export class UserListComponent implements OnInit {
   getUsers(): void {
     this.userService.getAllUsers().subscribe({
       next: (users) => {
-        console.log(users);
         this.users = users;
         this.sortedUsers = this.users.slice();
       },

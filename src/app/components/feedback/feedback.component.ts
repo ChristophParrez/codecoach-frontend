@@ -5,7 +5,7 @@ import {SessionService} from "../../services/session.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-feedback-to-coach',
+  selector: 'app-feedback',
   templateUrl: './feedback.component.html',
   styleUrls: ['./feedback.component.scss']
 })

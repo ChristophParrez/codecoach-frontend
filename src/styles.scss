@@ -189,6 +189,10 @@ body {
   margin-bottom: 13px !important;
 }
 
+.mat-expansion-panel-header-description, .mat-expansion-indicator::after {
+  color: $main-text-color;
+}
+
 ul.arrows, ul.checks {
   list-style: none;
   margin-left: 0;

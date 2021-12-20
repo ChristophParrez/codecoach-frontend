@@ -69,7 +69,8 @@ export class SessionRequestFormComponent implements OnInit {
       this.formGroup.value.coacheeId = this.userService.getUserId();
 
       this.sessionService.requestSession(this.formGroup.value).subscribe({
-        next: () => this.router.navigate(['/user/sessions'], {relativeTo: this.route}),
+        // next: () => this.router.navigate(['/user/sessions'], {relativeTo: this.route}),
+        next: () => this.router.navigate(['account/coachee', { outlets: { view: 'coaching-sessions' } }]).then(),
         error: (response) => {
           this.formGroup.enable();
           console.log(response)
