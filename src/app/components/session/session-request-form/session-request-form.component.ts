@@ -32,7 +32,7 @@ export class SessionRequestFormComponent implements OnInit {
     date: ['', Validators.required],
     time: ['', Validators.required],
     location: ['', Validators.required],
-    remarks: ['integration testing in java', Validators.required],
+    remarks: [''],
   });
 
   errorMessages: string[] = [];
@@ -48,7 +48,10 @@ export class SessionRequestFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.coachId = this.route.snapshot.paramMap.get('id');
-    this.userService.getCoach(this.coachId).subscribe(user => this.coachingTopics = user.coachInformation.coachingTopics,
+    this.userService.getCoach(this.coachId).subscribe(user => {
+      this.coach = user;
+      this.coachingTopics = user.coachInformation.coachingTopics
+      },
       (error:any) => {
           console.log(error.error.message)
       });
