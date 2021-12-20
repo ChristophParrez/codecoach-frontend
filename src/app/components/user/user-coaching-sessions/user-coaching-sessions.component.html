@@ -1,3 +1,4 @@
-<app-sessions-table [type]="type.UPCOMING" [sessions]="sessions" [pageRole]="roleOfAccount"></app-sessions-table>
-<app-sessions-table [type]="type.WAITING_FOR_FEEDBACK" [sessions]="sessions" [pageRole]="roleOfAccount"></app-sessions-table>
-<app-sessions-table [type]="type.ARCHIVE" [sessions]="sessions" [pageRole]="roleOfAccount"></app-sessions-table>
+<app-sessions-table [type]="type.UPCOMING" [sessions]="sessions" [pageRole]="roleOfAccount" *ngIf="roleOfAccount !== userRoles.ADMIN"></app-sessions-table>
+<app-sessions-table [type]="type.WAITING_FOR_FEEDBACK" [sessions]="sessions" [pageRole]="roleOfAccount" *ngIf="roleOfAccount !== userRoles.ADMIN"></app-sessions-table>
+<app-sessions-table [type]="type.ARCHIVE" [sessions]="sessions" [pageRole]="roleOfAccount" *ngIf="roleOfAccount !== userRoles.ADMIN"></app-sessions-table>
+<app-sessions-table [type]="type.OVERVIEW" [sessions]="sessions" [pageRole]="roleOfAccount" *ngIf="roleOfAccount === userRoles.ADMIN"></app-sessions-table>

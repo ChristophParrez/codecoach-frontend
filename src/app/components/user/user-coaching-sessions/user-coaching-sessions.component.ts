@@ -17,6 +17,7 @@ export class UserCoachingSessionsComponent implements OnInit {
   role: typeof Role = Role;
   type: typeof SessionTableType = SessionTableType;
   sessions: Session[] | undefined;
+  userRoles: typeof Role = Role;
 
   constructor(private sessionService: SessionService, private userService: UserService, public router: Router, public route: ActivatedRoute) {
     this.route.parent?.params.subscribe(params => {

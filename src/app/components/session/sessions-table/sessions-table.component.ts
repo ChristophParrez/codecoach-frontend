@@ -1,9 +1,9 @@
-import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Session } from "../../../model/Session";
-import { Role } from "../../../model/Role";
-import { Sort } from '@angular/material/sort';
-import { SessionTableType } from "../../../model/SessionTableType";
-import { Status } from "../../../model/Status";
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Session} from "../../../model/Session";
+import {Role} from "../../../model/Role";
+import {Sort} from '@angular/material/sort';
+import {SessionTableType} from "../../../model/SessionTableType";
+import {Status} from "../../../model/Status";
 
 @Component({
   selector: 'app-sessions-table',
@@ -50,6 +50,9 @@ export class SessionsTableComponent implements OnInit, OnChanges {
       case this.tableTypes.ARCHIVE:
         this.title = 'Archive';
         break;
+      case this.tableTypes.OVERVIEW:
+        this.title = 'Overview of sessions';
+        break;
     }
   }
 
@@ -63,6 +66,11 @@ export class SessionsTableComponent implements OnInit, OnChanges {
         break;
       case this.tableTypes.ARCHIVE:
         this.statusesToShow = [Status.DECLINED, Status.FINISHED_FEEDBACK_GIVEN, Status.FINISHED_AUTOMATICALLY_CLOSED, Status.FINISHED_CANCELLED_BY_COACHEE, Status.FINISHED_CANCELLED_BY_COACH];
+        break;
+      case this.tableTypes.OVERVIEW:
+        this.statusesToShow = [Status.REQUESTED, Status.ACCEPTED, Status.DONE_WAITING_FOR_FEEDBACK,
+                                Status.DECLINED, Status.FINISHED_AUTOMATICALLY_CLOSED, Status.FINISHED_CANCELLED_BY_COACH,
+                                Status.FINISHED_CANCELLED_BY_COACHEE, Status.FINISHED_FEEDBACK_GIVEN];
         break;
     }
   }
@@ -80,6 +88,8 @@ export class SessionsTableComponent implements OnInit, OnChanges {
       switch (sort.active) {
         case 'coach':
           return this.compare(a.coach.firstName, b.coach.firstName, isAsc);
+        case 'coachee':
+          return this.compare(a.coachee.firstName, b.coachee.firstName, isAsc);
         case 'subject':
           return this.compare(a.subject, b.subject, isAsc);
         case 'date':
