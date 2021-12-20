@@ -12,6 +12,7 @@ import { UserCoachingSessionsComponent } from "./components/user/user-coaching-s
 import { EditTopicsComponent } from "./components/edit-topics/edit-topics.component";
 import { CoacheeDetailsComponent } from "./components/coachee-details/coachee-details.component";
 import { AccountComponent } from "./components/account/account.component";
+import {FeedbackToCoachComponent} from "./components/feedback/feedback-to-coach/feedback-to-coach.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -29,6 +30,8 @@ const routes: Routes = [
   {path: 'coach/:id', component: CoachDetailsComponent},
   {path: 'coaches', component: CoachesComponent},
   {path: 'sessions/request/:id', component: RequestSessionComponent},
+  {path: 'sessions/feedback', component: FeedbackToCoachComponent},
+
 ];
 
 @NgModule({
