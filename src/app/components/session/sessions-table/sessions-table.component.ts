@@ -88,6 +88,8 @@ export class SessionsTableComponent implements OnInit, OnChanges {
       switch (sort.active) {
         case 'coach':
           return this.compare(a.coach.firstName, b.coach.firstName, isAsc);
+        case 'coachee':
+          return this.compare(a.coachee.firstName, b.coachee.firstName, isAsc);
         case 'subject':
           return this.compare(a.subject, b.subject, isAsc);
         case 'date':
