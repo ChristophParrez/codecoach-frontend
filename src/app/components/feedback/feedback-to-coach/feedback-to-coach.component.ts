@@ -23,7 +23,7 @@ export class FeedbackToCoachComponent implements OnInit {
   isFeedbackAlreadyGiven: any;
 
   constructor( private formBuilder: FormBuilder,
-               private appService: AppService,
+               public appService: AppService,
                private sessionService: SessionService,
                private route: ActivatedRoute) { }
 
@@ -33,7 +33,6 @@ export class FeedbackToCoachComponent implements OnInit {
 
   onSubmit() : void{
     this.errorMessages = [];
-    console.log(this.formGroup.value)
     if(this.formGroup.invalid){
       this.appService.triggerValidationOnFields(this.formGroup);
     } else {
@@ -43,8 +42,7 @@ export class FeedbackToCoachComponent implements OnInit {
         error:(response) => {
           if (response) {
             this.errorMessages.push(response.error.message)
-            console.log(typeof response.error.message);
-            if(response.error.message("provided")){
+            if(response.error.message.includes("provided")){
               this.isFeedbackAlreadyGiven = true;
             }
           }
