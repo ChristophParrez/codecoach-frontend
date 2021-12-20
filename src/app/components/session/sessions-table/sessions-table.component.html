@@ -10,7 +10,7 @@
       <th mat-sort-header="time">Time</th>
       <th mat-sort-header="location">Location</th>
       <th mat-sort-header="status">Status</th>
-      <th>Actions</th>
+      <th *ngIf="pageRole !== userRoles.ADMIN">Actions</th>
     </tr>
     <tr *ngFor="let session of sortedSessions">
       <td *ngIf="pageRole === userRoles.COACHEE || pageRole === userRoles.ADMIN">{{session.coach?.firstName}} {{session.coach?.lastName}}</td>
@@ -20,7 +20,7 @@
       <td>{{session.time}}</td>
       <td>{{session.location.name}}</td>
       <td>{{session.status.statusName}}</td>
-      <td *ngIf="type==tableTypes.WAITING_FOR_FEEDBACK">
+      <td *ngIf="type==tableTypes.WAITING_FOR_FEEDBACK && pageRole !== userRoles.ADMIN">
         <button mat-raised-button type="button" routerLink="/sessions/{{session.id}}/feedback">Feedback</button>
       </td>
     </tr>
