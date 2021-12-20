@@ -16,7 +16,7 @@ mat-icon {
 
 div.clickable:not(.disabled) {
   display: block;
-  overflow: hidden;
+  //overflow: hidden;
   mat-icon {
     cursor: pointer;
     transition: all 150ms ease-in-out;
