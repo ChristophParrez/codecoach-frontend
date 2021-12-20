@@ -1,1 +1,18 @@
-<p>edit-topics works!</p>
+<mat-card>
+  <app-page-title>Create new Topic</app-page-title>
+  <div class="topic-list">
+    <div class="topic" *ngFor="let topic of topics">{{topic.name}}</div>
+  </div>
+
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>New topic:</mat-label>
+        <input matInput id="new-topic" type="text" formControlName="name">
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" type="submit">Add</button>
+    </div>
+  </form>
+</mat-card>
