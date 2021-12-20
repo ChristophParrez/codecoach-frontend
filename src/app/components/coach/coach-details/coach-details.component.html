@@ -2,6 +2,9 @@
   <app-page-title [main]="true">{{ user.firstName }} {{ user.lastName }}</app-page-title>
   <app-profile-information [user]="user" [editable]="user.userId === userService.getUserId() || userService.isAdmin()"
                            (userIsUpdated)="getUser()"></app-profile-information>
-  <app-coach-information [user]="user" [editable]="user.userId === userService.getUserId() || userService.isAdmin()" (userIsUpdated)="getUser()"></app-coach-information>
-  <app-coach-topics [user]="user" [editable]="false" (userIsUpdated)="getUser()"></app-coach-topics>
+  <ng-container *ngIf="userService.isCoach(user)">
+    <app-coach-information [user]="user" [editable]="user.userId === userService.getUserId() || userService.isAdmin()"
+                           (userIsUpdated)="getUser()"></app-coach-information>
+    <app-coach-topics [user]="user" [editable]="false" (userIsUpdated)="getUser()"></app-coach-topics>
+  </ng-container>
 </ng-container>
