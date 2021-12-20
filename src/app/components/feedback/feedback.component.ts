@@ -41,7 +41,7 @@ export class FeedbackComponent implements OnInit {
     } else {
       this.formGroup.disable();
       this.sessionService.giveFeedback(this.formGroup.value, this.sessionId).subscribe({
-        next:() => this.router.navigate([`/account/${this.role.toLowerCase()}/coaching-sessions`]),
+        next:() => this.router.navigate([`/account/${this.role.toLowerCase()}`, { outlets: { view: 'coaching-sessions'}}]).then(),
         error:(response) => {
           if (response) {
             this.errorMessages.push(response.error.message)
