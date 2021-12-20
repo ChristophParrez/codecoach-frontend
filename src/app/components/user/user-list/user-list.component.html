@@ -1,1 +1,32 @@
-<p>user-list works!</p>
+<mat-card>
+  <app-page-title>User Overview</app-page-title>
+  <ng-container *ngIf="sortedUsers; else stillLoading">
+    <table matSort (matSortChange)="sortData($event)" *ngIf="sortedUsers.length > 0; else noResults">
+      <thead>
+      <tr>
+        <th mat-sort-header="location"></th>
+        <th mat-sort-header="coach">First Name</th>
+        <th mat-sort-header="subject">Last Name</th>
+        <th mat-sort-header="date">Company</th>
+        <th mat-sort-header="time">Roles</th>
+        <th mat-sort-header="status">Email</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of sortedUsers" (click)="onClickUser($event, user.userId)">
+        <td>
+          <div class="user-image"><img [src]="user.picture" (error)="appService.showDefaultImage($event)"
+                                       [alt]="user.firstName + ' ' + user.lastName"></div>
+        </td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.companyName}}</td>
+        <td [innerHTML]="user.roles | userRoles:',<br>'"></td>
+        <td><a class="disable-click" href="mailto:{{user.email}}">{{user.email}}</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-container>
+</mat-card>
+<ng-template #noResults><p>No users available.</p></ng-template>
+<ng-template #stillLoading><p>Loading...</p></ng-template>

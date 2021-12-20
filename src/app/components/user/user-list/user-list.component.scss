@@ -1,0 +1,48 @@
+div.user-image {
+  position: relative;
+
+  img {
+    $size: 40px;
+    height: $size;
+    width: $size;
+    object-fit: cover;
+    border-radius: 100% !important;
+    transition: all 150ms;
+    display: block;
+    margin: 0 10px;
+  }
+}
+
+table {
+  width: 100%;
+  overflow: hidden;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 5px 0;
+}
+
+tbody tr {
+  transition: background 200ms;
+  cursor: pointer;
+
+  &:nth-child(even) {
+    background: #fff;
+  }
+
+  &:nth-child(odd) {
+    background: #f7f8fe;
+  }
+
+  &:hover {
+    background: #e2eff8;
+  }
+}
+
+td.email {
+  max-width: 150px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
