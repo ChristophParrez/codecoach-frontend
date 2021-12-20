@@ -32,7 +32,7 @@ const routes: Routes = [
   {path: 'coach/:id', component: CoachDetailsComponent},
   {path: 'coaches', component: CoachesComponent},
   {path: 'sessions/request/:id', component: RequestSessionComponent},
-  {path: 'sessions/feedback', component: FeedbackToCoachComponent},
+  {path: 'sessions/:sessionId/feedback', component: FeedbackToCoachComponent},
 
 ];
 
