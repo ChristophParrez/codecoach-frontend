@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AppService} from "../../services/app.service";
 import {SessionService} from "../../services/session.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-feedback-to-coach',
@@ -26,7 +26,8 @@ export class FeedbackComponent implements OnInit {
   constructor( private formBuilder: FormBuilder,
                public appService: AppService,
                private sessionService: SessionService,
-               private route: ActivatedRoute) { }
+               private route: ActivatedRoute,
+               private router: Router) { }
 
   ngOnInit(): void {
     this.sessionId = this.route.snapshot.paramMap.get('sessionId');
@@ -40,7 +41,7 @@ export class FeedbackComponent implements OnInit {
     } else {
       this.formGroup.disable();
       this.sessionService.giveFeedback(this.formGroup.value, this.sessionId).subscribe({
-        next:()=>{},
+        next:() => this.router.navigate([`/account/${this.role.toLowerCase()}/coaching-sessions`]),
         error:(response) => {
           if (response) {
             this.errorMessages.push(response.error.message)
