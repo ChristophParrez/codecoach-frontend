@@ -1,0 +1,8 @@
+<div class="icon-wrapper" [ngClass]="{'clickable': clickable, 'disabled': disabled}" *ngFor="let smile of smiles; let i = index" (click)="onSmileClick(i+1)">
+  <mat-icon class="filled" *ngIf="smile.filled"><span class="material-icons-outlined">
+sentiment_satisfied
+</span></mat-icon>
+  <mat-icon class="empty" *ngIf="!smile.filled"><span class="material-icons-outlined">
+sentiment_satisfied
+</span></mat-icon>
+</div>

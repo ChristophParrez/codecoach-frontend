@@ -1,0 +1,34 @@
+@import '../../../sass/variables';
+
+:host {
+  display: flex;
+}
+
+mat-icon {
+  &.filled {
+    color: $accent-color-secondary;
+  }
+
+  &.empty {
+    color: rgba($accent-color-secondary, 0.4);
+  }
+}
+
+div.clickable:not(.disabled) {
+  display: block;
+  overflow: hidden;
+  mat-icon {
+    cursor: pointer;
+    transition: all 150ms ease-in-out;
+
+    &:hover {
+      color: rgba($accent-color-secondary, 0.8);
+      transform: scale(1.2);
+    }
+  }
+}
+
+div.disabled {
+  opacity: 0.4;
+}
+

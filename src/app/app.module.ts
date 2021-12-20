@@ -55,6 +55,7 @@ import { CoacheeDetailsComponent } from './components/coachee-details/coachee-de
 import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
 import { UserListComponent } from './components/user/user-list/user-list.component';
 import { FeedbackToCoachComponent } from './components/feedback/feedback-to-coach/feedback-to-coach.component';
+import { SmilesComponent } from './components/smiles/smiles.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { FeedbackToCoachComponent } from './components/feedback/feedback-to-coac
     EnumToArrayPipe,
     UserListComponent,
     EnumToArrayPipe,
-    FeedbackToCoachComponent
+    FeedbackToCoachComponent,
+    SmilesComponent
   ],
   imports: [
     BrowserModule,
