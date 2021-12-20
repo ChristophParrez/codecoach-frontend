@@ -1,0 +1,23 @@
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+ }
+
+.form-row.mat-comments-area {
+    width: 100%;
+  .mat-form-field{
+    width: 100%;
+  }
+}
+
+.mat-text-question{
+  width: 40%;
+  padding-bottom: 20px;
+ }
+
+.mat-rate-explanation{
+  padding-bottom: 20px;
+}
+
+
