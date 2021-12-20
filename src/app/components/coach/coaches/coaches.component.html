@@ -38,7 +38,7 @@
         <mat-card-actions>
           <div class="coach-buttons">
             <button class="button" mat-button [routerLink]="'/coach/' + coach.userId">Coach profile</button>
-            <button class="button" mat-button [routerLink]="'/sessions/request/' + coach.userId">Request Session
+            <button class="button" [disabled]="coach.coachInformation.coachingTopics.length === 0" mat-button [routerLink]="'/sessions/request/' + coach.userId">Request Session
             </button>
           </div>
         </mat-card-actions>
