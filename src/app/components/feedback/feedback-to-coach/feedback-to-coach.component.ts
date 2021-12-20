@@ -44,7 +44,7 @@ export class FeedbackToCoachComponent implements OnInit {
           if (response) {
             this.errorMessages.push(response.error.message)
             console.log(typeof response.error.message);
-            if(response.error.message("provided")){
+            if(response.error.message.includes("provided")){
               this.isFeedbackAlreadyGiven = true;
             }
           }
