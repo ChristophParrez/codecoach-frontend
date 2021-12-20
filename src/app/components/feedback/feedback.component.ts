@@ -13,6 +13,7 @@ export class FeedbackComponent implements OnInit {
 
   errorMessages: string[] = [];
   sessionId: string | any;
+  role: string | any;
 
   formGroup: FormGroup = this.formBuilder.group({
     score1: ['', Validators.required],
@@ -29,6 +30,7 @@ export class FeedbackComponent implements OnInit {
 
   ngOnInit(): void {
     this.sessionId = this.route.snapshot.paramMap.get('sessionId');
+    this.role = this.route.snapshot.paramMap.get('role');
   }
 
   onSubmit() : void{

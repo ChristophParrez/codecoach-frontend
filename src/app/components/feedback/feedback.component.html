@@ -1,10 +1,13 @@
 <mat-card>
-  <app-page-title>
-    Provide feedback to coach
+  <app-page-title *ngIf="role === 'COACHEE'">
+    Provide feedback to Coach
+  </app-page-title>
+  <app-page-title *ngIf="role === 'COACH'">
+    Provide feedback to Coachee
   </app-page-title>
   <ng-container class="feedback-container">
     <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-      <div class="form-row" >
+      <div class="form-row" *ngIf="role === 'COACHEE'">
         <div class="mat-text-question">
           <p>Were the explanations given by your Coach clear?</p>
         </div>
@@ -12,7 +15,15 @@
           <app-smiles [max]="7" [clickable]="true" formControlName="score1"></app-smiles>
         </div>
       </div>
-      <div class="form-row" >
+      <div class="form-row" *ngIf="role === 'COACH'">
+        <div class="mat-text-question">
+          <p>Was the Coachee well prepared for the coaching session?</p>
+        </div>
+        <div class="mat-rate-explanation">
+          <app-smiles [max]="7" [clickable]="true" formControlName="score1"></app-smiles>
+        </div>
+      </div>
+      <div class="form-row" *ngIf="role === 'COACHEE'">
         <div class="mat-text-question">
           <p>Was the coaching session useful?</p>
         </div>
@@ -20,9 +31,18 @@
           <app-smiles [max]="7" [clickable]="true" formControlName="score2"></app-smiles>
         </div>
       </div>
+      <div class="form-row" *ngIf="role === 'COACH'">
+        <div class="mat-text-question">
+          <p>Was the Coachee willing to learn and make progress?</p>
+        </div>
+        <div class="mat-rate-explanation">
+          <app-smiles [max]="7" [clickable]="true" formControlName="score2"></app-smiles>
+        </div>
+      </div>
       <div class="form-row mat-comments-area">
         <mat-form-field appearance="fill">
-          <textarea rows="10" matInput formControlName="comment" placeholder="What did you like in the coaching session? How could your Coach get better? "></textarea>
+          <textarea *ngIf="role === 'COACHEE'" rows="10" matInput formControlName="comment" placeholder="What did you like in the coaching session? How could your Coach get better? "></textarea>
+          <textarea *ngIf="role === 'COACH'" rows="10" matInput formControlName="comment" placeholder="What did you like in the coaching session? How could your Coachee get better? "></textarea>
         </mat-form-field>
       </div>
       <button [disabled]="isFeedbackAlreadyGiven" mat-raised-button color="primary" type="submit">Send</button>
