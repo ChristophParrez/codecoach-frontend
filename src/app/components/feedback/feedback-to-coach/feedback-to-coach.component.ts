@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AppService} from "../../../services/app.service";
 import {SessionService} from "../../../services/session.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-feedback-to-coach',
@@ -11,6 +12,7 @@ import {SessionService} from "../../../services/session.service";
 export class FeedbackToCoachComponent implements OnInit {
 
   errorMessages: string[] = [];
+  sessionId: string | any;
 
   formGroup: FormGroup = this.formBuilder.group({
     score1: ['', Validators.required],
@@ -18,11 +20,15 @@ export class FeedbackToCoachComponent implements OnInit {
     comment: [''],
   });
 
+  isFeedbackAlreadyGiven: any;
+
   constructor( private formBuilder: FormBuilder,
                private appService: AppService,
-               private sessionService: SessionService) { }
+               private sessionService: SessionService,
+               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.sessionId = this.route.snapshot.paramMap.get('sessionId');
   }
 
   onSubmit() : void{
@@ -32,11 +38,15 @@ export class FeedbackToCoachComponent implements OnInit {
       this.appService.triggerValidationOnFields(this.formGroup);
     } else {
       this.formGroup.disable();
-      this.sessionService.giveFeedback(this.formGroup.value, "de151d3c-9c76-4c22-8869-2cedc3802625").subscribe({
+      this.sessionService.giveFeedback(this.formGroup.value, this.sessionId).subscribe({
         next:()=>{},
         error:(response) => {
           if (response) {
-            this.errorMessages.push('You are not authorized to use this function')
+            this.errorMessages.push(response.error.message)
+            console.log(typeof response.error.message);
+            if(response.error.message("provided")){
+              this.isFeedbackAlreadyGiven = true;
+            }
           }
         }
       })
