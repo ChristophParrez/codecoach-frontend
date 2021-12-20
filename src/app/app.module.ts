@@ -55,6 +55,7 @@ import { CoacheeDetailsComponent } from './components/coachee-details/coachee-de
 import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
 import { UserListComponent } from './components/user/user-list/user-list.component';
 import { FeedbackToCoachComponent } from './components/feedback/feedback-to-coach/feedback-to-coach.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 import { SmilesComponent } from './components/smiles/smiles.component';
 
 @NgModule({
@@ -96,32 +97,33 @@ import { SmilesComponent } from './components/smiles/smiles.component';
     FeedbackToCoachComponent,
     SmilesComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatSidenavModule,
-    MatListModule,
-    MatButtonModule,
-    MatRippleModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatToolbarModule,
-    MatIconModule,
-    FontAwesomeModule,
-    MatCardModule,
-    MatSelectModule,
-    MatChipsModule,
-    MatProgressBarModule,
-    MatTableModule,
-    MatSortModule,
-    MatSnackBarModule,
-    MatDialogModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatSidenavModule,
+        MatListModule,
+        MatButtonModule,
+        MatRippleModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatToolbarModule,
+        MatIconModule,
+        FontAwesomeModule,
+        MatCardModule,
+        MatSelectModule,
+        MatChipsModule,
+        MatProgressBarModule,
+        MatTableModule,
+        MatSortModule,
+        MatSnackBarModule,
+        MatDialogModule,
+        MatExpansionModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
