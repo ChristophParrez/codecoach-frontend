@@ -43,7 +43,7 @@ export class SessionsTableComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!this.sessions) return;
-    const allowedStatusValues = this.statusesToShow.map(status => status.toString().split('_').join(' '));
+    const allowedStatusValues = this.statusesToShow.map(status => status.toString());
     this.sortedSessions = this.sessions.slice().filter(session => allowedStatusValues.includes(session.status.statusName));
   }
 
