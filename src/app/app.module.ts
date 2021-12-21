@@ -57,6 +57,8 @@ import { UserListComponent } from './components/user/user-list/user-list.compone
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import { SmilesComponent } from './components/smiles/smiles.component';
+import { SessionStatusPipe } from './pipes/session-status.pipe';
+import { CheckCurrentUserPipe } from './pipes/check-current-user.pipe';
 
 @NgModule({
   declarations: [
@@ -95,7 +97,9 @@ import { SmilesComponent } from './components/smiles/smiles.component';
     UserListComponent,
     EnumToArrayPipe,
     FeedbackComponent,
-    SmilesComponent
+    SmilesComponent,
+    SessionStatusPipe,
+    CheckCurrentUserPipe
   ],
     imports: [
         BrowserModule,

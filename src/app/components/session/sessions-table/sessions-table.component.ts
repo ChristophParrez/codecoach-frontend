@@ -6,6 +6,8 @@ import {SessionTableType} from "../../../model/SessionTableType";
 import {Status} from "../../../model/Status";
 import {Router} from "@angular/router";
 import {SessionService} from "../../../services/session.service";
+import {User} from "../../../model/User";
+import {UserService} from "../../../services/user.service";
 
 @Component({
   selector: 'app-sessions-table',
@@ -28,8 +30,11 @@ export class SessionsTableComponent implements OnInit, OnChanges {
   status: typeof Status = Status;
   sortedSessions: Session[] | undefined;
   statusesToShow: Status[] = [];
+  currentUser : User | undefined
 
-  constructor(private sessionService: SessionService, private router: Router) {
+  constructor(private sessionService: SessionService,
+              private userService: UserService,
+              private router: Router) {
   }
 
   onClickUser(event: any, userId: string) {
@@ -39,6 +44,7 @@ export class SessionsTableComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.setTitle();
     this.setAllowedStatusList();
+    this.userService.getUser(this.userService.getUserId()).subscribe(user => this.currentUser = user);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
