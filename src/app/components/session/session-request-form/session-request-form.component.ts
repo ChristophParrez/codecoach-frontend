@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { UserService } from "../../../services/user.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { SessionService } from "../../../services/session.service";
 import { User } from "../../../model/User";
-import { CoachingTopic } from "../../../model/CoachingTopic";
 import { AppService } from "../../../services/app.service";
 import * as moment from 'moment';
 
@@ -15,17 +14,10 @@ import * as moment from 'moment';
 })
 export class SessionRequestFormComponent implements OnInit {
 
-  selectedTime: number | undefined
+  minDate: Date = new Date();
   coach: User | undefined;
-  // coachingTopics: CoachingTopic[] | undefined;
   showForm: boolean = true;
-  reason: string = '';
-
-  public today: Date = new Date();
-  public currentYear: number = this.today.getFullYear();
-  public currentMonth: number = this.today.getMonth();
-  public currentDay: number = this.today.getDate();
-  public minDate: Object = new Date(this.currentYear, this.currentMonth, this.currentDay);
+  reason: string | undefined;
 
   formGroup: FormGroup = this.formBuilder.group({
     subject: ['', Validators.required],
@@ -39,7 +31,7 @@ export class SessionRequestFormComponent implements OnInit {
 
   constructor(
     public appService: AppService,
-    public userService: UserService,
+    private userService: UserService,
     private sessionService: SessionService,
     private formBuilder: FormBuilder,
     private router: Router,
@@ -72,7 +64,6 @@ export class SessionRequestFormComponent implements OnInit {
           this.reason = 'Coach does not have any topics to offer.';
         } else {
           this.coach = user;
-          // this.coachingTopics = user.coachInformation.coachingTopics;
         }
       },
       error: (error) => {
@@ -87,26 +78,30 @@ export class SessionRequestFormComponent implements OnInit {
     this.errorMessages = [];
     if (this.formGroup.invalid) {
       this.appService.triggerValidationOnFields(this.formGroup);
-    } else {
-      this.formGroup.disable();
-      this.formGroup.value.time = moment(this.formGroup.value.date).format("HH:mm");
-      this.formGroup.value.date = moment(this.formGroup.value.date).format("YYYY-MM-DD");
-      this.formGroup.value.location = {name: this.formGroup.value.location}
-      this.formGroup.value.coachId = this.coach?.userId;
-      this.formGroup.value.coacheeId = this.userService.getUserId();
-      this.sessionService.requestSession(this.formGroup.value).subscribe({
-        // next: () => this.router.navigate(['/user/sessions'], {relativeTo: this.route}),
-        next: () => this.router.navigate(['account/coachee', {outlets: {view: 'coaching-sessions'}}]).then(),
-        error: (response) => {
-          this.formGroup.enable();
-          console.log(response)
-          if (typeof response.error === 'string') this.errorMessages.push(response.error);
-          else if (typeof response.error.message === 'string') this.errorMessages.push(response.error.message);
-          else if (response.error.status === 400) {
-            this.errorMessages.push('Something went wrong. Please try again later.')
-          }
-        }
-      });
+      return;
     }
+    this.formGroup.disable();
+    this.formGroup.value.time = moment(this.formGroup.value.date).format("HH:mm");
+    this.formGroup.value.date = moment(this.formGroup.value.date).format("YYYY-MM-DD");
+    this.formGroup.value.location = {name: this.formGroup.value.location}
+    this.formGroup.value.coachId = this.coach?.userId;
+    this.formGroup.value.coacheeId = this.userService.getUserId();
+    this.sessionService.requestSession(this.formGroup.value).subscribe({
+      next: () => this.router.navigate(['account/coachee', {outlets: {view: 'coaching-sessions'}}]).then(),
+      error: (response) => {
+        this.formGroup.enable();
+        console.log(response)
+        if (typeof response.error === 'string') this.errorMessages.push(response.error);
+        else if (typeof response.error.message === 'string') this.errorMessages.push(response.error.message);
+        else if (response.error.status === 400) {
+          this.errorMessages.push('Something went wrong. Please try again later.')
+        }
+      }
+    });
+  }
+
+  openDatePicker(picker: any): void {
+    if (this.formGroup.value.date && this.formGroup.value.date instanceof Date) picker._selected = this.formGroup.value.date; else picker._selected = new Date();
+    picker.open()
   }
 }
