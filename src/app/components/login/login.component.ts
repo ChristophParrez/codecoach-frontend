@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { UserService } from "../../services/user.service";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -6,6 +6,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { AppService } from "../../services/app.service";
 import { MatDialog } from "@angular/material/dialog";
 import { AlertDialogComponent, AlertDialogData } from "../dialogs/alert-dialog/alert-dialog.component";
+import {Head} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -46,6 +47,7 @@ export class LoginComponent implements OnInit {
           const token = response.headers.get('Authorization');
           if (token !== null) {
             this.userService.setToken(token);
+            this.userService.getUserName();
             this.router.navigate(['account/coachee', { outlets: { view: 'profile' } }]).then();
           }
         },
