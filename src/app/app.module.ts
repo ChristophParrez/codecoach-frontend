@@ -15,7 +15,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatListModule } from "@angular/material/list";
 import { MatButtonModule } from '@angular/material/button';
-import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { MAT_DATE_LOCALE, MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { LoginComponent } from './components/login/login.component';
@@ -37,11 +37,15 @@ import { TopicFilterPipe } from './pipes/topic-filter.pipe';
 import { MatChipsModule } from "@angular/material/chips";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { CoachInformationComponent } from './components/coach/coach-information/coach-information.component';
-import { EditCoachInformationComponent } from './components/coach/edit-coach-information/edit-coach-information.component';
+import {
+  EditCoachInformationComponent
+} from './components/coach/edit-coach-information/edit-coach-information.component';
 import { CoachTopicsComponent } from './components/coach/coach-topics/coach-topics.component';
 import { CoachDetailsComponent } from './components/coach/coach-details/coach-details.component';
 import { StarsComponent } from './components/stars/stars.component';
-import { UserCoachingSessionsComponent } from './components/user/user-coaching-sessions/user-coaching-sessions.component';
+import {
+  UserCoachingSessionsComponent
+} from './components/user/user-coaching-sessions/user-coaching-sessions.component';
 import { AccountComponent } from './components/account/account.component';
 import { MatTableModule } from "@angular/material/table";
 import { MatSortModule } from "@angular/material/sort";
@@ -55,9 +59,13 @@ import { CoacheeDetailsComponent } from './components/coachee-details/coachee-de
 import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
 import { UserListComponent } from './components/user/user-list/user-list.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
-import {MatExpansionModule} from "@angular/material/expansion";
+import { MatExpansionModule } from "@angular/material/expansion";
 import { SmilesComponent } from './components/smiles/smiles.component';
-import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker'; // https://www.freakyjolly.com/angular-material-109-datepicker-timepicker-tutorial/
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule
+} from '@angular-material-components/datetime-picker'; // https://www.freakyjolly.com/angular-material-109-datepicker-timepicker-tutorial/
 import { SessionStatusPipe } from './pipes/session-status.pipe';
 import { CheckCurrentUserPipe } from './pipes/check-current-user.pipe';
 
@@ -133,7 +141,7 @@ import { CheckCurrentUserPipe } from './pipes/check-current-user.pipe';
     NgxMatNativeDateModule,
     NgxMatTimepickerModule
   ],
-  providers: [],
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'nl-BE'},],
   bootstrap: [AppComponent]
 })
 export class AppModule {
