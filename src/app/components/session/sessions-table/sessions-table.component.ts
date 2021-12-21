@@ -44,6 +44,10 @@ export class SessionsTableComponent implements OnInit, OnChanges {
     this.sortedSessions = this.sessions.slice().filter(session => allowedStatusValues.includes(session.status.statusName));
   }
 
+  changeStatus(sessionId: string, status: Status) {
+    this.sessionService.changeStatus(sessionId, status).subscribe(() => this.sessionChanged.emit());
+  }
+
   private setTitle(): void {
     switch (this.type) {
       case this.tableTypes.UPCOMING:
@@ -114,5 +118,6 @@ export class SessionsTableComponent implements OnInit, OnChanges {
   compare(a: number | string, b: number | string, isAsc: boolean): number {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
+
 
 }

@@ -9,6 +9,7 @@ import { Role } from "../model/Role";
 import * as moment from 'moment';
 import {Feedback} from "../model/Feedback";
 import {Topic} from "../model/Topic";
+import {Status} from "../model/Status";
 
 @Injectable({
   providedIn: 'root'
@@ -64,5 +65,13 @@ export class SessionService {
       },
       error: (e) => console.log(e)
     });
+  }
+
+  changeStatus(sessionId: string, status: Status){
+    const headers = new HttpHeaders({
+      'Authorization': `${this.userService.getToken()}`
+    })
+    const params = new HttpParams().set('newStatus', status);
+    return this.http.patch<Session>(`${this.urlSession}/${sessionId}/`, {}, {headers: headers, params: params});
   }
 }
