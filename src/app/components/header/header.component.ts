@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { UserService } from "../../services/user.service";
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {faGithub} from '@fortawesome/free-brands-svg-icons';
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-header',
@@ -16,5 +16,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.userService.isLoggedIn()) {
+      this.userService.getUserName();
+    }
   }
+
 }

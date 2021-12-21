@@ -16,8 +16,18 @@ export class UserService {
   private urlCoach = `${environment.backendUrl}/coaches`
   private urlLogin = `${environment.backendUrl}/security/login`
   private tokenName = 'code_coach_token';
+  public firstName?: string;
+  public lastName?: string;
 
   constructor(private http: HttpClient) {
+  }
+
+  getUserName() {
+    this.getUser(this.getUserId())
+      .subscribe(user => {
+        this.firstName = user.firstName;
+        this.lastName = user.lastName;
+      });
   }
 
   getAllUsers(): Observable<User[]> {

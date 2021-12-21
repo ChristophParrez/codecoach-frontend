@@ -31,6 +31,9 @@
           </div>
         </a>
       </li>
+      <li *ngIf="userService.isLoggedIn()" class="logged-in-as">
+        [Logged in as: <strong>{{userService.firstName}} {{userService.lastName}}</strong>]
+      </li>
     </ul>
   </nav>
 
