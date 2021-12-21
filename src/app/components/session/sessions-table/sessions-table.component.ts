@@ -1,10 +1,11 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Session} from "../../../model/Session";
 import {Role} from "../../../model/Role";
 import {Sort} from '@angular/material/sort';
 import {SessionTableType} from "../../../model/SessionTableType";
 import {Status} from "../../../model/Status";
 import {Router} from "@angular/router";
+import {SessionService} from "../../../services/session.service";
 
 @Component({
   selector: 'app-sessions-table',
@@ -20,13 +21,15 @@ export class SessionsTableComponent implements OnInit, OnChanges {
   @Input() title: string | undefined;
   @Input() type: SessionTableType | undefined;
 
+  @Output() sessionChanged = new EventEmitter<any>();
+
   userRoles: typeof Role = Role;
   tableTypes: typeof SessionTableType = SessionTableType;
+  status: typeof Status = Status;
   sortedSessions: Session[] | undefined;
   statusesToShow: Status[] = [];
-  filterMetadata: any = {count: 0};
 
-  constructor(private router: Router) {
+  constructor(private sessionService: SessionService, private router: Router) {
   }
 
   onClickUser(event: any, userId: string) {
