@@ -55,8 +55,8 @@
         </mat-expansion-panel-header>
         <div class="detail-content-container">
           <div class="detail-buttons">
-            <button mat-raised-button color="primary" type="submit">Coach profile</button>
-            <button mat-raised-button color="primary" type="submit">Coachee profile</button>
+            <button mat-raised-button color="primary" type="submit" (click)="onClickUser($event, session.coach.userId)">Coach profile</button>
+            <button mat-raised-button color="primary" type="submit" (click)="onClickUser($event, session.coachee.userId)">Coachee profile</button>
           </div>
           <div class="detail-content">
             <table class="main">

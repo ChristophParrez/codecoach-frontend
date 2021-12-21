@@ -4,6 +4,7 @@ import {Role} from "../../../model/Role";
 import {Sort} from '@angular/material/sort';
 import {SessionTableType} from "../../../model/SessionTableType";
 import {Status} from "../../../model/Status";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sessions-table',
@@ -25,7 +26,11 @@ export class SessionsTableComponent implements OnInit, OnChanges {
   statusesToShow: Status[] = [];
   filterMetadata: any = {count: 0};
 
-  constructor() {
+  constructor(private router: Router) {
+  }
+
+  onClickUser(event: any, userId: string) {
+    if (!event.target.classList.contains('disable-click')) this.router.navigate(['/profile/' + userId]).then();
   }
 
   ngOnInit(): void {
