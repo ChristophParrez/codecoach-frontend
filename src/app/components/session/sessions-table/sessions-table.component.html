@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="overflow">
   <app-page-title *ngIf="title">{{ title }}</app-page-title>
   <ng-container *ngIf="sortedSessions; else stillLoading">
   <div *ngIf="pageRole !== userRoles.ADMIN">
