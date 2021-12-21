@@ -8,18 +8,47 @@ th, td {
   padding-bottom: 5px;
 }
 
-.overview th, .overview td {
-  width: 200px;
-}
-
-.titles {
-  margin-left: 25px;
-}
-
 .overflow {
   overflow-x: auto;
 }
 
 .overflow table {
   width: 100%;
+}
+
+.titles, .header {
+  width: 90%;
+}
+
+.titles th, .header td {
+  width: 30%;
+}
+
+.titles {
+  margin-left: 25px;
+}
+
+.detail-content-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-buttons {
+  margin-top: 15px;
+}
+
+button {
+  margin-right: 20px;
+}
+
+.detail-content {
+  flex: 1;
+}
+
+.main {
+  width: 100%;
+}
+
+.main th, .main td {
+  width: 30%;
 }

@@ -29,11 +29,12 @@
   </div>
   <div *ngIf="pageRole === userRoles.ADMIN">
 
-    <table class="overview titles" matSort (matSortChange)="sortData($event)" *ngIf="sortedSessions.length > 0; else noResults">
+    <table class="titles" matSort (matSortChange)="sortData($event)" *ngIf="sortedSessions.length > 0; else noResults">
       <tr>
         <th mat-sort-header="coach">Coach</th>
         <th mat-sort-header="coachee">Coachee</th>
         <th mat-sort-header="subject">Subject</th>
+        <th>Date</th>
       </tr>
     </table>
 
@@ -42,29 +43,36 @@
         <mat-expansion-panel-header>
 
           <mat-panel-description>
-            <table class="overview" matSort (matSortChange)="sortData($event)">
+            <table class="header" matSort (matSortChange)="sortData($event)">
               <tr>
-                <td>{{session.coach?.firstName}} {{session.coach?.lastName}}</td>
-                <td>{{session.coachee?.firstName}} {{session.coachee?.lastName}}</td>
-                <td>{{session.subject}}</td>
+                <td class="col1">{{session.coach?.firstName}} {{session.coach?.lastName}}</td>
+                <td class="col2">{{session.coachee?.firstName}} {{session.coachee?.lastName}}</td>
+                <td class="col3">{{session.subject}}</td>
+                <td class="col4">{{session.date | date: 'dd/MM/yyyy'}}</td>
               </tr>
             </table>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <table class="overview">
-          <tr>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Location</th>
-            <th>Status</th>
-          </tr>
-          <tr>
-            <td>{{session.date | date: 'dd/MM/yyyy'}}</td>
-            <td>{{session.time}}</td>
-            <td>{{session.location.name}}</td>
-            <td>{{session.status.statusName}}</td>
-          </tr>
-        </table>
+        <div class="detail-content-container">
+          <div class="detail-buttons">
+            <button mat-raised-button color="primary" type="submit">Coach profile</button>
+            <button mat-raised-button color="primary" type="submit">Coachee profile</button>
+          </div>
+          <div class="detail-content">
+            <table class="main">
+              <tr>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Status</th>
+              </tr>
+              <tr>
+                <td>{{session.time}}</td>
+                <td>{{session.location.name}}</td>
+                <td>{{session.status.statusName}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </mat-expansion-panel>
     </mat-accordion>
 
