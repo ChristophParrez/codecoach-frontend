@@ -24,7 +24,7 @@ export class CoachTopicsComponent implements OnInit {
   errorMessages: string[] = [];
 
   formGroup: FormGroup = this.formBuilder.group({
-    topic1: [''],
+    topic1: ['', RxwebValidators.different({fieldName:'topic2'})],
     experience1: ['1'],
     topic2: ['', RxwebValidators.different({fieldName:'topic1'})],
     experience2: ['1'],
