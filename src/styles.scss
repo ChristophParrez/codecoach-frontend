@@ -50,6 +50,12 @@ form .hint {
   margin: -10px 0 20px 10px;
 }
 
+.mat-calendar-body-today.mat-calendar-body-selected, .mat-calendar-body-selected {
+  box-shadow: none;
+  border: none;
+  color: #fff;
+}
+
 .mat-flat-button, .mat-raised-button, .mat-fab, .mat-mini-fab {
   &.mat-primary {
     color: #fff;

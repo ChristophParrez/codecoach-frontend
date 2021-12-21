@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { environment } from "../../environments/environment";
-import { User } from "../model/User";
 import { map, Observable } from "rxjs";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Session } from "../model/Session";
 import { UserService } from "./user.service";
 import { Role } from "../model/Role";
 import * as moment from 'moment';
-import {Feedback} from "../model/Feedback";
-import {Topic} from "../model/Topic";
-import {Status} from "../model/Status";
+import { Feedback } from "../model/Feedback";
+import { Status } from "../model/Status";
 
 @Injectable({
   providedIn: 'root'
@@ -55,7 +53,6 @@ export class SessionService {
     console.log("feedback in session service: " + feedback)
     return this.http.post<Feedback>(`${this.urlSession}/${sessionId}/feedback`, feedback, {headers: headers});
   }
-
 
   mapCoaches(sessions: Session[]): void {
     this.userService.getAllCoaches().subscribe({

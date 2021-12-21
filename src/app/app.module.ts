@@ -57,6 +57,7 @@ import { UserListComponent } from './components/user/user-list/user-list.compone
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import { SmilesComponent } from './components/smiles/smiles.component';
+import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker'; // https://www.freakyjolly.com/angular-material-109-datepicker-timepicker-tutorial/
 import { SessionStatusPipe } from './pipes/session-status.pipe';
 import { CheckCurrentUserPipe } from './pipes/check-current-user.pipe';
 
@@ -98,36 +99,40 @@ import { CheckCurrentUserPipe } from './pipes/check-current-user.pipe';
     EnumToArrayPipe,
     FeedbackComponent,
     SmilesComponent,
+    SmilesComponent,
     SessionStatusPipe,
     CheckCurrentUserPipe
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatInputModule,
-        MatSidenavModule,
-        MatListModule,
-        MatButtonModule,
-        MatRippleModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatToolbarModule,
-        MatIconModule,
-        FontAwesomeModule,
-        MatCardModule,
-        MatSelectModule,
-        MatChipsModule,
-        MatProgressBarModule,
-        MatTableModule,
-        MatSortModule,
-        MatSnackBarModule,
-        MatDialogModule,
-        MatExpansionModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonModule,
+    MatRippleModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatToolbarModule,
+    MatIconModule,
+    FontAwesomeModule,
+    MatCardModule,
+    MatSelectModule,
+    MatChipsModule,
+    MatProgressBarModule,
+    MatTableModule,
+    MatSortModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatExpansionModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule,
+    NgxMatTimepickerModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

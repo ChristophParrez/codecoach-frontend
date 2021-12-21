@@ -1,13 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { UserService } from "../../../services/user.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { SessionService } from "../../../services/session.service";
-import { formatDate } from "@angular/common";
 import { User } from "../../../model/User";
-import { Observable } from "rxjs";
 import { CoachingTopic } from "../../../model/CoachingTopic";
 import { AppService } from "../../../services/app.service";
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-session-request-form',
@@ -17,9 +16,10 @@ import { AppService } from "../../../services/app.service";
 export class SessionRequestFormComponent implements OnInit {
 
   selectedTime: number | undefined
-  coach: User | undefined
-  coachId: string | any;
-  coachingTopics: CoachingTopic[] | undefined;
+  coach: User | undefined;
+  // coachingTopics: CoachingTopic[] | undefined;
+  showForm: boolean = true;
+  reason: string = '';
 
   public today: Date = new Date();
   public currentYear: number = this.today.getFullYear();
@@ -30,9 +30,9 @@ export class SessionRequestFormComponent implements OnInit {
   formGroup: FormGroup = this.formBuilder.group({
     subject: ['', Validators.required],
     date: ['', Validators.required],
-    time: ['', Validators.required],
+    time: [''],
     location: ['', Validators.required],
-    remarks: [''],
+    remarks: ['']
   });
 
   errorMessages: string[] = [];
@@ -47,30 +47,56 @@ export class SessionRequestFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.coachId = this.route.snapshot.paramMap.get('id');
-    this.userService.getCoach(this.coachId).subscribe(user => {
-      this.coach = user;
-      this.coachingTopics = user.coachInformation.coachingTopics
+    if (!this.userService.isLoggedIn()) {
+      this.showForm = false;
+      this.reason = 'You are not logged in as a coachee or as a coach.';
+    } else {
+      this.getCoach();
+    }
+  }
+
+  getCoach(): void {
+    const coachId = this.route.snapshot.paramMap.get('id');
+    if (!coachId) {
+      this.showForm = false;
+      this.reason = 'Coach id not provided in the path.';
+      return;
+    }
+    this.userService.getCoach(coachId).subscribe({
+      next: (user: User) => {
+        if (user.userId === this.userService.getUserId()) {
+          this.showForm = false;
+          this.reason = 'You cannot request a coaching session with yourself.';
+        } else if (user.coachInformation.coachingTopics.length <= 0) {
+          this.showForm = false;
+          this.reason = 'Coach does not have any topics to offer.';
+        } else {
+          this.coach = user;
+          // this.coachingTopics = user.coachInformation.coachingTopics;
+        }
       },
-      (error:any) => {
-          console.log(error.error.message)
-      });
+      error: (error) => {
+        this.showForm = false;
+        this.reason = 'Coach cannot be found.';
+        console.log(error.error.message);
+      }
+    });
   }
 
   onSubmit(): void {
     this.errorMessages = [];
     if (this.formGroup.invalid) {
-      this.triggerValidationOnFields();
+      this.appService.triggerValidationOnFields(this.formGroup);
     } else {
       this.formGroup.disable();
-      this.formGroup.value.date = formatDate(this.formGroup.value.date, "YYYY-MM-dd", "en-US");
+      this.formGroup.value.time = moment(this.formGroup.value.date).format("HH:mm");
+      this.formGroup.value.date = moment(this.formGroup.value.date).format("YYYY-MM-DD");
       this.formGroup.value.location = {name: this.formGroup.value.location}
-      this.formGroup.value.coachId = this.coachId;
+      this.formGroup.value.coachId = this.coach?.userId;
       this.formGroup.value.coacheeId = this.userService.getUserId();
-
       this.sessionService.requestSession(this.formGroup.value).subscribe({
         // next: () => this.router.navigate(['/user/sessions'], {relativeTo: this.route}),
-        next: () => this.router.navigate(['account/coachee', { outlets: { view: 'coaching-sessions' } }]).then(),
+        next: () => this.router.navigate(['account/coachee', {outlets: {view: 'coaching-sessions'}}]).then(),
         error: (response) => {
           this.formGroup.enable();
           console.log(response)
@@ -82,15 +108,5 @@ export class SessionRequestFormComponent implements OnInit {
         }
       });
     }
-  }
-
-  private triggerValidationOnFields(formGroup?: FormGroup | FormArray): void {
-    if (formGroup == null) formGroup = this.formGroup;
-    Object.keys(formGroup.controls).forEach(field => {
-      // @ts-ignore
-      const control = formGroup.controls[field];
-      if (control instanceof FormGroup || control instanceof FormArray) this.triggerValidationOnFields(control);
-      else control.markAsTouched({onlySelf: true});
-    });
   }
 }
