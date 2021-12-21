@@ -21,14 +21,13 @@ export class CoachTopicsComponent implements OnInit {
 
   editMode: boolean = false;
   topics: Topic[] | undefined;
-  coachingTopics: CoachingTopic[] | undefined;
   errorMessages: string[] = [];
 
   formGroup: FormGroup = this.formBuilder.group({
-    topic1: ['', Validators.required],
-    experience1: ['', Validators.required],
+    topic1: [''],
+    experience1: ['1'],
     topic2: ['', RxwebValidators.different({fieldName:'topic1'})],
-    experience2: ['', Validators.required],
+    experience2: ['1'],
   });
 
   constructor(private topicService: TopicService,
@@ -39,6 +38,18 @@ export class CoachTopicsComponent implements OnInit {
 
   ngOnInit(): void {
     this.topicService.getAllTopics().subscribe(topics => this.topics = topics);
+    if(this.user && this.user.coachInformation.coachingTopics.length >= 1){
+      this.formGroup.patchValue({
+        topic1: this.user.coachInformation.coachingTopics[0].topic.name,
+        experience1: this.user.coachInformation.coachingTopics[0].experience
+      })
+    }
+    if(this.user && this.user.coachInformation.coachingTopics.length === 2){
+      this.formGroup.patchValue({
+        topic2: this.user.coachInformation.coachingTopics[1].topic.name,
+        experience2: this.user.coachInformation.coachingTopics[1].experience
+      })
+    }
   }
 
   formWasSubmitted() {
@@ -55,20 +66,25 @@ export class CoachTopicsComponent implements OnInit {
       this.formGroup.disable();
       if (this.user === undefined) return;
 
-      this.coachingTopics = [
-        {
+      const coachingTopics = [];
+
+      if(this.formGroup.value.topic1 !== ""){
+        coachingTopics.push({
           coachingTopicId: "",
           topic: {topicId: this.formGroup.value.topic1, name: this.formGroup.value.topic1},
           experience: this.formGroup.value.experience1
-        },
-        {
+        })
+      }
+
+      if(this.formGroup.value.topic2 !== ""){
+        coachingTopics.push({
           coachingTopicId: "",
           topic: {topicId: this.formGroup.value.topic2, name: this.formGroup.value.topic2},
           experience: this.formGroup.value.experience2
-        },
-      ]
+        })
+      }
 
-      this.coachService.updateCoachingTopics(this.coachingTopics, this.user.userId).subscribe({
+      this.coachService.updateCoachingTopics(coachingTopics, this.user.userId).subscribe({
         next: () => this.formWasSubmitted(),
         error: (response) => {
           console.log(response);
