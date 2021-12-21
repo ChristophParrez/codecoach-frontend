@@ -1,7 +1,7 @@
-<mat-card class="overflow">
+<mat-card>
   <app-page-title *ngIf="title">{{ title }}</app-page-title>
   <ng-container *ngIf="sortedSessions; else stillLoading">
-  <div *ngIf="pageRole !== userRoles.ADMIN">
+  <div class="overflow" *ngIf="pageRole !== userRoles.ADMIN">
     <table matSort (matSortChange)="sortData($event)" *ngIf="sortedSessions.length > 0; else noResults">
       <tr>
         <th mat-sort-header="coach" *ngIf="pageRole === userRoles.COACHEE">Coach</th>
