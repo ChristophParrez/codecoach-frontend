@@ -3,6 +3,10 @@ app-page-title + * {
   margin-top: -10px;
 }
 
+table {
+  width: 100%;
+}
+
 th, td {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -17,16 +21,14 @@ th, td {
   table-layout: fixed;
 }
 
-.titles, .header {
-  width: 90%;
-}
-
-.titles th, .header td {
-  width: 30%;
+mat-accordion th, mat-accordion td, .titles th {
+  width: 25%;
 }
 
 .titles {
-  margin-left: 25px;
+  margin-bottom: 10px;
+  padding-left: 24px;
+  padding-right: 45px;
 }
 
 .detail-content-container {
@@ -52,11 +54,6 @@ button {
 
 .main {
   width: 100%;
-}
-
-.main th, .main td {
-  width: 30%;
-  vertical-align: top;
 }
 
 .mat-raised-button {
