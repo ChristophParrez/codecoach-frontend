@@ -23,6 +23,7 @@ export class EditUserComponent implements OnInit {
     lastName: ['', Validators.required],
     email: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")]],
     picture: '',
+    telephoneNumber: ['', Validators.pattern('[0-9]+')],
     coachInformation: null,
     roles: null,
   });
@@ -41,6 +42,7 @@ export class EditUserComponent implements OnInit {
       lastName: this.user.lastName,
       picture: this.user.picture,
       email: this.user.email,
+      telephoneNumber: this.user.telephoneNumber,
       coachInformation: this.user.coachInformation,
       roles: this.user.roles?.map((role: UserRole) => role.role),
     });

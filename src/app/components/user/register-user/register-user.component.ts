@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { UserService } from "../../services/user.service";
+import { AppService } from "../../../services/app.service";
+import { UserService } from "../../../services/user.service";
 import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
@@ -14,6 +15,7 @@ export class RegisterUserComponent implements OnInit {
     firstName: ['Mert', Validators.required],
     lastName: ['Demirok', Validators.required],
     companyName: ['Switchfully', Validators.required],
+    telephoneNumber: ['', Validators.pattern('[0-9]+')],
     password: ['Switchfully0', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[A-Z])(?=\\S+$).{8,}')]],
     email: ['mert1@gmail.com', [Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")]],
     roles: [[{}]],
@@ -21,7 +23,8 @@ export class RegisterUserComponent implements OnInit {
 
   errorMessages: string[] = [];
 
-  constructor(private userService: UserService,
+  constructor(public appService: AppService,
+              private userService: UserService,
               private formBuilder: FormBuilder,
               private router: Router,
               private route: ActivatedRoute) {

@@ -3,14 +3,14 @@
   <h3>Register</h3>
   <p>You can create an account by filling in the form below.</p>
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-    <div class="form-row">
+    <div class="form-row flex">
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>First Name</mat-label>
         <input matInput id="first_name" type="text" formControlName="firstName">
       </mat-form-field>
-    </div>
+<!--    </div>-->
 
-    <div class="form-row">
+<!--    <div class="form-row">-->
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>Last Name</mat-label>
         <input matInput id="last_name" type="text" formControlName="lastName">
@@ -24,6 +24,20 @@
       </mat-form-field>
     </div>
 
+    <div class="form-row flex">
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Telephone Number</mat-label>
+        <input matInput type="text" formControlName="telephoneNumber">
+      </mat-form-field>
+<!--    </div>-->
+
+<!--    <div class="form-row">-->
+      <mat-form-field class="full-width" appearance="fill">
+        <input matInput id="email" type="text" class="" formControlName="email">
+        <mat-label class="active">Email</mat-label>
+      </mat-form-field>
+    </div>
+
     <div class="form-row">
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>Password</mat-label>
@@ -33,14 +47,8 @@
     </div>
 
     <div class="form-row">
-      <mat-form-field class="full-width" appearance="fill">
-        <input matInput id="email" type="text" class="" formControlName="email">
-        <mat-label for="email" class="active">Email</mat-label>
-      </mat-form-field>
-    </div>
-
-    <div class="form-row">
       <button mat-raised-button color="primary" type="submit">Register</button>
+      <button mat-raised-button type="button" (click)="appService.goBack()">Cancel</button>
       <app-error-message [messages]="errorMessages"></app-error-message>
     </div>
 

@@ -1,3 +1,5 @@
+@import '../sass/variables';
+
 mat-sidenav {
   width: 300px;
   max-width: 70%;
@@ -8,7 +10,7 @@ mat-sidenav {
 
 mat-sidenav-content {
   //border: 1px solid blue;
-  background: #f7f8ff;
+  background: $main-content-background-color;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
