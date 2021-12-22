@@ -15,7 +15,7 @@ export class RegisterUserComponent implements OnInit {
     firstName: ['Mert', Validators.required],
     lastName: ['Demirok', Validators.required],
     companyName: ['Switchfully', Validators.required],
-    telephoneNumber: ['', Validators.pattern('[0-9]+')],
+    telephoneNumber: ['', Validators.pattern("(\\+32)\\d{9}")],
     password: ['Switchfully0', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[A-Z])(?=\\S+$).{8,}')]],
     email: ['mert1@gmail.com', [Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")]],
     roles: [[{}]],

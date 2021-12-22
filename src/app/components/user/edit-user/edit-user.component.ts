@@ -23,7 +23,7 @@ export class EditUserComponent implements OnInit {
     lastName: ['', Validators.required],
     email: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")]],
     picture: '',
-    telephoneNumber: ['', Validators.pattern('[0-9]+')],
+    telephoneNumber: ['', Validators.pattern("(\\+32)\\d{9}")],
     coachInformation: null,
     roles: null,
   });
