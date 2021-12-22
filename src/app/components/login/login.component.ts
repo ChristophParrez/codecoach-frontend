@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { UserService } from "../../services/user.service";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -6,7 +6,6 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { AppService } from "../../services/app.service";
 import { MatDialog } from "@angular/material/dialog";
 import { AlertDialogComponent, AlertDialogData } from "../dialogs/alert-dialog/alert-dialog.component";
-import {Head} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -18,8 +17,8 @@ export class LoginComponent implements OnInit {
   errorMessages: string[] = [];
 
   formGroup: FormGroup = this.formBuilder.group({
-    username: ['mert1@gmail.com', [Validators.required, Validators.email]],
-    password: ['Switchfully0', Validators.required]
+    username: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required]
   });
 
   constructor(private userService: UserService,
