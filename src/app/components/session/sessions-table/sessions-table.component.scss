@@ -35,10 +35,6 @@ mat-accordion th, mat-accordion td, .titles th {
   justify-content: space-between;
 }
 
-.detail-buttons {
-  margin-top: 15px;
-}
-
 button {
   margin-right: 15px;
 }
@@ -56,7 +52,7 @@ button {
 }
 
 .mat-raised-button {
-  margin-right: 0px;
+  margin-right: 0;
 }
 
 tr.remarks td {
@@ -80,3 +76,20 @@ tr.remarks td {
     margin-right: 20px;
   }
 }
+
+ul {
+  padding: 0;
+}
+
+li {
+  float: left;
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.detail-button1 {
+  margin-right: 15px;
+}
+
+
