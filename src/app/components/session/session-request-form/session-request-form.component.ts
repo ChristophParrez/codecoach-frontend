@@ -41,7 +41,7 @@ export class SessionRequestFormComponent implements OnInit {
   ngOnInit(): void {
     if (!this.userService.isLoggedIn()) {
       this.showForm = false;
-      this.reason = 'You are not logged in as a coachee or as a coach.';
+      this.reason = 'You can only request a session when you are logged in.';
     } else {
       this.getCoach();
     }
@@ -59,6 +59,9 @@ export class SessionRequestFormComponent implements OnInit {
         if (user.userId === this.userService.getUserId()) {
           this.showForm = false;
           this.reason = 'You cannot request a coaching session with yourself.';
+        } else if (!user.coachInformation) {
+          this.showForm = false;
+          this.reason = 'You can only request a session with a coach.';
         } else if (user.coachInformation.coachingTopics.length <= 0) {
           this.showForm = false;
           this.reason = 'Coach does not have any topics to offer.';
