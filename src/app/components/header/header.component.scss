@@ -166,6 +166,10 @@ a:hover .submenu, .submenu:hover {
   transition: opacity 300ms, transform 300ms;
 }
 
+.holiday-icons {
+  cursor: pointer;
+}
+
 // Responsiveness
 @media (max-width: $breakpoint) {
   .sidenav-trigger {
