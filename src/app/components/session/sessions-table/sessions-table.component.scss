@@ -12,10 +12,6 @@ th, td {
   overflow-x: auto;
 }
 
-.overflow table {
-  width: 100%;
-}
-
 .titles, .header {
   width: 90%;
 }
@@ -45,6 +41,10 @@ button {
   flex: 1;
 }
 
+.detail-content th, .detail-content td {
+  text-align: center;
+}
+
 .main {
   width: 100%;
 }
@@ -55,5 +55,5 @@ button {
 }
 
 .mat-raised-button {
-  margin-right: 0px;
+  margin-right: 0;
 }
