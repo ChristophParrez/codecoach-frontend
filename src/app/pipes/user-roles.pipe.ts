@@ -9,7 +9,11 @@ export class UserRolesPipe implements PipeTransform {
   transform(roles: UserRole[], joinString?:any): string {
     if (!roles) return '-';
     if (!joinString) joinString = ', ';
-    return roles.map(role => role.role.charAt(0).toUpperCase() + role.role.substr(1).toLowerCase()).join(joinString);
+    return roles
+      .map(role => role.role.charAt(0).toUpperCase() + role.role.substr(1)
+      .toLowerCase())
+      .sort((a, b) => a.localeCompare(b))
+      .join(joinString);
   }
 
 }
