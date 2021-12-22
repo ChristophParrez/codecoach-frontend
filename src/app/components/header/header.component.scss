@@ -1,6 +1,6 @@
 @import '../../../sass/variables';
 
-$breakpoint: 750px;
+$breakpoint: 930px;
 
 :host {
   background: #fff;
@@ -17,7 +17,7 @@ $breakpoint: 750px;
 }
 
 .logged-in-as {
-  font-size: 0.8em;
+  //font-size: 0.8em;
 }
 
 .sidenav-trigger {
@@ -71,7 +71,7 @@ $breakpoint: 750px;
       text-decoration: none;
       color: $main-text-color;
       transition: color 300ms;
-      font-size: 15px;
+      font-size: 14px;
       cursor: pointer;
 
       &:hover {
@@ -167,7 +167,13 @@ a:hover .submenu, .submenu:hover {
 }
 
 .holiday-icons {
+  margin-right: -10px;
   cursor: pointer;
+  display: flex;
+  gap: 8px;
+  * {
+    font-size: 24px;
+  }
 }
 
 // Responsiveness
