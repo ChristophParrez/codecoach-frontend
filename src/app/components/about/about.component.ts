@@ -12,7 +12,8 @@ export class AboutComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.latestUpdate = moment(new Date()).format('DD/MM/YYYY')
+    // this.latestUpdate = moment(new Date()).format('DD/MM/YYYY')
+    this.latestUpdate = '22/12/2021'
   }
 
 }
