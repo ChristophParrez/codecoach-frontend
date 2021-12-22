@@ -69,66 +69,69 @@
         </ng-container>
       </table>
     </div>
-    <div *ngIf="pageRole === userRoles.ADMIN">
 
-      <table class="titles" matSort (matSortChange)="sortData($event)"
-             *ngIf="sortedSessions.length > 0; else noResults">
-        <tr>
-          <th mat-sort-header="coach">Coach</th>
-          <th mat-sort-header="coachee">Coachee</th>
-          <th mat-sort-header="subject">Subject</th>
-          <th mat-sort-header="date">Date</th>
-        </tr>
-      </table>
+    <div class="overflow">
+      <div *ngIf="pageRole === userRoles.ADMIN">
 
-      <mat-accordion>
-        <mat-expansion-panel *ngFor="let session of sortedSessions">
-          <mat-expansion-panel-header>
+        <table class="titles" matSort (matSortChange)="sortData($event)"
+               *ngIf="sortedSessions.length > 0; else noResults">
+          <tr>
+            <th mat-sort-header="coach">Coach</th>
+            <th mat-sort-header="coachee">Coachee</th>
+            <th mat-sort-header="subject">Subject</th>
+            <th mat-sort-header="date">Date</th>
+          </tr>
+        </table>
 
-            <mat-panel-description>
-              <table class="header" matSort (matSortChange)="sortData($event)">
-                <tr>
-                  <td class="col1">{{session.coach?.firstName}} {{session.coach?.lastName}}</td>
-                  <td class="col2">{{session.coachee?.firstName}} {{session.coachee?.lastName}}</td>
-                  <td class="col3">{{session.subject}}</td>
-                  <td class="col4">{{session.date | date: 'dd/MM/yyyy'}}</td>
-                </tr>
-              </table>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <div class="detail-content-container">
-            <div class="detail-buttons">
-              <ul>
-                <li>
-                  <button class="detail-button1" mat-raised-button color="primary" type="submit"
-                          (click)="onClickUser($event, session.coach.userId)">Coach profile
-                  </button>
-                </li>
-                <li>
-                  <button class="detail-button2" mat-raised-button color="primary" type="submit"
-                          (click)="onClickUser($event, session.coachee.userId)">Coachee profile
-                  </button>
-                </li>
-              </ul>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let session of sortedSessions">
+            <mat-expansion-panel-header>
+
+              <mat-panel-description>
+                <table class="header" matSort (matSortChange)="sortData($event)">
+                  <tr>
+                    <td class="col1">{{session.coach?.firstName}} {{session.coach?.lastName}}</td>
+                    <td class="col2">{{session.coachee?.firstName}} {{session.coachee?.lastName}}</td>
+                    <td class="col3">{{session.subject}}</td>
+                    <td class="col4">{{session.date | date: 'dd/MM/yyyy'}}</td>
+                  </tr>
+                </table>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="detail-content-container">
+              <div class="detail-buttons">
+                <ul>
+                  <li>
+                    <button class="detail-button1" mat-raised-button color="primary" type="submit"
+                            (click)="onClickUser($event, session.coach.userId)">Coach profile
+                    </button>
+                  </li>
+                  <li>
+                    <button class="detail-button2" mat-raised-button color="primary" type="submit"
+                            (click)="onClickUser($event, session.coachee.userId)">Coachee profile
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <div class="detail-content">
+                <table class="main">
+                  <tr>
+                    <th>Time</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                  </tr>
+                  <tr>
+                    <td>{{session.time}}</td>
+                    <td>{{session.location.name}}</td>
+                    <td>{{session.status.statusName | sessionStatus :  pageRole}}</td>
+                  </tr>
+                </table>
+              </div>
             </div>
-            <div class="detail-content">
-              <table class="main">
-                <tr>
-                  <th>Time</th>
-                  <th>Location</th>
-                  <th>Status</th>
-                </tr>
-                <tr>
-                  <td>{{session.time}}</td>
-                  <td>{{session.location.name}}</td>
-                  <td>{{session.status.statusName | sessionStatus :  pageRole}}</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
+          </mat-expansion-panel>
+        </mat-accordion>
 
+      </div>
     </div>
   </ng-container>
 </mat-card>

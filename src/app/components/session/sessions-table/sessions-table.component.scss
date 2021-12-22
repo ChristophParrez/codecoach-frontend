@@ -52,7 +52,7 @@ button {
 }
 
 .mat-raised-button {
-  margin-right: 0;
+  margin-right: 15px;
 }
 
 tr.remarks td {
@@ -92,4 +92,8 @@ li {
   margin-right: 15px;
 }
 
-
+@media (max-width: 850px) {
+  mat-raised-button {
+    margin-right: 0;
+  }
+}
