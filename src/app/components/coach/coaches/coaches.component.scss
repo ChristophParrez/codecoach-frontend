@@ -75,6 +75,11 @@ mat-card-title {
   text-overflow: ellipsis;
 }
 
+.loading {
+  padding: 100px 0;
+  text-align: center;
+}
+
 @media (max-width: 1000px) {
   .coaches-content .coach-card-container {
     width: 50%;
