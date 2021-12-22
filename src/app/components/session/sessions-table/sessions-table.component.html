@@ -27,7 +27,7 @@
           <button mat-raised-button type="button" *ngIf="pageRole === userRoles.COACHEE && (session.status.statusName === status.REQUESTED || session.status.statusName === status.ACCEPTED)" (click)="changeStatus(session.id, status.FINISHED_CANCELLED_BY_COACHEE)">Cancel</button>
           <button mat-raised-button type="button" *ngIf="pageRole === userRoles.COACH && session.status.statusName === status.ACCEPTED" (click)="changeStatus(session.id, status.FINISHED_CANCELLED_BY_COACH)">Cancel</button>
         </td>
-        <td *ngIf="type==tableTypes.WAITING_FOR_FEEDBACK">
+        <td *ngIf="type==tableTypes.WAITING_FOR_FEEDBACK && ((pageRole === userRoles.COACHEE && !session.coacheeFeedback) || (pageRole === userRoles.COACH && !session.coachFeedback))">
           <button mat-raised-button type="button" routerLink="/sessions/{{session.id}}/{{pageRole}}/feedback">Feedback</button>
         </td>
       </tr>
