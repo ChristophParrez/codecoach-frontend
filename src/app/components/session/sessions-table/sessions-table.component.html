@@ -1,88 +1,119 @@
 <mat-card>
   <app-page-title *ngIf="title">{{ title }}</app-page-title>
   <ng-container *ngIf="sortedSessions; else stillLoading">
-  <div class="overflow" *ngIf="pageRole !== userRoles.ADMIN">
-    <table matSort (matSortChange)="sortData($event)" *ngIf="sortedSessions.length > 0; else noResults">
-      <tr>
-        <th mat-sort-header="coach" *ngIf="pageRole === userRoles.COACHEE">Coach</th>
-        <th mat-sort-header="coachee" *ngIf="pageRole === userRoles.COACH">Coachee</th>
-        <th mat-sort-header="subject">Subject</th>
-        <th mat-sort-header="date">Date</th>
-        <th mat-sort-header="time">Time</th>
-        <th mat-sort-header="location">Location</th>
-        <th mat-sort-header="status">Status</th>
-        <th *ngIf="type!==tableTypes.ARCHIVE">Actions</th>
-      </tr>
-      <tr *ngFor="let session of sortedSessions">
-        <td *ngIf="pageRole === userRoles.COACHEE">{{session.coach?.firstName}} {{session.coach?.lastName}}</td>
-        <td *ngIf="pageRole === userRoles.COACH">{{session.coachee?.firstName}} {{session.coachee?.lastName}}</td>
-        <td>{{session.subject}}</td>
-        <td>{{session.date | date: 'dd/MM/yyyy'}}</td>
-        <td>{{session.time}}</td>
-        <td>{{session.location.name}}</td>
-        <td>{{session.status.statusName | sessionStatus :  pageRole}}</td>
-        <td *ngIf="type==tableTypes.UPCOMING">
-          <button mat-raised-button type="button" *ngIf="pageRole === userRoles.COACH && session.status.statusName === status.REQUESTED" (click)="changeStatus(session.id, status.ACCEPTED)">Accept</button>
-          <button mat-raised-button type="button" *ngIf="pageRole === userRoles.COACH && session.status.statusName === status.REQUESTED" (click)="changeStatus(session.id, status.DECLINED)">Decline</button>
-          <button mat-raised-button type="button" *ngIf="pageRole === userRoles.COACHEE && (session.status.statusName === status.REQUESTED || session.status.statusName === status.ACCEPTED)" (click)="changeStatus(session.id, status.FINISHED_CANCELLED_BY_COACHEE)">Cancel</button>
-          <button mat-raised-button type="button" *ngIf="pageRole === userRoles.COACH && session.status.statusName === status.ACCEPTED" (click)="changeStatus(session.id, status.FINISHED_CANCELLED_BY_COACH)">Cancel</button>
-        </td>
-        <td *ngIf="type==tableTypes.WAITING_FOR_FEEDBACK && ((pageRole === userRoles.COACHEE && !session.coacheeFeedback) || (pageRole === userRoles.COACH && !session.coachFeedback))">
-          <button mat-raised-button type="button" routerLink="/sessions/{{session.id}}/{{pageRole}}/feedback">Feedback</button>
-        </td>
-      </tr>
-    </table>
-  </div>
-  <div *ngIf="pageRole === userRoles.ADMIN">
+    <div class="overflow" *ngIf="pageRole !== userRoles.ADMIN">
+      <table matSort (matSortChange)="sortData($event)" *ngIf="sortedSessions.length > 0; else noResults">
+        <tr>
+          <th mat-sort-header="coach" *ngIf="pageRole === userRoles.COACHEE">Coach</th>
+          <th mat-sort-header="coachee" *ngIf="pageRole === userRoles.COACH">Coachee</th>
+          <th mat-sort-header="subject">Subject</th>
+          <th mat-sort-header="date">Date</th>
+          <th mat-sort-header="time">Time</th>
+          <th mat-sort-header="location">Location</th>
+          <th mat-sort-header="status">Status</th>
+          <th *ngIf="type!==tableTypes.ARCHIVE">Actions</th>
+        </tr>
+        <ng-container *ngFor="let session of sortedSessions">
+          <tr>
+            <td *ngIf="pageRole === userRoles.COACHEE">{{session.coach?.firstName}} {{session.coach?.lastName}}</td>
+            <td *ngIf="pageRole === userRoles.COACH">{{session.coachee?.firstName}} {{session.coachee?.lastName}}</td>
+            <td>{{session.subject}}</td>
+            <td>{{session.date | date: 'dd/MM/yyyy'}}</td>
+            <td>{{session.time}}</td>
+            <td>{{session.location.name}}</td>
+            <td>{{session.status.statusName | sessionStatus :  pageRole}}</td>
+            <td *ngIf="type==tableTypes.UPCOMING">
+              <button mat-raised-button type="button"
+                      *ngIf="pageRole === userRoles.COACH && session.status.statusName === status.REQUESTED"
+                      (click)="changeStatus(session.id, status.ACCEPTED)">Accept
+              </button>
+              <button mat-raised-button type="button"
+                      *ngIf="pageRole === userRoles.COACH && session.status.statusName === status.REQUESTED"
+                      (click)="changeStatus(session.id, status.DECLINED)">Decline
+              </button>
+              <button mat-raised-button type="button"
+                      *ngIf="pageRole === userRoles.COACHEE && (session.status.statusName === status.REQUESTED || session.status.statusName === status.ACCEPTED)"
+                      (click)="changeStatus(session.id, status.FINISHED_CANCELLED_BY_COACHEE)">Cancel
+              </button>
+              <button mat-raised-button type="button"
+                      *ngIf="pageRole === userRoles.COACH && session.status.statusName === status.ACCEPTED"
+                      (click)="changeStatus(session.id, status.FINISHED_CANCELLED_BY_COACH)">Cancel
+              </button>
+            </td>
+            <td
+              *ngIf="type==tableTypes.WAITING_FOR_FEEDBACK && ((pageRole === userRoles.COACHEE && !session.coacheeFeedback) || (pageRole === userRoles.COACH && !session.coachFeedback))">
+              <button mat-raised-button type="button" routerLink="/sessions/{{session.id}}/{{pageRole}}/feedback">
+                Feedback
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="session.remarks && session.remarks !== ''" class="remarks">
+            <td colspan="7">
+              <i class="fas fa-level-up-alt"></i>
+              <div class="remarks-content">
+                <p><strong>Remarks</strong></p>
+                {{ session.remarks }}
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+      </table>
+    </div>
+    <div *ngIf="pageRole === userRoles.ADMIN">
 
-    <table class="titles" matSort (matSortChange)="sortData($event)" *ngIf="sortedSessions.length > 0; else noResults">
-      <tr>
-        <th mat-sort-header="coach">Coach</th>
-        <th mat-sort-header="coachee">Coachee</th>
-        <th mat-sort-header="subject">Subject</th>
-        <th mat-sort-header="date">Date</th>
-      </tr>
-    </table>
+      <table class="titles" matSort (matSortChange)="sortData($event)"
+             *ngIf="sortedSessions.length > 0; else noResults">
+        <tr>
+          <th mat-sort-header="coach">Coach</th>
+          <th mat-sort-header="coachee">Coachee</th>
+          <th mat-sort-header="subject">Subject</th>
+          <th mat-sort-header="date">Date</th>
+        </tr>
+      </table>
 
-    <mat-accordion>
-      <mat-expansion-panel *ngFor="let session of sortedSessions">
-        <mat-expansion-panel-header>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let session of sortedSessions">
+          <mat-expansion-panel-header>
 
-          <mat-panel-description>
-            <table class="header" matSort (matSortChange)="sortData($event)">
-              <tr>
-                <td class="col1">{{session.coach?.firstName}} {{session.coach?.lastName}}</td>
-                <td class="col2">{{session.coachee?.firstName}} {{session.coachee?.lastName}}</td>
-                <td class="col3">{{session.subject}}</td>
-                <td class="col4">{{session.date | date: 'dd/MM/yyyy'}}</td>
-              </tr>
-            </table>
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div class="detail-content-container">
-          <div class="detail-buttons">
-            <button mat-raised-button color="primary" type="submit" (click)="onClickUser($event, session.coach.userId)">Coach profile</button>
-            <button mat-raised-button color="primary" type="submit" (click)="onClickUser($event, session.coachee.userId)">Coachee profile</button>
+            <mat-panel-description>
+              <table class="header" matSort (matSortChange)="sortData($event)">
+                <tr>
+                  <td class="col1">{{session.coach?.firstName}} {{session.coach?.lastName}}</td>
+                  <td class="col2">{{session.coachee?.firstName}} {{session.coachee?.lastName}}</td>
+                  <td class="col3">{{session.subject}}</td>
+                  <td class="col4">{{session.date | date: 'dd/MM/yyyy'}}</td>
+                </tr>
+              </table>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="detail-content-container">
+            <div class="detail-buttons">
+              <button mat-raised-button color="primary" type="submit"
+                      (click)="onClickUser($event, session.coach.userId)">Coach profile
+              </button>
+              <button mat-raised-button color="primary" type="submit"
+                      (click)="onClickUser($event, session.coachee.userId)">Coachee profile
+              </button>
+            </div>
+            <div class="detail-content">
+              <table class="main">
+                <tr>
+                  <th>Time</th>
+                  <th>Location</th>
+                  <th>Status</th>
+                </tr>
+                <tr>
+                  <td>{{session.time}}</td>
+                  <td>{{session.location.name}}</td>
+                  <td>{{session.status.statusName | sessionStatus :  pageRole}}</td>
+                </tr>
+              </table>
+            </div>
           </div>
-          <div class="detail-content">
-            <table class="main">
-              <tr>
-                <th>Time</th>
-                <th>Location</th>
-                <th>Status</th>
-              </tr>
-              <tr>
-                <td>{{session.time}}</td>
-                <td>{{session.location.name}}</td>
-                <td>{{session.status.statusName | sessionStatus :  pageRole}}</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </mat-expansion-panel>
-    </mat-accordion>
+        </mat-expansion-panel>
+      </mat-accordion>
 
-  </div>
+    </div>
   </ng-container>
 </mat-card>
 <ng-template #noResults><p>No sessions available.</p></ng-template>

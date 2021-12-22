@@ -14,6 +14,7 @@ th, td {
 
 .overflow table {
   width: 100%;
+  table-layout: fixed;
 }
 
 .titles, .header {
@@ -56,4 +57,22 @@ button {
 
 .mat-raised-button {
   margin-right: 0px;
+}
+
+tr.remarks td {
+  position: relative;
+  padding-left: 45px;
+
+  .fas {
+    position: absolute;
+    left: 20px;
+    top: 18px;
+    transform: rotate(90deg);
+  }
+
+  .remarks-content {
+    background: #f2f3f7;
+    padding: 12px;
+    border-radius: 4px;
+  }
 }
