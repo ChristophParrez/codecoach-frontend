@@ -63,6 +63,8 @@ export class EditUserComponent implements OnInit {
           console.log(response);
           if (response.status === 401 || response.status === 403) {
             this.errorMessages.push('You are not authorized to use this function')
+          } else if (response.status === 400) {
+            if (typeof response.error.message === 'string') this.errorMessages.push(response.error.message);
           }
           this.formGroup.enable();
         }
