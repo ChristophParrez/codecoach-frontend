@@ -14,6 +14,7 @@ $breakpoint: 930px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .logged-in-as {
@@ -136,6 +137,7 @@ li {
     &.left {
       left: -5px;
       right: auto;
+
       &::before {
         left: 15px;
         right: auto;
@@ -166,16 +168,6 @@ a:hover .submenu, .submenu:hover {
   transition: opacity 300ms, transform 300ms;
 }
 
-.holiday-icons {
-  margin-right: -10px;
-  cursor: pointer;
-  display: flex;
-  gap: 8px;
-  * {
-    font-size: 24px;
-  }
-}
-
 // Responsiveness
 @media (max-width: $breakpoint) {
   .sidenav-trigger {
@@ -183,5 +175,30 @@ a:hover .submenu, .submenu:hover {
   }
   .main-nav {
     display: none;
+  }
+}
+
+// Other idea
+.holiday-icons {
+  position: absolute;
+  top: 62px;
+  right: 20px;
+  background: linear-gradient(-45deg, #005a93 0%, #5422e9 100%);
+  color: #fff;
+  padding: 10px 13px;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+  display: flex;
+  cursor: pointer;
+  gap: 10px;
+  transform-origin: center top;
+  transition: all 200ms;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  * {
+    font-size: 21px;
   }
 }
