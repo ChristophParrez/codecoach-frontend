@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
   }
 
   holidays() {
-    const dialogData: AlertDialogData = {title: "Merry X-mas & Happy New Year", message: 'The Codecoach team wishes you a Merry Christmas and a Happy New Year!'};
+    const dialogData: AlertDialogData = {title: "Merry X-mas & Happy New Year", message: 'The CodeCoach team wishes you a Merry Christmas and a Happy New Year!'};
     this.dialog.open(AlertDialogComponent, {
       maxWidth: "600px",
       data: dialogData,
