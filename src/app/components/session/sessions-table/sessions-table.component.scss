@@ -62,18 +62,22 @@ tr.remarks td {
   .fas {
     position: absolute;
     left: 20px;
-    top: 18px;
+    //top: 18px;
+    top: 7px;
     transform: rotate(90deg);
   }
 
   .remarks-content {
     //display: inline-block;
     //background: #f2f3f7;
+    display: inline-flex;
+    align-items: start;
+    gap: 10px;
     background: #f7f8fe;
-    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
-    padding: 12px;
+    //box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+    padding: 10px;
     border-radius: 4px;
-    margin-right: 20px;
+    margin-top: -10px;
   }
 }
 
